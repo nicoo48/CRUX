@@ -1,4 +1,5 @@
 <?
+$nivel_directorio = "";
 require "carga.php";
 
 unset($_SESSION['usuario']);

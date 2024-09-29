@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?
+$nivel_directorio = "";
 
+?>
 <body class="log_body">
     <?
     //aqui validamos un intento de inicio de sesión
@@ -67,7 +70,7 @@
         var operacion = document.getElementById('operacion');
         var div = document.getElementById('bodyLogin');
         if (usuario == '' || clave == '') {
-            operacion.innerHTML = '<div class="alert alert-danger" role="alert">Debe ingresar usuario y contraseña</div>';
+            operacion.innerHTML = '<div class="alert alert-danger">Debe ingresar usuario y contraseña</div>';
         } else {
             AJAXPOST(urlBase + "login.php", "usuario=" + usuario + "&clave=" + clave, div);
         }
