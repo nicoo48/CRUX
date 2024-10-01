@@ -7,7 +7,7 @@
  * @return array Devuelve un array con los datos de la consulta
  */
 function insert($tabla, $datos, $debug = false){
-    global $cnx_mysql;
+    global $conexion;
     $sql = "INSERT INTO $tabla (";
     foreach ($datos as $key => $value) {
         $sql .= '`' . $key . '`,';
@@ -20,19 +20,19 @@ function insert($tabla, $datos, $debug = false){
     $sql = substr($sql, 0, -1);
     $sql .= "),";
     $sql = substr($sql, 0, -1);
-    $result = mysqli_query($cnx_mysql, $sql);
+    $result = mysqli_query($conexion, $sql);
     // return $sql;
     if ($debug) {
         echo $sql . '<br>';
     }
     if ($result) {
         $data['error'] = 0;
-        $data['mensaje'] = 'Se insertaron ' . mysqli_affected_rows($cnx_mysql) . ' registros';
-        $data['datos'] = mysqli_insert_id($cnx_mysql); // Devuelve el ID del registro insertado
+        $data['mensaje'] = 'Se insertaron ' . mysqli_affected_rows($conexion) . ' registros';
+        $data['datos'] = mysqli_insert_id($conexion); // Devuelve el ID del registro insertado
         return $data;
     } else {
         $data['error'] = 1;
-        $data['mensaje'] = mysqli_error($cnx_mysql);
+        $data['mensaje'] = mysqli_error($conexion);
         return $data;
     }
 }

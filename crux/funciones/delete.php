@@ -7,9 +7,9 @@
  * @return bool Devuelve true si se elimino correctamente, false si no
  */
 function delete($tabla, $filtro, $debug = false){
-    global $cnx_mysql;
+    global $conexion;
     $sql = "DELETE FROM $tabla WHERE $filtro";
-    $result = mysqli_query($cnx_mysql, $sql);
+    $result = mysqli_query($conexion, $sql);
     if ($debug) {
         echo $sql;
     }

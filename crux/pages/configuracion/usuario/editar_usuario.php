@@ -46,7 +46,14 @@ if ($persona > 0) {
     </table>
 
     <div style="margin-top: 20px; width: 50%; margin-left: auto; margin-right: auto;">
-        <button class="btn btn-primary" onclick="editar_usuario()" style="float: left;">Editar Usuario</button>
+        <?
+        boton(
+            "Editar Usuario",
+            "pencil",
+            "outline-success",
+            "editar_usuario()"
+        )
+        ?>
     </div>
 </div>
 <div id="mensaje" style="display:none;">sadfdasdas</div> 

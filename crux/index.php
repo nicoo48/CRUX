@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario'])) {
 
 <body style="user-select:none">
     <? require 'top.php'; ?>
-    <div id="pagina_central" style="padding:5px;"></div>
+    <div id="pagina_central" style="padding-left:30px;padding-right:30px;padding-top:10px;"></div>
 </body>
 
 </html>

@@ -8,7 +8,7 @@
  * @return array Devuelve un array con los datos de la consulta
  */
 function update($tabla, $datos, $filtro, $debug = false){
-    global $cnx_mysql;
+    global $conexion;
     $sql = "UPDATE $tabla SET ";
     foreach ($datos as $key => $value) {
         $sql .= $key . " = '" . $value . "',";
@@ -17,7 +17,7 @@ function update($tabla, $datos, $filtro, $debug = false){
     if ($filtro <> '') {
         $sql .= ' WHERE ' . $filtro;
     }
-    $result = mysqli_query($cnx_mysql, $sql);
+    $result = mysqli_query($conexion, $sql);
     if ($debug) {
         echo $sql . '<br>';
     }
@@ -26,7 +26,7 @@ function update($tabla, $datos, $filtro, $debug = false){
         $datos['error'] = 0;
         return $datos;
     } else {
-        $datos['resultado'] = mysqli_error($cnx_mysql);
+        $datos['resultado'] = mysqli_error($conexion);
         $datos['error'] = 1;
         return $datos;
 
