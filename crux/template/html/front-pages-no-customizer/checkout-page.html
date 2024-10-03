@@ -1,0 +1,1649 @@
+<!doctype html>
+
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-wide"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="front-pages-no-customizer"
+  data-style="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Checkout Card - Front Pages | Materialize - Material Design HTML Admin Template</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../assets/vendor/fonts/remixicon/remixicon.css" />
+
+    <!-- Menu waves for no-customizer fix -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/front-page.css" />
+    <!-- Vendors CSS -->
+
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/bs-stepper/bs-stepper.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/rateyo/rateyo.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/@form-validation/form-validation.css" />
+
+    <!-- Page CSS -->
+
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/wizard-ex-checkout.css" />
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../../assets/js/front-config.js"></script>
+  </head>
+
+  <body>
+    <script src="../../assets/vendor/js/dropdown-hover.js"></script>
+    <script src="../../assets/vendor/js/mega-dropdown.js"></script>
+
+    <!-- Navbar: Start -->
+    <nav class="layout-navbar container shadow-none py-0">
+      <div class="navbar navbar-expand-lg landing-navbar border-top-0 px-4 px-md-8">
+        <!-- Menu logo wrapper: Start -->
+        <div class="navbar-brand app-brand demo d-flex py-0 py-lg-2 me-6">
+          <!-- Mobile menu toggle: Start-->
+          <button
+            class="navbar-toggler border-0 px-0 me-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="tf-icons ri-menu-fill ri-24px align-middle"></i>
+          </button>
+          <!-- Mobile menu toggle: End-->
+          <a href="landing-page.html" class="app-brand-link">
+            <span class="app-brand-logo demo">
+              <span style="color: #666cff">
+                <svg width="268" height="150" viewBox="0 0 38 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
+                    fill="currentColor" />
+                  <path
+                    d="M30.171 2.22569C29.1277 0.444187 26.8274 -0.172113 25.0332 0.849138C23.2389 1.87039 22.6302 4.14247 23.6735 5.92397L30.6134 17.7743C31.6567 19.5558 33.957 20.1721 35.7512 19.1509C37.5455 18.1296 38.1542 15.8575 37.1109 14.076L30.171 2.22569Z"
+                    fill="url(#paint0_linear_2989_100980)"
+                    fill-opacity="0.4" />
+                  <path
+                    d="M22.9676 2.22569C24.0109 0.444187 26.3112 -0.172113 28.1054 0.849138C29.8996 1.87039 30.5084 4.14247 29.4651 5.92397L22.5251 17.7743C21.4818 19.5558 19.1816 20.1721 17.3873 19.1509C15.5931 18.1296 14.9843 15.8575 16.0276 14.076L22.9676 2.22569Z"
+                    fill="currentColor" />
+                  <path
+                    d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                    fill="currentColor" />
+                  <path
+                    d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                    fill="url(#paint1_linear_2989_100980)"
+                    fill-opacity="0.4" />
+                  <path
+                    d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
+                    fill="currentColor" />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_2989_100980"
+                      x1="5.36642"
+                      y1="0.849138"
+                      x2="10.532"
+                      y2="24.104"
+                      gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-opacity="1" />
+                      <stop offset="1" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint1_linear_2989_100980"
+                      x1="5.19475"
+                      y1="0.849139"
+                      x2="10.3357"
+                      y2="24.1155"
+                      gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-opacity="1" />
+                      <stop offset="1" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+            </span>
+            <span class="app-brand-text demo menu-text fw-semibold ms-2 ps-1">Materialize</span>
+          </a>
+        </div>
+        <!-- Menu logo wrapper: End -->
+        <!-- Menu wrapper: Start -->
+        <div class="collapse navbar-collapse landing-nav-menu" id="navbarSupportedContent">
+          <button
+            class="navbar-toggler border-0 text-heading position-absolute end-0 top-0 scaleX-n1-rtl"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="tf-icons ri-close-fill"></i>
+          </button>
+          <ul class="navbar-nav me-auto p-4 p-lg-0">
+            <li class="nav-item">
+              <a class="nav-link fw-medium" aria-current="page" href="landing-page.html#landingHero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="landing-page.html#landingFeatures">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="landing-page.html#landingTeam">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="landing-page.html#landingFAQ">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium text-nowrap" href="landing-page.html#landingContact">Contact us</a>
+            </li>
+            <li class="nav-item mega-dropdown active">
+              <a
+                href="javascript:void(0);"
+                class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
+                aria-expanded="false"
+                data-bs-toggle="mega-dropdown"
+                data-trigger="hover">
+                <span data-i18n="Pages">Pages</span>
+              </a>
+              <div class="dropdown-menu p-4 p-lg-6">
+                <div class="row gy-4">
+                  <div class="col-12 col-lg">
+                    <div class="h6 d-flex align-items-center mb-2 mb-lg-4">
+                      <div class="avatar avatar-sm flex-shrink-0 me-2">
+                        <span class="avatar-initial rounded bg-label-primary"><i class="ri-layout-grid-line"></i></span>
+                      </div>
+                      <span class="ps-1">Other</span>
+                    </div>
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link mega-dropdown-link d-flex align-items-center" href="pricing-page.html">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          <span data-i18n="Pricing">Pricing</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link mega-dropdown-link d-flex align-items-center" href="payment-page.html">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          <span data-i18n="Payment">Payment</span>
+                        </a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link mega-dropdown-link d-flex align-items-center" href="checkout-page.html">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          <span data-i18n="Checkout">Checkout</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="help-center-landing.html">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          <span data-i18n="Help Center">Help Center</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-lg">
+                    <div class="h6 d-flex align-items-center mb-2 mb-lg-4">
+                      <div class="avatar avatar-sm flex-shrink-0 me-2">
+                        <span class="avatar-initial rounded bg-label-primary"><i class="ri-lock-unlock-line"></i></span>
+                      </div>
+                      <span class="ps-1">Auth Demo</span>
+                    </div>
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-login-basic.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Login (Basic)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-login-cover.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Login (Cover)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-register-basic.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Register (Basic)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-register-cover.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Register (Cover)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-register-multisteps.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Register (Multi-steps)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-forgot-password-basic.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Forgot Password (Basic)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-forgot-password-cover.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Forgot Password (Cover)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-reset-password-basic.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Reset Password (Basic)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-reset-password-cover.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Reset Password (Cover)
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-lg">
+                    <div class="h6 d-flex align-items-center mb-2 mb-lg-4">
+                      <div class="avatar avatar-sm flex-shrink-0 me-2">
+                        <span class="avatar-initial rounded bg-label-primary"><i class="ri-image-fill"></i></span>
+                      </div>
+                      <span class="ps-1">Other</span>
+                    </div>
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/pages-misc-error.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Error
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/pages-misc-under-maintenance.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Under Maintenance
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/pages-misc-comingsoon.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Coming Soon
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/pages-misc-not-authorized.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Not Authorized
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-verify-email-basic.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Verify Email (Basic)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-verify-email-cover.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Verify Email (Cover)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-two-steps-basic.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Two Steps (Basic)
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link mega-dropdown-link d-flex align-items-center"
+                          href="../vertical-menu-template/auth-two-steps-cover.html"
+                          target="_blank">
+                          <i class="menu-icon tf-icons ri-circle-line me-2"></i>
+                          Two Steps (Cover)
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4 d-none d-lg-block">
+                    <div class="bg-body nav-img-col p-2">
+                      <img
+                        src="../../assets/img/front-pages/misc/nav-item-col-img-light.png"
+                        class="img-fluid scaleX-n1-rtl w-100"
+                        alt="nav item col image"
+                        data-app-light-img="front-pages/misc/nav-item-col-img-light.png"
+                        data-app-dark-img="front-pages/misc/nav-item-col-img-dark.png" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="../vertical-menu-template/index.html" target="_blank">Admin</a>
+            </li>
+          </ul>
+        </div>
+        <div class="landing-menu-overlay d-lg-none"></div>
+        <!-- Menu wrapper: End -->
+        <!-- Toolbar: Start -->
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
+          <!-- navbar button: Start -->
+          <li>
+            <a
+              href="../vertical-menu-template/auth-login-cover.html"
+              class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4"
+              target="_blank"
+              ><span class="tf-icons ri-user-line me-md-1"></span
+              ><span class="d-none d-md-block">Login/Register</span></a
+            >
+          </li>
+          <!-- navbar button: End -->
+        </ul>
+        <!-- Toolbar: End -->
+      </div>
+    </nav>
+    <!-- Navbar: End -->
+
+    <!-- Sections:Start -->
+
+    <section class="section-py bg-body first-section-pt">
+      <div class="container">
+        <!--/ Checkout Wizard -->
+        <!-- Checkout Wizard -->
+        <div id="wizard-checkout" class="bs-stepper wizard-icons wizard-icons-example">
+          <div class="bs-stepper-header m-auto border-0">
+            <div class="step" data-target="#checkout-cart">
+              <button type="button" class="step-trigger">
+                <span class="bs-stepper-icon">
+                  <svg viewBox="0 0 58 54">
+                    <use xlink:href="../../assets/svg/icons/wizard-checkout-cart.svg#wizardCart"></use>
+                  </svg>
+                </span>
+                <span class="bs-stepper-label">Cart</span>
+              </button>
+            </div>
+            <div class="line">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="step" data-target="#checkout-address">
+              <button type="button" class="step-trigger">
+                <span class="bs-stepper-icon">
+                  <svg viewBox="0 0 54 54">
+                    <use xlink:href="../../assets/svg/icons/wizard-checkout-address.svg#wizardCheckoutAddress"></use>
+                  </svg>
+                </span>
+                <span class="bs-stepper-label">Address</span>
+              </button>
+            </div>
+            <div class="line">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="step" data-target="#checkout-payment">
+              <button type="button" class="step-trigger">
+                <span class="bs-stepper-icon">
+                  <svg viewBox="0 0 58 54">
+                    <use xlink:href="../../assets/svg/icons/wizard-checkout-payment.svg#wizardPayment"></use>
+                  </svg>
+                </span>
+                <span class="bs-stepper-label">Payment</span>
+              </button>
+            </div>
+            <div class="line">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="step" data-target="#checkout-confirmation">
+              <button type="button" class="step-trigger">
+                <span class="bs-stepper-icon">
+                  <svg viewBox="0 0 58 54">
+                    <use xlink:href="../../assets/svg/icons/wizard-checkout-confirmation.svg#wizardConfirm"></use>
+                  </svg>
+                </span>
+                <span class="bs-stepper-label">Confirmation</span>
+              </button>
+            </div>
+          </div>
+          <div class="bs-stepper-content border-top rounded-0">
+            <form id="wizard-checkout-form" onSubmit="return false">
+              <!-- Cart -->
+              <div id="checkout-cart" class="content">
+                <div class="row">
+                  <!-- Cart left -->
+                  <div class="col-xl-8 mb-4 mb-xl-0">
+                    <!-- Offer alert -->
+                    <div class="alert alert-success mb-4" role="alert">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <span class="alert-icon rounded-3">
+                            <i class="ri-percent-line ri-22px"></i>
+                          </span>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h5 class="text-success mb-1">Available Offers</h5>
+                          <ul class="list-unstyled mb-0">
+                            <li>- 10% Instant Discount on Bank of America Corp Bank Debit and Credit cards</li>
+                            <li>- 25% Cashback Voucher of up to $60 on first ever PayPal transaction. TCA</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        class="btn-close btn-pinned"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                    </div>
+
+                    <!-- Shopping bag -->
+                    <h5>My Shopping Bag (2 Items)</h5>
+                    <ul class="list-group mb-4">
+                      <li class="list-group-item p-5">
+                        <div class="d-flex gap-4 flex-sm-row flex-column align-items-center">
+                          <div class="flex-shrink-0 d-flex align-items-center">
+                            <img src="../../assets/img/products/1.png" alt="google home" class="w-px-100" />
+                          </div>
+                          <div class="flex-grow-1">
+                            <div class="row text-center text-sm-start">
+                              <div class="col-md-8">
+                                <h6 class="me-3 mb-2">
+                                  <a href="javascript:void(0)" class="text-heading">Google - Google Home - White</a>
+                                </h6>
+                                <div class="mb-2 d-flex flex-wrap justify-content-center justify-content-sm-start">
+                                  <span class="me-1 text-body">Sold by:</span>
+                                  <a href="javascript:void(0)" class="me-4">Apple</a>
+                                  <span class="badge bg-label-success">In Stock</span>
+                                </div>
+                                <div
+                                  class="d-flex d-md-block align-items-center mb-2 gap-2 justify-content-center justify-content-sm-start">
+                                  <div class="read-only-ratings mb-2 px-0" data-rateyo-read-only="true"></div>
+                                  <input
+                                    type="number"
+                                    class="form-control form-control-sm w-px-100"
+                                    value="1"
+                                    min="1"
+                                    max="5" />
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="text-md-end">
+                                  <button
+                                    type="button"
+                                    class="btn text-muted p-0 shadow-none btn-pinned border-none"
+                                    aria-label="Close">
+                                    <i class="ri-close-line"></i>
+                                  </button>
+                                  <div
+                                    class="d-flex d-md-block align-items-center mb-2 gap-2 justify-content-center justify-content-sm-start">
+                                    <div class="mt-md-6 mb-md-0">
+                                      <span class="text-primary">$299/</span><s class="text-body">$359</s>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-primary">
+                                      Move to wishlist
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item p-5">
+                        <div class="d-flex gap-4 flex-sm-row flex-column align-items-center">
+                          <div class="flex-shrink-0 d-flex align-items-center">
+                            <img src="../../assets/img/products/2.png" alt="google home" class="w-px-100" />
+                          </div>
+                          <div class="flex-grow-1">
+                            <div class="row text-center text-sm-start">
+                              <div class="col-md-8">
+                                <h6 class="me-3 mb-2">
+                                  <a href="javascript:void(0)" class="text-heading">Apple iPhone 11 (64GB, Black)</a>
+                                </h6>
+                                <div class="mb-2 d-flex flex-wrap justify-content-center justify-content-sm-start">
+                                  <span class="me-1 text-body">Sold by:</span>
+                                  <a href="javascript:void(0)" class="me-4">Apple</a>
+                                  <span class="badge bg-label-success rounded-pill mt-2 mt-sm-0">In Stock</span>
+                                </div>
+                                <div
+                                  class="d-flex d-md-block align-items-center mb-2 gap-2 justify-content-center justify-content-sm-start">
+                                  <div class="read-only-ratings mb-2 px-0" data-rateyo-read-only="true"></div>
+                                  <input
+                                    type="number"
+                                    class="form-control form-control-sm w-px-100"
+                                    value="1"
+                                    min="1"
+                                    max="5" />
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="text-md-end">
+                                  <button
+                                    type="button"
+                                    class="btn text-muted p-0 shadow-none btn-pinned border-none"
+                                    aria-label="Close">
+                                    <i class="ri-close-line"></i>
+                                  </button>
+                                  <div
+                                    class="d-flex d-md-block align-items-center mb-2 gap-2 justify-content-center justify-content-sm-start">
+                                    <div class="mt-md-6 mb-md-0">
+                                      <span class="text-primary">$899/</span><s class="text-body">$999</s>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-primary">
+                                      Move to wishlist
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+
+                    <!-- Wishlist -->
+                    <div class="list-group">
+                      <a
+                        href="javascript:void(0)"
+                        class="list-group-item text-primary d-flex justify-content-between border-primary rounded-3">
+                        <span class="fw-medium">Add more products from wishlist</span>
+                        <i class="ri-arrow-right-line ri-16px lh-sm scaleX-n1-rtl"></i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Cart right -->
+                  <div class="col-xl-4">
+                    <div class="border rounded-4 p-5 mb-4">
+                      <!-- Offer -->
+                      <h6>Offer</h6>
+                      <div class="row g-4 mb-4">
+                        <div class="col-sm-8 col-xxl-8 col-xl-12">
+                          <input
+                            type="text"
+                            class="form-control form-control-sm"
+                            placeholder="Enter Promo Code"
+                            aria-label="Enter Promo Code" />
+                        </div>
+                        <div class="col-4 col-xxl-4 col-xl-12">
+                          <div class="d-grid">
+                            <button type="button" class="btn btn-outline-primary">Apply</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Gift wrap -->
+                      <div class="bg-lighter rounded-4 p-5">
+                        <h6 class="mb-2">Buying gift for a loved one?</h6>
+                        <p class="mb-2">Gift wrap and personalized message on card, Only for $2.</p>
+                        <a href="javascript:void(0)" class="fw-medium">Add a gift wrap</a>
+                      </div>
+                      <hr class="mx-n5 my-5" />
+
+                      <!-- Price Details -->
+                      <h6>Price Details</h6>
+                      <dl class="row mb-0">
+                        <dt class="col-6 fw-normal text-heading">Bag Total</dt>
+                        <dd class="col-6 text-end">$1198.00</dd>
+
+                        <dt class="col-6 fw-normal text-heading">Coupon Discount</dt>
+                        <dd class="col-6 text-primary text-end cursor-pointer">Apply Coupon</dd>
+
+                        <dt class="col-6 fw-normal text-heading">Order Total</dt>
+                        <dd class="col-6 text-end">$1198.00</dd>
+
+                        <dt class="col-6 fw-normal text-heading">Delivery Charges</dt>
+                        <dd class="col-6 text-end">
+                          <s class="text-muted me-2">$5.00</s>
+                          <span class="badge bg-label-success rounded-pill text-uppercase">Free</span>
+                        </dd>
+                      </dl>
+                      <hr class="mx-n5 my-5" />
+                      <dl class="row mb-0">
+                        <dt class="col-6 text-heading">Total</dt>
+                        <dd class="col-6 fw-medium text-heading text-end mb-0">$1198.00</dd>
+                      </dl>
+                    </div>
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-next">Place Order</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div id="checkout-address" class="content">
+                <div class="row">
+                  <!-- Address left -->
+                  <div class="col-xl-8 mb-4 mb-xl-0">
+                    <!-- Select address -->
+                    <h6>Select your preferable address</h6>
+                    <div class="row mb-4 g-6">
+                      <div class="col-md">
+                        <div class="form-check custom-option custom-option-basic checked">
+                          <label class="form-check-label custom-option-content" for="customRadioAddress1">
+                            <input
+                              name="customRadioTemp"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioAddress1"
+                              checked="" />
+                            <span class="custom-option-header">
+                              <span class="fw-medium">John Doe (Default)</span>
+                              <span class="badge bg-label-primary rounded-pill">Home</span>
+                            </span>
+                            <span class="custom-option-body">
+                              <small class="d-xxl-block pe-xxl-12 me-xxl-12"
+                                >4135 Parkway Street, Los Angeles, CA, 90017.<br />
+                                Mobile : 1234567890 Cash / Card on delivery available</small
+                              >
+                              <span class="my-3 border-bottom d-block"></span>
+                              <span class="d-flex">
+                                <a class="me-4" href="javascript:void(0)">Edit</a>
+                                <a href="javascript:void(0)">Remove</a>
+                              </span>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-check custom-option custom-option-basic">
+                          <label class="form-check-label custom-option-content" for="customRadioAddress2">
+                            <input
+                              name="customRadioTemp"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioAddress2" />
+                            <span class="custom-option-header">
+                              <span class="fw-medium">ACME Inc.</span>
+                              <span class="badge bg-label-success rounded-pill">Office</span>
+                            </span>
+                            <span class="custom-option-body">
+                              <small class="d-xxl-block pe-xxl-12 me-xxl-12"
+                                >8723 Schoffman Avenue, New York, NY, 10016.<br />Mobile : 1234567890 Cash / Card on
+                                delivery available</small
+                              >
+                              <span class="my-3 border-bottom d-block"></span>
+                              <span class="d-flex">
+                                <a class="me-4" href="javascript:void(0)">Edit</a>
+                                <a href="javascript:void(0)">Remove</a>
+                              </span>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-primary mb-6"
+                      data-bs-toggle="modal"
+                      data-bs-target="#addNewAddress">
+                      Add new address
+                    </button>
+
+                    <!-- Choose Delivery -->
+                    <h6>Choose Delivery Speed</h6>
+                    <div class="row">
+                      <div class="col-md mb-md-0 mb-2">
+                        <div class="form-check custom-option custom-option-icon position-relative checked">
+                          <label class="form-check-label custom-option-content" for="customRadioDelivery1">
+                            <span class="custom-option-body pb-1_5">
+                              <i class="ri-user-3-line ri-28px mb-2"></i>
+                              <span class="custom-option-title mb-2">Standard</span>
+                              <span class="badge bg-label-success btn-pinned rounded-pill">Free</span>
+                              <small>Get your product in 1 Week.</small>
+                            </span>
+                            <input
+                              name="customRadioIcon"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioDelivery1"
+                              checked="" />
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md mb-md-0 mb-2">
+                        <div class="form-check custom-option custom-option-icon position-relative">
+                          <label class="form-check-label custom-option-content" for="customRadioDelivery2">
+                            <span class="custom-option-body pb-1_5">
+                              <i class="ri-star-smile-line ri-28px mb-2"></i>
+                              <span class="custom-option-title mb-2">Express</span>
+                              <span class="badge bg-label-secondary btn-pinned rounded-pill">$10</span>
+                              <small>Get your product in 3-4 days.</small>
+                            </span>
+                            <input
+                              name="customRadioIcon"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioDelivery2" />
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-check custom-option custom-option-icon position-relative">
+                          <label class="form-check-label custom-option-content" for="customRadioDelivery3">
+                            <span class="custom-option-body pb-1_5">
+                              <i class="ri-vip-crown-line ri-28px mb-2"></i>
+                              <span class="custom-option-title mb-2">Overnight</span>
+                              <span class="badge bg-label-secondary btn-pinned rounded-pill">$15</span>
+                              <small>Get your product in 1 day.</small>
+                            </span>
+                            <input
+                              name="customRadioIcon"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioDelivery3" />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Address right -->
+                  <div class="col-xl-4">
+                    <div class="border rounded-4 p-5 mb-4">
+                      <!-- Estimated Delivery -->
+                      <h6>Estimated Delivery Date</h6>
+                      <ul class="list-unstyled">
+                        <li class="d-flex gap-4 mb-4">
+                          <div class="flex-shrink-0">
+                            <img src="../../assets/img/products/1.png" alt="google home" class="w-px-50" />
+                          </div>
+                          <div class="flex-grow-1">
+                            <p class="mb-0">
+                              <a class="text-body" href="javascript:void(0)">Google - Google Home - White</a>
+                            </p>
+                            <p class="fw-medium mb-3">18th Nov 2021</p>
+                          </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                          <div class="flex-shrink-0">
+                            <img src="../../assets/img/products/2.png" alt="google home" class="w-px-50" />
+                          </div>
+                          <div class="flex-grow-1">
+                            <p class="mb-0">
+                              <a class="text-body" href="javascript:void(0)">Apple iPhone 11 (64GB, Black)</a>
+                            </p>
+                            <p class="fw-medium mb-1">20th Nov 2021</p>
+                          </div>
+                        </li>
+                      </ul>
+
+                      <hr class="mx-n5 mt-2" />
+
+                      <!-- Price Details -->
+                      <h6>Price Details</h6>
+                      <dl class="row mb-0">
+                        <dt class="col-6 fw-normal text-heading">Order Total</dt>
+                        <dd class="col-6 text-end">$1198.00</dd>
+
+                        <dt class="col-6 fw-normal text-heading">Delivery Charges</dt>
+                        <dd class="col-6 text-end">
+                          <s class="text-muted">$5.00</s>
+                          <span class="badge bg-label-success rounded-pill text-uppercase">Free</span>
+                        </dd>
+                      </dl>
+                      <hr class="mx-n5 my-5" />
+                      <dl class="row mb-0">
+                        <dt class="col-6 text-heading">Total</dt>
+                        <dd class="col-6 fw-medium text-heading text-end mb-0">$1198.00</dd>
+                      </dl>
+                    </div>
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-next">Place Order</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment -->
+              <div id="checkout-payment" class="content">
+                <div class="row">
+                  <!-- Payment left -->
+                  <div class="col-xl-8 mb-4 mb-xl-0">
+                    <!-- Offer alert -->
+                    <div class="alert alert-success mb-6" role="alert">
+                      <div class="d-flex gap-4">
+                        <div class="alert-icon flex-shrink-0 rounded-3 me-0">
+                          <i class="ri-percent-line ri-22px"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                          <div class="fw-medium mb-1">Available Offer</div>
+                          <ul class="list-unstyled mb-0">
+                            <li>- 0% Instant Discount on Bank of America Corp Bank Debit and Credit cards</li>
+                            <li>- 50% Cashback Voucher of up to $60 on first ever PayPal transaction. TCA</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        class="btn-close btn-pinned"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                    </div>
+
+                    <!-- Payment Tabs -->
+                    <div class="col-xxl-7 col-lg-8">
+                      <div class="nav-align-top">
+                        <ul class="nav nav-pills mb-6 row-gap-2" id="paymentTabs" role="tablist">
+                          <li class="nav-item" role="presentation">
+                            <button
+                              class="nav-link active"
+                              id="pills-cc-tab"
+                              data-bs-toggle="pill"
+                              data-bs-target="#pills-cc"
+                              type="button"
+                              role="tab"
+                              aria-controls="pills-cc"
+                              aria-selected="true">
+                              Card
+                            </button>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <button
+                              class="nav-link"
+                              id="pills-cod-tab"
+                              data-bs-toggle="pill"
+                              data-bs-target="#pills-cod"
+                              type="button"
+                              role="tab"
+                              aria-controls="pills-cod"
+                              aria-selected="false">
+                              Cash On Delivery
+                            </button>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <button
+                              class="nav-link"
+                              id="pills-gift-card-tab"
+                              data-bs-toggle="pill"
+                              data-bs-target="#pills-gift-card"
+                              type="button"
+                              role="tab"
+                              aria-controls="pills-gift-card"
+                              aria-selected="false">
+                              Gift Card
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tab-content p-0" id="paymentTabsContent">
+                        <!-- Credit card -->
+                        <div
+                          class="tab-pane fade show active"
+                          id="pills-cc"
+                          role="tabpanel"
+                          aria-labelledby="pills-cc-tab">
+                          <div class="row g-5">
+                            <div class="col-12">
+                              <div class="input-group input-group-merge">
+                                <div class="form-floating form-floating-outline">
+                                  <input
+                                    id="paymentCard"
+                                    name="paymentCard"
+                                    class="form-control credit-card-mask"
+                                    type="text"
+                                    placeholder="1356 3215 6548 7898"
+                                    aria-describedby="paymentCard2" />
+                                  <label for="paymentCard">Card Number</label>
+                                </div>
+                                <span class="input-group-text p-1" id="paymentCard2"
+                                  ><span class="card-type"></span
+                                ></span>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                              <div class="form-floating form-floating-outline">
+                                <input
+                                  id="paymentCardName"
+                                  name="paymentCardName"
+                                  class="form-control"
+                                  type="text"
+                                  placeholder="John Doe" />
+                                <label for="paymentCardName">Name</label>
+                              </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                              <div class="form-floating form-floating-outline">
+                                <input
+                                  id="paymentCardExpiryDate"
+                                  name="paymentCardExpiryDate"
+                                  class="form-control expiry-date-mask"
+                                  type="text"
+                                  placeholder="MM/YY" />
+                                <label for="paymentCardExpiryDate">Expiry</label>
+                              </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                              <div class="input-group input-group-merge">
+                                <div class="form-floating form-floating-outline">
+                                  <input
+                                    type="text"
+                                    id="paymentCardCvv"
+                                    class="form-control cvv-code-mask"
+                                    maxlength="3"
+                                    placeholder="654" />
+                                  <label for="paymentCardCvv">CVV</label>
+                                </div>
+                                <span class="input-group-text cursor-pointer" id="paymentCardCvv2"
+                                  ><i
+                                    class="ri-question-line"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Card Verification Value"></i
+                                ></span>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="cardFutureBilling" />
+                                <label for="cardFutureBilling" class="switch-label"
+                                  >Save card for future billing?</label
+                                >
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <button type="button" class="btn btn-primary btn-next me-3">Save Changes</button>
+                              <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- COD -->
+                        <div class="tab-pane fade" id="pills-cod" role="tabpanel" aria-labelledby="pills-cod-tab">
+                          <p>
+                            Cash on Delivery is a type of payment method where the recipient make payment for the order
+                            at the time of delivery rather than in advance.
+                          </p>
+                          <button type="button" class="btn btn-primary btn-next">Pay On Delivery</button>
+                        </div>
+
+                        <!-- Gift card -->
+                        <div
+                          class="tab-pane fade"
+                          id="pills-gift-card"
+                          role="tabpanel"
+                          aria-labelledby="pills-gift-card-tab">
+                          <h6>Enter Gift Card Details</h6>
+                          <div class="row g-5">
+                            <div class="col-12">
+                              <div class="form-floating form-floating-outline">
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="giftCardNumber"
+                                  placeholder="1234 9879 9898" />
+                                <label for="giftCardNumber">Gift card number</label>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="form-floating form-floating-outline">
+                                <input type="number" class="form-control" id="giftCardPin" placeholder="123456" />
+                                <label for="giftCardPin">Gift card pin</label>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <button type="button" class="btn btn-primary btn-next">Redeem Gift Card</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Address right -->
+                  <div class="col-xl-4">
+                    <div class="border rounded-3 p-5">
+                      <!-- Price Details -->
+                      <h6>Price Details</h6>
+                      <dl class="row mb-0">
+                        <dt class="col-6 fw-normal text-heading">Order Total</dt>
+                        <dd class="col-6 text-end">$1198.00</dd>
+
+                        <dt class="col-6 fw-normal text-heading">Delivery Charges</dt>
+                        <dd class="col-6 text-end">
+                          <s class="text-muted me-1">$5.00</s>
+                          <span class="badge bg-label-success rounded-pill text-uppercase">Free</span>
+                        </dd>
+                      </dl>
+                      <hr class="mx-n5 mt-1" />
+                      <dl class="row">
+                        <dt class="col-6 mb-2 text-heading">Total</dt>
+                        <dd class="col-6 fw-medium text-end mb-0">$1198.00</dd>
+
+                        <dt class="col-6 text-heading">Deliver to:</dt>
+                        <dd class="col-6 fw-medium text-end mb-0">
+                          <span class="badge bg-label-primary rounded-pill">Home</span>
+                        </dd>
+                      </dl>
+                      <!-- Address Details -->
+                      <address>
+                        <span class="fw-medium text-heading"> John Doe (Default),</span><br />
+                        4135 Parkway Street, <br />
+                        Los Angeles, CA, 90017. <br />
+                        Mobile : +1 906 568 2332
+                      </address>
+                      <a href="javascript:void(0)" class="fw-medium">Change address</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Confirmation -->
+              <div id="checkout-confirmation" class="content">
+                <div class="row mb-6">
+                  <div class="col-12 col-lg-8 mx-auto text-center mb-2">
+                    <h4>Thank You! 😇</h4>
+                    <p>Your order <a href="javascript:void(0)" class="h6 mb-0">#1536548131</a> has been placed!</p>
+                    <p>
+                      We sent an email to
+                      <a href="mailto:john.doe@example.com" class="h6 mb-0">john.doe@example.com</a> with your order
+                      confirmation and receipt. If the email hasn't arrived within two minutes, please check your spam
+                      folder to see if the email was routed there.
+                    </p>
+                    <p class="d-flex align-items-center justify-content-center">
+                      <span><i class="ri-time-line ri-20px text-heading me-1"></i></span>Time placed: 25/05/2020 13:35pm
+                    </p>
+                  </div>
+                  <!-- Confirmation details -->
+                  <div class="col-12">
+                    <ul class="list-group list-group-horizontal-md">
+                      <li class="list-group-item flex-fill p-5">
+                        <h6 class="d-flex align-items-center gap-2">
+                          <i class="ri-map-pin-line ri-20px"></i> Shipping
+                        </h6>
+                        <address class="text-body">
+                          John Doe <br />
+                          4135 Parkway Street,<br />
+                          Los Angeles, CA 90017,<br />
+                          USA<br /><br />
+                          <span class="fw-medium">+123456789</span>
+                        </address>
+                      </li>
+                      <li class="list-group-item flex-fill p-5">
+                        <h6 class="d-flex align-items-center gap-2">
+                          <i class="ri-bank-card-line ri-20px"></i> Billing Address
+                        </h6>
+                        <address class="text-body">
+                          John Doe <br />
+                          4135 Parkway Street,<br />
+                          Los Angeles, CA 90017,<br />
+                          USA <br /><br />
+                          <span class="fw-medium">+123456789</span>
+                        </address>
+                      </li>
+                      <li class="list-group-item flex-fill p-5">
+                        <h6 class="d-flex align-items-center gap-2">
+                          <i class="ri-ship-2-line ri-20px"></i> Shipping Method
+                        </h6>
+                        <p class="text-body mb-0 mt-3">
+                          <span class="fw-medium">Preferred Method:</span><br /><br />
+                          Standard Delivery<br />
+                          (Normally 3-4 business days)
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Confirmation items -->
+                  <div class="col-xl-9 mb-4 mb-xl-0">
+                    <ul class="list-group">
+                      <li class="list-group-item p-5">
+                        <div class="d-flex gap-4">
+                          <div class="flex-shrink-0">
+                            <img src="../../assets/img/products/1.png" alt="google home" class="w-px-75" />
+                          </div>
+                          <div class="flex-grow-1">
+                            <div class="row d-flex align-items-center">
+                              <div class="col-md-8 pt-2">
+                                <a href="javascript:void(0)" class="text-body mt-1">
+                                  <h6 class="mb-2">Google - Google Home - White</h6>
+                                </a>
+                                <div class="text-body mb-2 d-flex flex-wrap">
+                                  <span class="me-1">Sold by:</span>
+                                  <a href="javascript:void(0)" class="me-1">Google</a>
+                                </div>
+                                <span class="badge bg-label-success rounded-pill mt-2 mt-sm-0">In Stock</span>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="text-md-end">
+                                  <div class="my-2 my-lg-6">
+                                    <span class="text-primary">$299/</span><span class="text-muted">$359</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item p-5">
+                        <div class="d-flex gap-4">
+                          <div class="flex-shrink-0">
+                            <img src="../../assets/img/products/2.png" alt="google home" class="w-px-75" />
+                          </div>
+                          <div class="flex-grow-1">
+                            <div class="row d-flex align-items-center">
+                              <div class="col-md-8 pt-2">
+                                <a href="javascript:void(0)" class="text-body mt-1">
+                                  <h6 class="mb-2">Apple iPhone 11 (64GB, Black)</h6>
+                                </a>
+                                <div class="text-body mb-1 d-flex flex-wrap">
+                                  <span class="me-1">Sold by:</span> <a href="javascript:void(0)" class="me-1">Apple</a>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="text-md-end">
+                                  <div class="my-2 my-lg-6">
+                                    <span class="text-primary">$899/</span><span class="text-muted">$999</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Confirmation total -->
+                  <div class="col-xl-3">
+                    <div class="border rounded-4 p-5">
+                      <!-- Price Details -->
+                      <h6>Price Details</h6>
+                      <dl class="row mb-0">
+                        <dt class="col-6 fw-normal text-heading">Order Total</dt>
+                        <dd class="col-6 text-end">$1198.00</dd>
+
+                        <dt class="col-6 fw-normal text-heading">Delivery Charges</dt>
+                        <dd class="col-6 text-end">
+                          <s class="text-muted me-1">$5.00</s>
+                          <span class="badge bg-label-success rounded-pill text-uppercase">Free</span>
+                        </dd>
+                      </dl>
+                      <hr class="mx-n5 my-5" />
+                      <dl class="row mb-0">
+                        <dt class="col-6 text-heading">Total</dt>
+                        <dd class="col-6 fw-medium text-heading text-end mb-0">$1198.00</dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--/ Checkout Wizard -->
+
+        <!-- Add new address modal -->
+        <!-- Add New Address Modal -->
+        <div class="modal fade" id="addNewAddress" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-simple modal-add-new-address">
+            <div class="modal-content">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-body p-0">
+                <div class="text-center mb-6">
+                  <h4 class="address-title mb-2">Add New Address</h4>
+                  <p class="address-subtitle">Add new address for express delivery</p>
+                </div>
+                <form id="addNewAddressForm" class="row g-5" onsubmit="return false">
+                  <div class="col-12">
+                    <div class="row g-5">
+                      <div class="col-md mb-md-0">
+                        <div class="form-check custom-option custom-option-basic">
+                          <label class="form-check-label custom-option-content" for="customRadioHome">
+                            <input
+                              name="customRadioTemp"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioHome"
+                              checked />
+                            <span class="custom-option-header">
+                              <span class="h6 mb-0 d-flex align-items-center"
+                                ><i class="ri-home-smile-2-line ri-20px me-1"></i>Home</span
+                              >
+                            </span>
+                            <span class="custom-option-body">
+                              <small>Delivery time (9am – 9pm)</small>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md mb-md-0">
+                        <div class="form-check custom-option custom-option-basic">
+                          <label class="form-check-label custom-option-content" for="customRadioOffice">
+                            <input
+                              name="customRadioTemp"
+                              class="form-check-input"
+                              type="radio"
+                              value=""
+                              id="customRadioOffice" />
+                            <span class="custom-option-header">
+                              <span class="h6 mb-0 d-flex align-items-center"
+                                ><i class="ri-building-line ri-20px me-1"></i>Office</span
+                              >
+                            </span>
+                            <span class="custom-option-body">
+                              <small>Delivery time (9am – 5pm) </small>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressFirstName"
+                        name="modalAddressFirstName"
+                        class="form-control"
+                        placeholder="John" />
+                      <label for="modalAddressFirstName">First Name</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressLastName"
+                        name="modalAddressLastName"
+                        class="form-control"
+                        placeholder="Doe" />
+                      <label for="modalAddressLastName">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating form-floating-outline">
+                      <select
+                        id="modalAddressCountry"
+                        name="modalAddressCountry"
+                        class="select2 form-select"
+                        data-allow-clear="true">
+                        <option value="">Select</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Canada">Canada</option>
+                        <option value="China">China</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Korea">Korea, Republic of</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Russia">Russian Federation</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                      </select>
+                      <label for="modalAddressCountry">Country</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressAddress1"
+                        name="modalAddressAddress1"
+                        class="form-control"
+                        placeholder="12, Business Park" />
+                      <label for="modalAddressAddress1">Address Line 1</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressAddress2"
+                        name="modalAddressAddress2"
+                        class="form-control"
+                        placeholder="Mall Road" />
+                      <label for="modalAddressAddress2">Address Line 2</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressLandmark"
+                        name="modalAddressLandmark"
+                        class="form-control"
+                        placeholder="Nr. Hard Rock Cafe" />
+                      <label for="modalAddressLandmark">Landmark</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressCity"
+                        name="modalAddressCity"
+                        class="form-control"
+                        placeholder="Los Angeles" />
+                      <label for="modalAddressCity">City</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressState"
+                        name="modalAddressState"
+                        class="form-control"
+                        placeholder="California" />
+                      <label for="modalAddressLandmark">State</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-floating form-floating-outline">
+                      <input
+                        type="text"
+                        id="modalAddressZipCode"
+                        name="modalAddressZipCode"
+                        class="form-control"
+                        placeholder="99950" />
+                      <label for="modalAddressZipCode">Zip Code</label>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-6">
+                    <div class="form-check form-switch">
+                      <input type="checkbox" class="form-check-input" id="billingAddress" />
+                      <label for="billingAddress">Use as a billing address?</label>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-6 d-flex flex-wrap justify-content-center gap-4 row-gap-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Add New Address Modal -->
+      </div>
+    </section>
+
+    <!-- / Sections:End -->
+
+    <!-- Footer: Start -->
+    <footer class="landing-footer">
+      <div class="footer-top position-relative overflow-hidden">
+        <img
+          src="../../assets/img/front-pages/backgrounds/footer-bg.png"
+          alt="footer bg"
+          class="footer-bg banner-bg-img" />
+        <div class="container position-relative">
+          <div class="row gx-0 gy-7 gx-sm-6 gx-lg-12">
+            <div class="col-lg-5">
+              <a href="landing-page.html" class="app-brand-link mb-6">
+                <span class="app-brand-logo demo me-2">
+                  <span style="color: #666cff">
+                    <svg width="268" height="150" viewBox="0 0 38 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
+                        fill="currentColor" />
+                      <path
+                        d="M30.171 2.22569C29.1277 0.444187 26.8274 -0.172113 25.0332 0.849138C23.2389 1.87039 22.6302 4.14247 23.6735 5.92397L30.6134 17.7743C31.6567 19.5558 33.957 20.1721 35.7512 19.1509C37.5455 18.1296 38.1542 15.8575 37.1109 14.076L30.171 2.22569Z"
+                        fill="url(#paint0_linear_2989_100980)"
+                        fill-opacity="0.4" />
+                      <path
+                        d="M22.9676 2.22569C24.0109 0.444187 26.3112 -0.172113 28.1054 0.849138C29.8996 1.87039 30.5084 4.14247 29.4651 5.92397L22.5251 17.7743C21.4818 19.5558 19.1816 20.1721 17.3873 19.1509C15.5931 18.1296 14.9843 15.8575 16.0276 14.076L22.9676 2.22569Z"
+                        fill="currentColor" />
+                      <path
+                        d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                        fill="currentColor" />
+                      <path
+                        d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                        fill="url(#paint1_linear_2989_100980)"
+                        fill-opacity="0.4" />
+                      <path
+                        d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
+                        fill="currentColor" />
+                      <defs>
+                        <linearGradient
+                          id="paint0_linear_2989_100980"
+                          x1="5.36642"
+                          y1="0.849138"
+                          x2="10.532"
+                          y2="24.104"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-opacity="1" />
+                          <stop offset="1" stop-opacity="0" />
+                        </linearGradient>
+                        <linearGradient
+                          id="paint1_linear_2989_100980"
+                          x1="5.19475"
+                          y1="0.849139"
+                          x2="10.3357"
+                          y2="24.1155"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-opacity="1" />
+                          <stop offset="1" stop-opacity="0" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </span>
+                </span>
+                <span class="app-brand-text demo footer-link fw-semibold ms-1">Materialize</span>
+              </a>
+              <p class="footer-text footer-logo-description mb-6">
+                Most Powerful & Comprehensive 🤩 React NextJS Admin Template with Elegant Material Design & Unique
+                Layouts.
+              </p>
+              <form>
+                <div class="d-flex mt-2 gap-4">
+                  <div class="form-floating form-floating-outline w-px-250">
+                    <input type="text" class="form-control bg-transparent" id="newsletter-1" placeholder="Your email" />
+                    <label for="newsletter-1">Subscribe to newsletter</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Subscribe</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+              <h6 class="footer-title mb-4 mb-lg-6">Demos</h6>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-4">
+                  <a href="../vertical-menu-template/" target="_blank" class="footer-link">Vertical Layout</a>
+                </li>
+                <li class="mb-4">
+                  <a href="../horizontal-menu-template/" target="_blank" class="footer-link">Horizontal Layout</a>
+                </li>
+                <li class="mb-4">
+                  <a href="../vertical-menu-template-bordered/" target="_blank" class="footer-link">Bordered Layout</a>
+                </li>
+                <li class="mb-4">
+                  <a href="../vertical-menu-template-semi-dark/" target="_blank" class="footer-link"
+                    >Semi Dark Layout</a
+                  >
+                </li>
+                <li>
+                  <a href="../vertical-menu-template-dark/" target="_blank" class="footer-link">Dark Layout</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+              <h6 class="footer-title mb-4 mb-lg-6">Pages</h6>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-4">
+                  <a href="pricing-page.html" class="footer-link">Pricing</a>
+                </li>
+                <li class="mb-4">
+                  <a href="payment-page.html" class="footer-link"
+                    >Payment<span class="badge rounded-pill bg-primary ms-2">New</span></a
+                  >
+                </li>
+                <li class="mb-4">
+                  <a href="checkout-page.html" class="footer-link">Checkout</a>
+                </li>
+                <li class="mb-4">
+                  <a href="help-center-landing.html" class="footer-link">Help Center</a>
+                </li>
+                <li>
+                  <a href="../vertical-menu-template/auth-login-cover.html" target="_blank" class="footer-link"
+                    >Login/Register</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h6 class="footer-title mb-4 mb-lg-6">Download our app</h6>
+              <a href="javascript:void(0);" class="d-block footer-link mb-4"
+                ><img src="../../assets/img/front-pages/landing-page/apple-icon.png" alt="apple icon"
+              /></a>
+              <a href="javascript:void(0);" class="d-block footer-link"
+                ><img src="../../assets/img/front-pages/landing-page/google-play-icon.png" alt="google play icon"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom py-5">
+        <div
+          class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
+          <div class="mb-2 mb-md-0">
+            <span class="footer-text"
+              >©
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              , Made with <i class="tf-icons ri-heart-fill text-danger"></i> by
+            </span>
+            <a href="https://pixinvent.com" target="_blank" class="footer-link fw-medium footer-theme-link"
+              >Pixinvent</a
+            >
+          </div>
+          <div>
+            <a href="https://github.com/pixinvent" class="footer-link me-4" target="_blank"
+              ><i class="ri-github-fill"></i
+            ></a>
+            <a href="https://www.facebook.com/pixinvents/" class="footer-link me-4" target="_blank"
+              ><i class="ri-facebook-circle-fill"></i
+            ></a>
+            <a href="https://twitter.com/pixinvents" class="footer-link me-4" target="_blank"
+              ><i class="ri-twitter-fill"></i
+            ></a>
+            <a href="https://www.instagram.com/pixinvents/" class="footer-link" target="_blank"
+              ><i class="ri-instagram-line"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer: End -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/select2/select2.js"></script>
+    <script src="../../assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+    <script src="../../assets/vendor/libs/rateyo/rateyo.js"></script>
+    <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>
+    <script src="../../assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="../../assets/vendor/libs/@form-validation/popular.js"></script>
+    <script src="../../assets/vendor/libs/@form-validation/bootstrap5.js"></script>
+    <script src="../../assets/vendor/libs/@form-validation/auto-focus.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/front-main.js"></script>
+
+    <!-- Page JS -->
+
+    <script src="../../assets/js/modal-add-new-address.js"></script>
+    <script src="../../assets/js/wizard-ex-checkout.js"></script>
+  </body>
+</html>

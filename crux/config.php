@@ -1,10 +1,8 @@
 <?
 //iniciamos la sesion en general 
 session_start();
-
 /* Configuración del archivo, necesaria para cargar ciertas cosas */
-$urlBase = "http://localhost/crux/";
-$titulo = "Proyecto Base";
+$urlBase = "http://localhost/crux/crux/";
 
 /* Conexion a la base de datos */
 $cnx_basedatos = "crux";
@@ -18,7 +16,6 @@ $conexion = mysqli_connect($cnx_servidor, $cnx_usuario, $cnx_clave, $cnx_basedat
 if (!$conexion) {
     die("Error al conectar a la base de datos: " . mysqli_connect_error());
 }
-
 ?>
 <script>
     //Variables de configuración en JS
@@ -26,3 +23,4 @@ if (!$conexion) {
 </script>
 
 <?
+

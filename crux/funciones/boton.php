@@ -8,8 +8,7 @@
  * @param string $funcion Función onclick del botón
  * @return void
  */
-function boton($texto = "", $icono = "info", $estilo_boton = "success", $funcion = "")
-{
+function boton($texto = "", $icono = "info", $estilo_boton = "success", $funcion = ""){
     $extra = ($funcion !== "") ? 'onclick="' . $funcion . '"' : '';
     if (substr($texto, 0, 1) == ";") {
         $texto = str_replace(";", "", $texto);

@@ -3,12 +3,12 @@ function alerta(message, type = 'info') {
     const alertBox = document.createElement('div');
     alertBox.className = `custom-alert ${type}`;
     alertBox.innerText = message;
-    
+
     // Aplica estilos básicos al contenedor
     alertBox.style.position = 'fixed';
     alertBox.style.top = '20px';
     alertBox.style.left = '50%';
-    alertBox.style.transform = 'translateX(-50%)';
+    alertBox.style.transform = 'translateX(-50%) translateY(-100%)';
     alertBox.style.padding = '15px 20px';
     alertBox.style.borderRadius = '5px';
     alertBox.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.1)';
@@ -16,8 +16,8 @@ function alerta(message, type = 'info') {
     alertBox.style.color = '#fff';
     alertBox.style.fontSize = '14px';
     alertBox.style.fontFamily = 'Arial, sans-serif';
-    alertBox.style.opacity = '1';
-    alertBox.style.transition = 'opacity 0.5s ease-in-out';
+    alertBox.style.opacity = '0';
+    alertBox.style.transition = 'all 0.5s ease-in-out';
 
     // Estilos según el tipo de alerta
     switch(type) {
@@ -37,13 +37,20 @@ function alerta(message, type = 'info') {
     // Añade el contenedor al body
     document.body.appendChild(alertBox);
 
-    // Desaparece la alerta después de 2.5 segundos
+    // Animación de entrada
     setTimeout(() => {
-        alertBox.style.opacity = '0';  // Aplica la animación de desvanecimiento
-    }, 1000);
+        alertBox.style.transform = 'translateX(-50%) translateY(0)';
+        alertBox.style.opacity = '1';
+    }, 1);
 
-    // Elimina el contenedor después de que la animación termine (0.5s + 2.5s)
+    // Inicia la animación de salida después de 2.5 segundos
+    setTimeout(() => {
+        alertBox.style.transform = 'translateX(-50%) translateY(-100%)';
+        alertBox.style.opacity = '0';
+    }, 2500);
+
+    // Elimina el contenedor después de que la animación termine
     setTimeout(() => {
         alertBox.remove();
-    }, 1500);
+    }, 3000);
 }

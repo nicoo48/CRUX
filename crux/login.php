@@ -4,77 +4,260 @@
 $nivel_directorio = "";
 
 ?>
-<body class="log_body">
-    <?
-    //aqui validamos un intento de inicio de sesión
-    if (isset($_REQUEST['usuario']) && isset($_REQUEST['clave'])) {
+<!doctype html>
+<?
+//como este archivo es autovalente se quedara con la info que le meta en duro 
+//aqui validamos un intento de inicio de sesión
+if (isset($_REQUEST['usuario']) && isset($_REQUEST['clave'])) {
 
-        //si vemos que hay un intento de iniciar sesion entonces cargamos las funciones necesarias
-        require "config.php";
-        require "funciones/select.php";
+    //si vemos que hay un intento de iniciar sesion entonces cargamos las funciones necesarias
+    require "config.php";
+    require "funciones/select.php";
 
-        if ($_REQUEST['usuario'] <> '' || $_REQUEST['clave'] <> '') {
-            //obtenemos los datos utilizando las credenciales
-            $filtros["per_usuario"] = $_REQUEST['usuario'];
-            $filtros["per_clave"] = $_REQUEST['clave'];
-            $res = select("personas", "*", $filtros);
+    if ($_REQUEST['usuario'] <> '' || $_REQUEST['clave'] <> '') {
+        //obtenemos los datos utilizando las credenciales
+        $filtros["per_usuario"] = $_REQUEST['usuario'];
+        $filtros["per_clave"] = $_REQUEST['clave'];
+        $res = select("personas", "*", $filtros);
 
-            //evaluamos la respuesta
-            if (count($res["datos"]) > 0) {
-                //si hay datos entonces iniciamos sesion
-                $_SESSION['usuario'] = $res["datos"][0];
-                echo '<script>location.href="index.php";</script>';
+        //evaluamos la respuesta
+        if (count($res["datos"]) > 0) {
+            //si hay datos entonces iniciamos sesion
+            $_SESSION['usuario'] = $res["datos"][0];
+            echo '<script>location.href="index.php";</script>';
+        } else {
+            echo '<script>alerta("Usuario o Contraseña Invalidos","error")</script>';
+        }
+    }
+} else {
+    //si no hay intento de inicio de sesion entonces cargamos todas las funciones
+    require "carga.php";
+}
+?>
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="template/assets/" data-template="horizontal-menu-template-no-customizer" data-style="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Iniciar Sesión - Crux</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="template/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="template/assets/vendor/fonts/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="template/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Menu waves for no-customizer fix -->
+    <link rel="stylesheet" href="template/assets/vendor/libs/node-waves/node-waves.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="template/assets/vendor/css/rtl/core.css" />
+    <link rel="stylesheet" href="template/assets/vendor/css/rtl/theme-default.css" />
+    <link rel="stylesheet" href="template/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="template/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <!-- Vendor -->
+    <link rel="stylesheet" href="template/assets/vendor/libs/@form-validation/form-validation.css" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="template/assets/vendor/css/pages/page-auth.css" />
+
+    <!-- Helpers -->
+    <script src="template/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="template/assets/js/config.js"></script>
+</head>
+
+<body>
+    <!-- Content -->
+    <div class="position-relative" id="bodyLogin">
+        <div class="authentication-wrapper authentication-basic container-p-y p-4 p-sm-0">
+            <div class="authentication-inner py-6">
+                <!-- Login -->
+                <div class="card p-md-7 p-1">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center mt-5">
+                        <a href="index.html" class="app-brand-link gap-2">
+                            <span class="app-brand-logo demo">
+                                <span style="color: #666cff">
+                                    <svg width="268" height="150" viewBox="0 0 38 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M30.171 2.22569C29.1277 0.444187 26.8274 -0.172113 25.0332 0.849138C23.2389 1.87039 22.6302 4.14247 23.6735 5.92397L30.6134 17.7743C31.6567 19.5558 33.957 20.1721 35.7512 19.1509C37.5455 18.1296 38.1542 15.8575 37.1109 14.076L30.171 2.22569Z"
+                                            fill="url(#paint0_linear_2989_100980)"
+                                            fill-opacity="0.4" />
+                                        <path
+                                            d="M22.9676 2.22569C24.0109 0.444187 26.3112 -0.172113 28.1054 0.849138C29.8996 1.87039 30.5084 4.14247 29.4651 5.92397L22.5251 17.7743C21.4818 19.5558 19.1816 20.1721 17.3873 19.1509C15.5931 18.1296 14.9843 15.8575 16.0276 14.076L22.9676 2.22569Z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                                            fill="url(#paint1_linear_2989_100980)"
+                                            fill-opacity="0.4" />
+                                        <path
+                                            d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
+                                            fill="currentColor" />
+                                        <defs>
+                                            <linearGradient
+                                                id="paint0_linear_2989_100980"
+                                                x1="5.36642"
+                                                y1="0.849138"
+                                                x2="10.532"
+                                                y2="24.104"
+                                                gradientUnits="userSpaceOnUse">
+                                                <stop offset="0" stop-opacity="1" />
+                                                <stop offset="1" stop-opacity="0" />
+                                            </linearGradient>
+                                            <linearGradient
+                                                id="paint1_linear_2989_100980"
+                                                x1="5.19475"
+                                                y1="0.849139"
+                                                x2="10.3357"
+                                                y2="24.1155"
+                                                gradientUnits="userSpaceOnUse">
+                                                <stop offset="0" stop-opacity="1" />
+                                                <stop offset="1" stop-opacity="0" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="app-brand-text demo text-heading fw-semibold">Materialize</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+
+                    <div class="card-body mt-1">
+                        <h4 class="mb-1">Bienvenido a Crux! 👋</h4>
+                        <div class="form-floating form-floating-outline mb-5">
+                            <input type="text" class="form-control" id="usuario" name="usuario" autofocus />
+                            <label for="usuario">Nombre de Usuario</label>
+                        </div>
+                        <div class="mb-5">
+                            <div class="form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <div class="form-floating form-floating-outline">
+                                        <input
+                                            type="password"
+                                            id="clave"
+                                            class="form-control"
+                                            name="clave"
+                                            aria-describedby="password" />
+                                        <label for="clave">Contraseña</label>
+                                    </div>
+                                    <span class="input-group-text cursor-pointer"><i class="ri-eye-off-line"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="mb-5 d-flex justify-content-between mt-5">
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                                </div>
+                                <a href="auth-forgot-password-basic.html" class="float-end mb-1 mt-2">
+                                    <span>Forgot Password?</span>
+                                </a>
+                            </div-->
+                        <div class="mb-5">
+                            <button class="btn btn-primary" onclick="logear()">Iniciar Sesión</button>
+                        </div>
+
+                        <p class="text-center">
+                            <span>New on our platform?</span>
+                            <a href="auth-register-basic.html">
+                                <span>Create an account</span>
+                            </a>
+                        </p>
+
+                        <div class="divider my-5">
+                            <div class="divider-text">or</div>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-facebook">
+                                <i class="tf-icons ri-facebook-fill"></i>
+                            </a>
+
+                            <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-twitter">
+                                <i class="tf-icons ri-twitter-fill"></i>
+                            </a>
+
+                            <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-github">
+                                <i class="tf-icons ri-github-fill"></i>
+                            </a>
+
+                            <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-google-plus">
+                                <i class="tf-icons ri-google-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Login -->
+                <img alt="mask" src="template/assets/img/illustrations/auth-basic-login-mask-light.png" class="authentication-image d-none d-lg-block" data-app-light-img="illustrations/auth-basic-login-mask-light.png" data-app-dark-img="illustrations/auth-basic-login-mask-dark.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- / Content -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="template/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="template/assets/vendor/libs/popper/popper.js"></script>
+    <script src="template/assets/vendor/js/bootstrap.js"></script>
+    <script src="template/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="template/assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="template/assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="template/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="template/assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="template/assets/vendor/libs/@form-validation/popular.js"></script>
+    <script src="template/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
+    <script src="template/assets/vendor/libs/@form-validation/auto-focus.js"></script>
+
+    <!-- Main JS -->
+    <script src="template/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="template/assets/js/pages-auth.js"></script>
+
+    <script>
+        function logear() {
+            var usuario = document.getElementById('usuario').value;
+            var clave = document.getElementById('clave').value;
+            var div = document.getElementById('bodyLogin');
+            if (usuario == '' || clave == '') {
+                alerta('Debe ingresar un usuario y una contraseña','error');
             } else {
-                echo '<div class="alert alert-danger" role="alert">Contraseña y/o Usuario Invalidos</div>';
+                AJAXPOST(urlBase + "login.php", "usuario=" + usuario + "&clave=" + clave, div);
             }
         }
-    } else {
-        //si no hay intento de inicio de sesion entonces cargamos todas las funciones
-        require "carga.php";
-    }
-    ?>
-    <div id="operacion"></div>
-    <div id="bodyLogin" class="log_cont">
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                    <path fill-rule="evenodd"
-                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                </svg>
-            </span>
-            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingrese su Usuario"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-shield-lock" viewBox="0 0 16 16">
-                    <path
-                        d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56" />
-                    <path
-                        d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415" />
-                </svg>
-            </span>
-            <input type="password" name="clave" id="clave" class="form-control"
-                placeholder="Ingrese su contraseña" aria-describedby="basic-addon1">
-        </div>
-        <button class="btn btn-secondary boton" onclick="logear()">Ingresar </button>
-    </div>
+    </script>
 </body>
-<script>
-    function logear() {
-        var usuario = document.getElementById('usuario').value;
-        var clave = document.getElementById('clave').value;
-        var operacion = document.getElementById('operacion');
-        var div = document.getElementById('bodyLogin');
-        if (usuario == '' || clave == '') {
-            operacion.innerHTML = '<div class="alert alert-danger">Debe ingresar usuario y contraseña</div>';
-        } else {
-            AJAXPOST(urlBase + "login.php", "usuario=" + usuario + "&clave=" + clave, div);
-        }
-    }
-</script>
 
 </html>

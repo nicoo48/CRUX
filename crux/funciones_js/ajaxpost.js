@@ -1,4 +1,4 @@
-function AJAXPOST(Pagina,Variables,Obj,MsjLoad,FuncionListo,FuncionCarga,Conexion){
+function AJAXPOST(Pagina, Variables, Obj, MsjLoad, FuncionListo, FuncionCarga, Conexion) {
   if (MsjLoad == null || MsjLoad == false) {
     MsjLoad = "<center>Espere un momento...</center>";
   }
@@ -49,7 +49,7 @@ function AJAXPOST(Pagina,Variables,Obj,MsjLoad,FuncionListo,FuncionCarga,Conexio
 }
 
 function crearXMLHttpRequest() {
-  return window.XMLHttpRequest ? new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+  return window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 }
 
 function simbolos(a) {
