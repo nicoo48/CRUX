@@ -63,7 +63,7 @@ if (!isset($_SESSION['usuario'])) {
         ?>
         <div class="content-wrapper">
           <div class="container-xxl flex-grow-1 container-p-y" id="pagina_central">
-            <?_p($_navegacion);?>
+            <!-- <?_p($_navegacion);?> -->
           </div>
         </div>
         <? require 'componentes/footer.php' ?>

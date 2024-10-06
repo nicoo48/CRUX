@@ -1,5 +1,7 @@
-<?
-//destruimos la sesion
+<?php
+// Destruimos la sesión
 session_destroy();
-//redireccionamos al login
-echo '<script>location.href="login.php";</script>';
+
+// En vez de un JSON, simplemente podemos retornar una cadena que indique éxito
+echo 'success';
+?>

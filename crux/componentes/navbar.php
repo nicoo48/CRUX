@@ -13,7 +13,7 @@
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Language -->
-            <? require 'navbar/language.php'; ?>
+            <!-- <? require 'navbar/language.php'; ?> -->
             <!--/ Language -->
 
             <!-- Style Switcher -->
@@ -21,7 +21,7 @@
             <!-- / Style Switcher-->
 
             <!-- Quick links  -->
-            <? require 'navbar/quick_links.php'; ?>
+            <!-- <? require 'navbar/quick_links.php'; ?> -->
             <!-- Quick links -->
 
             <!-- Notification -->
