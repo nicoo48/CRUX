@@ -16,7 +16,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-  <title>Proyecto Base 2 - Ahora es personal</title>
+  <title>Crux App - Administra tu tienda!</title>
 
   <meta name="description" content="" />
   <!-- Favicon -->
@@ -97,6 +97,12 @@ if (!isset($_SESSION['usuario'])) {
 
   <script>
     function cargar_pagina(pagina,carpeta){
+        var links = document.querySelectorAll(".links_paginas");
+        links.forEach(function(link){
+            link.classList.remove("active");
+        });
+        var link = document.getElementById("link_"+pagina);
+        link.classList.add("active");
         var div = document.getElementById("pagina_central");
         AJAXPOST(urlBase+"pages/"+carpeta+"/"+pagina,"",div)
     }

@@ -3,8 +3,14 @@ $nivel_directorio = "../../";
 require "../../carga.php";
 
 //obtenemos todas las tiendas del usuario
-$filtros["tnd_id"] = $_SESSION['usuario']['per_id'];
+
+//seleccionamos todos los productos de la tienda seleccionada si es que hay una
+if(isset($_SESSION["tienda"]["tnd_id"])){
+    $filtros["pro_tnd_id"] = $_SESSION["tienda"]["tnd_id"];
+}
+$filtros["pro_per_id"] = $_SESSION["usuario"]["per_id"];
 $productos = select("productos","*",$filtros);
+
 if(count($productos['datos'])> 0){
     
 }else{

@@ -14,11 +14,11 @@ function mensaje($titulo, $mensaje, $tipo = "info", $icono = "info-circle", $mod
         case 1:
             // Mensaje mas tipo error de pagina moderna con icono arriba titulo y descripción todo centrado
             ?>
-            <div class="alert alert-<?= $tipo ?>" role="alert">
+            <div class="alert alert-<?=$tipo?>" role="alert">
                 <div style="display:flex;flex-direction: column;align-items: center;">
-                    <h1><i class="bi bi-<?= $icono ?>"></i></h1>
-                    <h3 class="alert-heading"><?= $titulo ?></h3>
-                    <p><?= $mensaje ?></p>
+                    <i class="bi bi-<?=$icono?>" style='font-size: 35px'></i>
+                    <h5 class="alert-heading" style="margin:0"><?= $titulo ?></h5>
+                    <p><?=$mensaje?></p>
                 </div>
             </div>
             <?

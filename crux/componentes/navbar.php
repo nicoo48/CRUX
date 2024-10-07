@@ -8,7 +8,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-            <? require 'navbar/search.php'; ?>
+            <!-- <? require 'navbar/search.php'; ?> -->
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -21,7 +21,7 @@
             <!-- / Style Switcher-->
 
             <!-- Quick links  -->
-            <!-- <? require 'navbar/quick_links.php'; ?> -->
+            <? require 'navbar/quick_links.php'; ?> 
             <!-- Quick links -->
 
             <!-- Notification -->

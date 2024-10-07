@@ -12,7 +12,14 @@ $persona = select("personas", "*", $filtros);
 <li class="nav-item navbar-dropdown dropdown-user dropdown">
     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
         <div class="avatar avatar-online">
-            <img src="template/assets/img/avatars/<? echo $persona["datos"][0]['per_imagen']?>" alt class="rounded-circle" />
+            <?
+            $ruta = $urlBase . "template/assets/img/avatars/" . $persona["datos"][0]['per_imagen'];
+            if (file_exists($ruta)) {
+                echo "<img src='$ruta' alt class='rounded-circle'/>";
+            } else {
+                echo "<img src='template/assets/img/avatars/21.png' alt class='rounded-circle'/>";
+            }
+            ?>
         </div>
     </a>
     <ul class="dropdown-menu dropdown-menu-end">
@@ -21,19 +28,27 @@ $persona = select("personas", "*", $filtros);
                 <div class="d-flex">
                     <div class="flex-shrink-0 me-2">
                         <div class="avatar avatar-online">
-                            <img src= "template/assets/img/avatars/<? echo $persona["datos"][0]['per_imagen']?>" alt class="rounded-circle" />
+                            <?
+                            $ruta = $urlBase . "template/assets/img/avatars/" . $persona["datos"][0]['per_imagen'];
+                            if (file_exists($ruta)) {
+                                echo "<img src='$ruta' alt class='rounded-circle'/>";
+                            } else {
+                                echo "<img src='template/assets/img/avatars/21.png' alt class='rounded-circle'/>";
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="flex-grow-1">
-                        <span class="fw-medium d-block small"><?= $persona["datos"][0]["per_usuario"]?></span>
-                        <small class="text-muted"><? 
-                        if($persona["datos"][0]["per_admin"] == 1){
-                            echo "admin";
-                        }else{
-                            echo "usuario";
-
-                        }
-                        ?></small>
+                        <span class="fw-medium d-block small"><?= $persona["datos"][0]["per_usuario"] ?></span>
+                        <small class="text-muted">
+                            <?
+                            if ($persona["datos"][0]["per_admin"] == 1) {
+                                echo "admin";
+                            } else {
+                                echo "usuario";
+                            }
+                            ?>
+                        </small>
                     </div>
                 </div>
             </a>
@@ -43,10 +58,9 @@ $persona = select("personas", "*", $filtros);
         </li>
         <li>
             <div class="d-grid px-4 pt-2 pb-1">
-                <a class="btn btn-sm btn-danger d-flex"  onclick="salir()">
-                    <small class="align-middle">Cerrar Sesión</small>
-                    <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
-                </a>
+                <?
+                boton("Salir", "arrow-left", "danger", "cargar_formulario()", "Editar tu perfil");
+                ?>
             </div>
         </li>
     </ul>
@@ -57,10 +71,9 @@ $persona = select("personas", "*", $filtros);
     }
 
     function salir() {
-    AJAXPOST(urlBase + "logout.php", "", null);
-    setTimeout(function() {
-        window.location.href = "login.php";
-    }, 1000);
+        AJAXPOST(urlBase + "logout.php", "", null);
+        setTimeout(function() {
+            window.location.href = "login.php";
+        }, 1000);
     }
-
 </script>
