@@ -59,7 +59,7 @@ $persona = select("personas", "*", $filtros);
         <li>
             <div class="d-grid px-4 pt-2 pb-1">
                 <?
-                boton("Salir", "arrow-left", "danger", "cargar_formulario()", "Editar tu perfil");
+                boton("Salir", "arrow-left", "danger", "salir()");
                 ?>
             </div>
         </li>

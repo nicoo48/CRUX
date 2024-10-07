@@ -18,8 +18,8 @@ if(!$tienda["error"]){
     boton(
         "Volver",
         "arrow-left-circle",
-        "success",
-        "cargar_pagina('tiendas.php','tienda')"
+        "outline-success",
+        'cargar_pagina("tiendas.php","tienda")'
     );
 }else{
     mensaje(
@@ -33,7 +33,7 @@ if(!$tienda["error"]){
         "Volver",
         "arrow-left-circle",
         "error",
-        "cargar_pagina('tiendas.php','tienda')"
+        'cargar_pagina("tiendas.php","tienda")'
     );
 }
 //seleccionamos la tienda que vamos a eliminar

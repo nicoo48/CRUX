@@ -22,8 +22,8 @@ if(!$resultado["error"]){
     boton(
         "Volver",
         "arrow-left-circle",
-        "success",
-        "cargar_pagina('tiendas.php','tienda')"
+        "outline-success",
+        'cargar_pagina("tiendas.php","tienda")'
     );
 }else{
     mensaje(
@@ -37,7 +37,7 @@ if(!$resultado["error"]){
         "Volver",
         "arrow-left-circle",
         "error",
-        "cargar_pagina('tiendas.php','tienda')"
+        'cargar_pagina("tiendas.php","tienda")'
     );
 }
 ?>

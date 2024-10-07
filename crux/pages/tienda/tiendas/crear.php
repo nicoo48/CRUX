@@ -23,19 +23,15 @@ require "../../../carga.php";
             </tr>
         </tbody>
     </table>
-    <?boton("Volver","arrow-left-circle","outline-success","cargar_pagina('tiendas.php','tienda')");?>
+    <?
+    boton("Volver","arrow-left-circle","outline-primary","cargar_pagina('tiendas.php','tienda')");
+    boton("Crear","check-lg","outline-success","crearTienda()");
+    ?>
 </div>
 <script>
     function crearTienda() {
-        if (!validar_input("nombre", "Debe ingresar un nombre para la tienda.")) {
-            return;
-        }
-        if (!validar_input("direccion", "Debe ingresar una dirección para la tienda.")) {
-            return;
-        }
-        if (!validar_input("nose", "no se xddddd")) {
-            return;
-        }
+        if (!validar_input("nombre", "Debe ingresar un nombre para la tienda.")) {return;}
+        if (!validar_input("direccion", "Debe ingresar una dirección para la tienda.")) {return;}
 
         var campos = $(".campos").serialize();
         var div = document.getElementById("operacion");

@@ -30,7 +30,7 @@ $tienda = $tienda["datos"][0];
         </tbody>
     </table>
     <?
-    boton("Volver","arrow-left-circle","outline-primary","cargar_pagina('tiendas.php','tienda')");
+    boton("Volver","arrow-left-circle","outline-primary",'cargar_pagina("tiendas.php","tienda")');
     boton("Guardar","save","outline-success","guardarEditar($_REQUEST[id])");
     ?>
 </div>
