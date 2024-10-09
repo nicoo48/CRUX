@@ -56,6 +56,19 @@ $_navegacion = array(
                 "icono"=>"house-gear"
             )
         )
+    ),
+    "movimientos" => array(
+        "icono" => "basket",
+        "carpeta" => "movimientos",
+        "paginas" => array(
+            "Crear Movimientos" => array(
+                "url"=>"elegir_movimiento.php",
+                "icono"=>"basket"
+            ),
+            "Listado Movimientos" => array(
+                "url"=>"listado_movimientos.php",
+                "icono"=>"list"
+            )
+        )
     )
-
 );
