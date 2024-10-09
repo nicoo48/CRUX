@@ -50,6 +50,10 @@ $_navegacion = array(
             "Configuración de la cuenta" => array(
                 "url"=>"configuracion.php",
                 "icono"=>"person-fill-gear"
+            ),
+            "Configuración de la Aplicación" => array(
+                "url"=>"aplicacion.php",
+                "icono"=>"house-gear"
             )
         )
     )

@@ -9,30 +9,26 @@ $tienda = $tienda["datos"][0];
 
 ?>
 <div id="operacion">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th colspan=2><b>Editar Tienda</b></th>
-            </tr>
-        <tbody>
-            <tr>
-                <td width=1>Nombre</td>
-                <td>
-                    <input type="text" name="nombre" id="nombre" class="form-control campos" value="<?=$tienda["tnd_nombre"]?>">
-                </td>
-            </tr>
-            <tr>
-                <td>Dirección</td>
-                <td>
-                    <input type="text" name="direccion" id="direccion" class="form-control campos" value="<?=$tienda['tnd_direccion']?>">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <?
-    boton("Volver","arrow-left-circle","outline-primary",'cargar_pagina("tiendas.php","tienda")');
-    boton("Guardar","save","outline-success","guardarEditar($_REQUEST[id])");
-    ?>
+    <div class="card mb-6">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Editar Tienda</h5>
+            <small class="text-body float-end"><i class="bi bi-star">Campos Obligatorios</i></small>
+        </div>
+        <div class="card-body">
+            <div class="form-floating form-floating-outline mb-6">
+                <input type="text" name="nombre" id="nombre" class="form-control campos" value="<?=$tienda["tnd_nombre"]?>">
+                <label for="basic-default-fullname"><i class="bi bi-star"></i>&nbsp;Nombre</label>
+            </div>
+            <div class="form-floating form-floating-outline mb-6">
+                <input type="text" name="direccion" id="direccion" class="form-control campos" value="<?=$tienda["tnd_direccion"]?>">
+                <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Dirección</label>
+            </div>
+            <?
+            boton("Volver", "arrow-left-circle", "outline-primary",'cargar_pagina("tiendas.php","tienda")');
+            boton("Editar", "pencil", "outline-warning", "guardarEditar($tienda[tnd_id])");
+            ?>
+        </div>
+    </div>
 </div>
 <script>
     function guardarEditar(id) {

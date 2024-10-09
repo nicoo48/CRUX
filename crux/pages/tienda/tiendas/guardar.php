@@ -23,8 +23,8 @@ if (!$resultado["error"]) {
     boton(
         "Volver",
         "arrow-left-circle",
-        "outline-primary",
-        "cargar_pagina('tiendas.php','tienda')"
+        "outline-success",
+        'cargar_pagina("tiendas.php","tienda")'
     );
     boton(
         "Crear Otra Tienda",
@@ -44,7 +44,7 @@ if (!$resultado["error"]) {
         "Volver",
         "arrow-left-circle",
         "outline-primary",
-        "cargar_pagina('tiendas.php','tienda')"
+        'cargar_pagina("tiendas.php","tienda")'
     );
 }
 ?>

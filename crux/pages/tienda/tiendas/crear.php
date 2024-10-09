@@ -3,35 +3,36 @@ $nivel_directorio = "../../../";
 require "../../../carga.php";
 ?>
 <div id="operacion">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th colspan=2>Crear Tienda</th>
-            </tr>
-        <tbody>
-            <tr>
-                <td width=1>Nombre</td>
-                <td>
-                    <input type="text" name="nombre" id="nombre" class="form-control campos" placeholder="Donde Los Locos Adams">
-                </td>
-            </tr>
-            <tr>
-                <td>Dirección</td>
-                <td>
-                    <input type="text" name="direccion" id="direccion" class="form-control campos" placeholder="Avenida Siempre Viva #742">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <?
-    boton("Volver","arrow-left-circle","outline-primary","cargar_pagina('tiendas.php','tienda')");
-    boton("Crear","check-lg","outline-success","crearTienda()");
-    ?>
+    <div class="card mb-6">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Crear Tienda</h5>
+            <small class="text-body float-end"><i class="bi bi-star">Campos Obligatorios</i></small>
+        </div>
+        <div class="card-body">
+            <div class="form-floating form-floating-outline mb-6">
+                <input type="text" name="nombre" id="nombre" class="form-control campos" placeholder="Donde Los Locos Adams">
+                <label for="basic-default-fullname"><i class="bi bi-star"></i>&nbsp;Nombre</label>
+            </div>
+            <div class="form-floating form-floating-outline mb-6">
+                <input type="text" name="direccion" id="direccion" class="form-control campos" placeholder="Avenida Siempre Viva #742">
+                <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Dirección</label>
+            </div>
+            <?
+            boton("Volver", "arrow-left-circle", "outline-primary",'cargar_pagina("tiendas.php","tienda")');
+            boton("Crear", "check-lg", "outline-success", "crearTienda()");
+            ?>
+        </div>
+    </div>
 </div>
+
 <script>
     function crearTienda() {
-        if (!validar_input("nombre", "Debe ingresar un nombre para la tienda.")) {return;}
-        if (!validar_input("direccion", "Debe ingresar una dirección para la tienda.")) {return;}
+        if (!validar_input("nombre", "Debe ingresar un nombre para la tienda.")) {
+            return;
+        }
+        if (!validar_input("direccion", "Debe ingresar una dirección para la tienda.")) {
+            return;
+        }
 
         var campos = $(".campos").serialize();
         var div = document.getElementById("operacion");
