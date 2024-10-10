@@ -25,7 +25,7 @@ if ($persona > 0) {
                         // Verificar si no hay imagen y buscar en la carpeta de iconos
                         if (empty($imagenPerfil) || !filter_var($imagenPerfil, FILTER_VALIDATE_URL)) {
                             // Aquí puedes definir el nombre del archivo que buscas
-                            $nombreIcono = "default_icon.png"; // Cambia esto por el nombre que necesites
+                            $nombreIcono = "default_icon.png";
                             $rutaIcono = $nivel_directorio . "template/assets/img/avatars/" . $nombreIcono;
 
                             // Verificar si el icono existe en la carpeta
@@ -33,7 +33,7 @@ if ($persona > 0) {
                                 $imagenPerfil = $rutaIcono; // Asignar la ruta del icono
                             } else {
                                 // Si tampoco existe, puedes asignar una imagen por defecto
-                                $imagenPerfil = "template/assets/img/avatars/".$datos_persona['per_imagen']; // Cambia esto por el nombre de tu imagen por defecto
+                                $imagenPerfil = "template/assets/img/avatars/21.png";
                             }
                         }
                         ?>

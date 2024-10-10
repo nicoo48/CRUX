@@ -39,9 +39,9 @@ require "../../../carga.php";
                         <td style="text-align: right;">Tienda</td>
                         <td><select name="tienda" id="tienda" class="form-control campos">
                                 <option value="">Seleccione una tienda</option>
-                                <option value="tienda1">Tienda 1</option>
-                                <option value="tienda2">Tienda 2</option>
-                                <option value="tienda3">Tienda 3</option>
+                                <option value="1">Tienda 1</option>
+                                <option value="2">Tienda 2</option>
+                                <option value="3">Tienda 3</option>
                             </select></td>
                     </tr>
                     <tr>
@@ -68,15 +68,15 @@ require "../../../carga.php";
                 <tbody>
                     <tr>
                         <td style="text-align: right;">Costo</td>
-                        <td><input type="number" name="campo1" id="campo1" class="form-control campos"></td>
+                        <td><input type="number" name="costo" id="costo" class="form-control campos"></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">Ancho</td>
-                        <td><input type="text" name="campo2" id="campo2" class="form-control campos"></td>
+                        <td><input type="text" name="ancho" id="ancho" class="form-control campos"></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">Largo</td>
-                        <td><input type="text" name="campo2" id="campo2" class="form-control campos"></td>
+                        <td><input type="text" name="largo" id="largo" class="form-control campos"></td>
                     </tr>
                 </tbody>
             </table>
@@ -154,10 +154,10 @@ require "../../../carga.php";
         if (!validar_input("umed", "Debe ingresar una unidad de medida.")) {
             return;
         }
-        var campos = $(".campos").serialize();
+        var a = $(".campos").serialize();
         $("#operacion").hide();
         $("#mensaje").show();
         // Realiza la llamada AJAX
-        AJAXPOST(urlBase + "pages/configuracion/usuario/guardar_usuario.php", campos, document.getElementById("operacion"));
+        AJAXPOST(urlBase + "pages/tienda/productos/guardar_producto.php",a+"modo=agregar", document.getElementById("operacion"));
     }
 </script>

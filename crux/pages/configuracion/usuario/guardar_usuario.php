@@ -18,7 +18,7 @@ if ($_REQUEST <> "") {
 
         // Mueve el archivo subido a la carpeta de destino
         if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $ruta_destino)) {
-            $campos["per_imagen"] = $nombre_archivo; // Guardamos solo el nombre del archivo
+            $campos["per_imagen"] = $nombre_archivo;
         } else {
             mensaje(
                 "Error en la carga",

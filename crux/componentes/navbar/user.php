@@ -14,8 +14,8 @@ $persona = select("personas", "*", $filtros);
         <div class="avatar avatar-online">
             <?
             $ruta = $urlBase . "template/assets/img/avatars/" . $persona["datos"][0]['per_imagen'];
-            if (file_exists($ruta)) {
-                echo "<img src='$ruta' alt class='rounded-circle'/>";
+            if ($persona["datos"][0]['per_imagen'] <> "") {
+                echo "<img src='" . $urlBase . "template/assets/img/avatars/" . $persona["datos"][0]['per_imagen'] . "' alt class='rounded-circle'/>";
             } else {
                 echo "<img src='template/assets/img/avatars/21.png' alt class='rounded-circle'/>";
             }
@@ -30,8 +30,8 @@ $persona = select("personas", "*", $filtros);
                         <div class="avatar avatar-online">
                             <?
                             $ruta = $urlBase . "template/assets/img/avatars/" . $persona["datos"][0]['per_imagen'];
-                            if (file_exists($ruta)) {
-                                echo "<img src='$ruta' alt class='rounded-circle'/>";
+                            if ($persona["datos"][0]['per_imagen'] <> "") {
+                                echo "<img src='" . $urlBase . "template/assets/img/avatars/" . $persona["datos"][0]['per_imagen'] . "' alt class='rounded-circle'/>";
                             } else {
                                 echo "<img src='template/assets/img/avatars/21.png' alt class='rounded-circle'/>";
                             }
