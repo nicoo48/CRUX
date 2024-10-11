@@ -30,7 +30,7 @@ function selector($params) {
         }
     }
 
-    return $select . "</select>";
+    echo $select . "</select>";
 }
 ?>
 

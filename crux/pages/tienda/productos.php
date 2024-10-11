@@ -1,102 +1,78 @@
-<?php
+<?
 $nivel_directorio = "../../";
 require "../../carga.php";
 
-$filtros["tnd_id"] = 1; // Forzar la tienda 1
-$productos = select("productos", "*", $filtros);
+$productos = select("productos", "*");
+$registros = count($productos["datos"]);
 
-if (count($productos['datos']) > 0) {
-    // Si hay productos, mostrar tabla
+if($registros > 0){
     ?>
-    <table>
-        <?
-        boton(
-            "Crear Producto",
-            "plus-circle",
-            "outline-info",
-            "crearProducto()"
-        );
-        ?>
-    </table>
-    <br>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
+    <div class="card">
+        <div class="card-header">
+            <?
+            boton(
+                "Crear Producto",
+                "plus-circle",
+                "info",
+                "crearProducto()"
+            );
+            ?>
+        </div>
+        <div class="card-datatable table-responsive">
+            <table class="datatables-products table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th style="text-align: center;">Nombre</th>
+                    <th width="1">#</th>
+                    <th>Producto</th>
+                    <th>SKU</th>
+                    <th>Código Barra</th>
+                    <th>Precio</th>
+                    <th>Unidad</th>
                     <th>Descripción</th>
-                    <th style="text-align: center;">Precio</th>
-                    <th style="text-align: center;">Unidad de Medida</th>
-                    <th style="width: 20%; text-align: center;">Imagen</th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($productos['datos'] as $producto) { ?>
+                <?
+                foreach($productos["datos"] as $p){
+                    $filtros["uni_id"] = $p["pro_unidad"];
+                    $unidad = select("unidad_medida", "*", $filtros);
+                    ?>
                     <tr>
-                        <td width="1">
-                            <?php
-                            boton(
-                                "", // Texto del botón vacío (solo ícono)
-                                "pencil", // Ícono del botón
-                                "outline-info", // Estilo del botón
-                                "editarProducto(" . $producto['id'] . ")", // Llamada a la función con el ID del producto
-                                "Editar"
-                            );
+                        <td>
+                            <?
+                            boton("","pencil","info","ver_ficha($p[pro_id])");
                             ?>
                         </td>
-                        <td style="text-align: center;"><?php echo $producto["nombre"]; ?></td>
-                        <td><?php echo $producto["descripcion"]; ?></td>
-                        <td style="text-align: center;"><?php echo "$" . number_format($producto["precio"], 0, ',', '.'); ?> CLP</td> <!-- Formato de moneda chilena -->
-                        <td style="text-align: center;"><?php echo $producto["umed"]; ?></td>
-                        <td style="text-align: center;">
-                            <?php 
-                            // Verificar si la imagen es una URL externa, imagen local o base64
-                            if (filter_var($producto["imagen"], FILTER_VALIDATE_URL)) {
-                                // Es una URL externa
-                                ?>
-                                <img src="<?php echo $producto["imagen"]; ?>" alt="<?php echo $producto["nombre"]; ?>" class="img-fluid rounded" style="max-width: 100px; max-height: 100px;">
-                            <?php } elseif (strpos($producto["imagen"], 'data:image/') === 0) { 
-                                // Es una imagen en base64
-                                ?>
-                                <img src="<?php echo $producto["imagen"]; ?>" alt="<?php echo $producto["nombre"]; ?>" class="img-fluid rounded" style="max-width: 100px; max-height: 100px;">
-                            <?php } elseif ($producto["imagen"]) { 
-                                // Es una imagen local
-                                ?>
-                                <img src="<?php echo $nivel_directorio . "template/assets/img/products/" . $producto["imagen"]; ?>" alt="<?php echo $producto["nombre"]; ?>" class="img-fluid rounded" style="max-width: 100px; max-height: 100px;">
-                            <?php } else { ?>
-                                Sin imagen
-                            <?php } ?>
-                        </td>
+                        <td><?= $p["pro_nombre"]?></td>
+                        <td><?= $p["pro_codigo"]?></td>
+                        <td><?= $p["pro_codigo_barra"]?></td>
+                        <td><?= $p["pro_precio"]?></td>
+                        <td><?= $unidad["datos"][0]["uni_nombre"]?></td>
+                        <td><?= $p["pro_descripcion"]?></td>
+                        <td><?= _label_estado("producto", $p["pro_estado"],2);?></td>
                     </tr>
-                <?php } ?>
+                    <?
+                }
+                ?>
             </tbody>
-        </table>
-    </div>
-    <?php
-} else {
-    // Si no hay productos, mostrar mensaje y botón
+            </table>
+        </div>
+    </div>  
+    <?
+}else{
     mensaje(
-        "Aquí no hay nada.",
-        "Parece que aun no tienes productos registrados, ¿por qué no creas un producto?",
-        "info",
-        "box-seam-fill",
-        1
-    );
-    boton(
-        "Crear Producto",
-        "plus-circle",
-        "outline-info",
-        "crearProducto()"
+        "No hay productos",
+        "No se encontraron productos en la base de datos",
+        "x"
     );
 }
 ?>
 <script>
-    function crearProducto() {
-        AJAXPOST(urlBase + "pages/tienda/productos/agregar_producto.php", "", document.getElementById("pagina_central"));
+    function crearProducto(){
+        AJAXPOST(urlBase + "pages/tienda/productos/crear_producto.php", "", document.getElementById("pagina_central"));
     }
-
-    function editarProducto(id) {
-        AJAXPOST(urlBase + "pages/tienda/productos/editar_producto.php", "id=" + id, document.getElementById("pagina_central"));
+    function ver_ficha(id){
+        AJAXPOST(urlBase + "pages/tienda/productos/ficha.php", "id="+id, document.getElementById("pagina_central"));
     }
 </script>

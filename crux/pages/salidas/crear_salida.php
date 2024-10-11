@@ -1,4 +1,4 @@
-<?
+<?php
 $nivel_directorio = "../../";
 require "../../carga.php";
 
@@ -17,8 +17,8 @@ require "js/salida.php";
                         <tr>
                             <td width="140">Nombre</td>
                             <td>
-                                <?
-                                echo selector([
+                                <?php
+                                selector([
                                     'campo' => 'producto',
                                     'tabla' => 'productos',
                                     'id' => 'pro_id',
@@ -26,7 +26,6 @@ require "js/salida.php";
                                     'todos' => 'Seleccione un producto',
                                     'order_by' => 'pro_codigo ASC'
                                 ]);
-
                                 ?>
                             </td>
                         </tr>
@@ -53,13 +52,14 @@ require "js/salida.php";
                         </tr>
                         <tr>
                             <td colspan="2" class="right">
-                                <?
+                                <?php
                                 boton("agregar linea", "box", "outline-info", "agregar_linea();");
                                 ?>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <input type="hidden" id="tabla_data" name="tabla_data" class="campos">
             </div>
         </div>
     </div>
@@ -67,13 +67,13 @@ require "js/salida.php";
         <table id="tabla-detalle" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th width="1">#</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Tipo</th>
                     <th>Clase</th>
                     <th>Glosa</th>
-                    <th>Acciones</th>
+                    <th width="1">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,15 +88,14 @@ require "js/salida.php";
         <tbody class="table-border-bottom-0">
             <tr>
                 <td>
-                    <?
-                    boton("Crear Salida", "box", "outline-success", "crear_salida();");
+                    <?php
+                    boton("Crear Salida", "box", "success", "crear_salida();");
                     ?>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
 <style>
     .container {
         display: flex;

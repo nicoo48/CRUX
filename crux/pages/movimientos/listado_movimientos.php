@@ -31,7 +31,7 @@ foreach($arreglo_datos["datos"] as $row_info){
                 <?php foreach ($movimientos["datos"] as $mov) { ?>
                     <tr id="mov_<?= $mov["mov_id"] ?>">
                         <td><span class="fw-medium"><?= $mov["mov_id"] ?></span></td>
-                        <td><?php boton(";Productos", "box", "outline-info", "detalle(" . $mov["mov_id"] . ")");?></td>
+                        <td><?php boton("", "box", "outline-info", "detalle(" . $mov["mov_id"] . ")");?></td>
                         <td><?= $mov["mov_tipo"] ?></td>
                         <td><?= $mov["mov_clase"] ?></td>
                         <td><?= $mov["mov_responsable"] ?></td>
@@ -39,8 +39,8 @@ foreach($arreglo_datos["datos"] as $row_info){
                         <td><?= $mov["mov_fecha"] ?></td>
                         <td style="display:flex">
                             <?php
-                            boton(";Editar", "pencil", "outline-success", "editarmov(" . $mov["mov_id"] . ")");
-                            boton(";Eliminar", "trash", "outline-danger", "eliminarmov(" . $mov["mov_id"] . ")");
+                            boton("", "pencil", "outline-success", "editarmov(" . $mov["mov_id"] . ")");
+                            boton("", "trash", "outline-danger", "eliminarmov(" . $mov["mov_id"] . ")");
                             ?>
                         </td>
                     </tr>
@@ -52,7 +52,6 @@ foreach($arreglo_datos["datos"] as $row_info){
                                         <th width="1">Folio</th>
                                         <th>Productos</th>
                                         <th width="90">cantidad</th>
-                                        <th width="90">pendiente</th>
                                         <th width="180">total</th>
                                     </tr>
                                 </thead>
@@ -63,7 +62,6 @@ foreach($arreglo_datos["datos"] as $row_info){
                                                 <td><span class="fw-medium"><?= $mdet["mdet_id"] ?></span></td>
                                                 <td><?= $_productos[$mdet["mdet_producto"]]["pro_nombre"] ?></td>
                                                 <td><?= $mdet["mdet_cantidad"] ?></td>
-                                                <td><?= $mdet["mdet_pendiente"] ?></td>
                                                 <td><?= $mdet["mdet_total"] ?></td>
                                             </tr>
                                     <?php 

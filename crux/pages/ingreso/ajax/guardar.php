@@ -17,7 +17,7 @@ if (empty($tabla_data)) {
 
 // Guardamos el movimiento principal una sola vez
 $campos_movimiento = [
-    "mov_tipo" => "sal",
+    "mov_tipo" => "ing",
     "mov_clase" => $tabla_data[0]["clase"], // Tomamos la clase del primer item
     "mov_fecha" => date("Y-m-d H:i:s"),
     "mov_responsable" => $_SESSION["usuario"]["per_id"],
@@ -50,8 +50,8 @@ if ($movimiento_principal["error"] == 0) {
     
     if ($success) {
         mensaje(
-            "Movimiento de Salida creado correctamente",
-            "Se creó el movimiento de salida #" . $movimiento_id,
+            "Movimiento de Ingreso creado correctamente",
+            "Se creó el movimiento de Ingreso #" . $movimiento_id,
             "check"
         );
         boton(
@@ -70,7 +70,7 @@ if ($movimiento_principal["error"] == 0) {
 } else {
     mensaje(
         "Error al crear el movimiento principal",
-        "No se pudo crear el movimiento de salida",
+        "No se pudo crear el movimiento de Ingreso",
         "error"
     );
 }

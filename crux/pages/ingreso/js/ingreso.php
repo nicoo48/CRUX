@@ -27,7 +27,7 @@
             <td class="row-number">${rowCounter}</td>
             <td class="campos" data-id="${productoId}">${producto}</td>
             <td class="campos">${cantidad}</td>
-            <td class="campos">Salida</td>
+            <td class="campos">Ingreso</td>
             <td class="campos" data-value="${claseValue}">${clase}</td>
             <td class="campos">${glosa}</td>
             <td>
@@ -64,7 +64,7 @@
         });
     }
 
-    function crear_salida() {
+    function crear_ingreso() {
         var tableData = [];
         document.querySelectorAll('#tabla-detalle tbody tr').forEach((row) => {
             tableData.push({
@@ -83,7 +83,7 @@
         $('#tabla_data').val(JSON.stringify(tableData));
         var campos = $(".campos").serialize();
         console.log(campos);
-        AJAXPOST(urlBase + "pages/salidas/ajax/guardar.php", campos, document.getElementById("pagina_central"));
+        AJAXPOST(urlBase + "pages/ingreso/ajax/guardar.php", campos, document.getElementById("pagina_central"));
     }
 
     function validar_input(id, mensaje) {
