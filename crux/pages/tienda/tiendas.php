@@ -1,4 +1,4 @@
-<?
+<?php
 $nivel_directorio = "../../";
 require "../../carga.php";
 
@@ -6,74 +6,71 @@ require "../../carga.php";
 $filtros["tnd_per_id"] = $_SESSION['usuario']['per_id'];
 $tiendas = select("tiendas", "*", $filtros);
 if (count($tiendas["datos"]) > 0) {
-?>
+    ?>
     <div id="operacion"></div>
     <div style="display:flex;justify-content: space-between;">
-        <?
+        <?php
         barra_busqueda("filtrar_tienda()");
         boton("Nueva Tienda", "star", "outline-success", "crearTienda()");
         ?>
     </div>
     <hr>
-    <div class="row mb-12 g-6">
-        <?
+    <div class="tiendas-grid">
+        <?php
         foreach ($tiendas["datos"] as $tienda) {
-            if ($_SESSION["tienda"]["tnd_id"] == $tienda["tnd_id"]) {
-                $estilo = "bg-primary";
-                $style = "style='color:white!important'";
-            }
+            $estilo = ($_SESSION["tienda"]["tnd_id"] == $tienda["tnd_id"]) ? "bg-primary" : "";
+            $style = ($_SESSION["tienda"]["tnd_id"] == $tienda["tnd_id"]) ? "style='color:white!important'" : "";
         ?>
-            <div class="col-md-6 col-lg-4 tarjeta_tienda " id="tienda_<?= $tienda["tnd_id"] ?>">
+            <div class="tienda-card" id="tienda_<?= $tienda["tnd_id"] ?>">
                 <div class="card <?= $estilo ?>" <?= $style ?> class="tarjeta_estilo" id="est_<?= $tienda["tnd_id"] ?>">
                     <div class="card-body">
                         <h5 class="card-title" style="display: flex;justify-content: space-between;">
                             <i class="bi bi-shop" <?= $style ?>>&nbsp;<?= $tienda["tnd_nombre"] ?></i>
-                            <div  style="display: flex;align-items:center">
-                                <?
-                                if ($_SESSION["tienda"]["tnd_id"] == $tienda["tnd_id"]) {
-                                    boton(
-                                        "",
-                                        "check-all",
-                                        "secondary",
-                                        'alerta("Tienda ya Seleccionada","success")',
-                                        "Utilizar tienda"
-                                    );
-                                } else {
-                                    boton(
-                                        "",
-                                        "check2-square",
-                                        "success",
-                                        "seleccionar_tienda($tienda[tnd_id])",
-                                        "Utilizar tienda"
-                                    );
-                                }
-                                boton(
-                                    "",
-                                    "pencil",
-                                    "warning",
-                                    "editarTienda($tienda[tnd_id])",
-                                    "Editar la información de la tienda"
-                                );
-                                boton(
-                                    "",
-                                    "trash",
-                                    "danger",
-                                    "abrir_modal($tienda[tnd_id])",
-                                    "Eliminar la tienda"
-                                );
-                                ?>
-                            </div>
                         </h5>
-                        <hr>
                         <p class="card-text">
-                            <?= $tienda["tnd_direccion"] ?>
+                            <?
+                            echo "<em>".$tienda["tnd_codigo"]."</em> - ".$tienda["tnd_direccion"] 
+                            ?>
                         </p>
+                        <div style="display: flex;justify-content: flex-end;margin-top: auto;">
+                            <?php
+                            if ($_SESSION["tienda"]["tnd_id"] == $tienda["tnd_id"]) {
+                                boton(
+                                    "",
+                                    "check-all",
+                                    "secondary",
+                                    'alerta("Tienda ya Seleccionada","success")',
+                                    "Utilizar tienda"
+                                );
+                            } else {
+                                boton(
+                                    "",
+                                    "check2-square",
+                                    "info",
+                                    "seleccionar_tienda($tienda[tnd_id])",
+                                    "Utilizar tienda"
+                                );
+                            }
+                            boton(
+                                "",
+                                "pencil",
+                                "warning",
+                                "editarTienda($tienda[tnd_id])",
+                                "Editar la información de la tienda"
+                            );
+                            boton(
+                                "",
+                                "trash",
+                                "danger",
+                                "abrir_modal($tienda[tnd_id])",
+                                "Eliminar la tienda"
+                            );
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        <?
-            $estilo = "";
-            $style = "";
+        <?php
         }
         ?>
     </div>
@@ -84,14 +81,36 @@ if (count($tiendas["datos"]) > 0) {
 }
 modal("ModEliminar", "Eliminar Tienda", "¿Estás seguro de que deseas eliminar esta tienda?<p style='color:red'>Esta Acción es Permanente</p>", "shop", "xl", "eliminarTienda()");
 ?>
+<style>
+    .tiendas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+
+    .tienda-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .tienda-card .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tienda-card .card-title {
+        margin-bottom: auto;
+    }
+</style>
 <script>
     function seleccionar_tienda(id) {
         AJAXPOST(urlBase + "pages/tienda/tiendas/seleccionar.php", "id=" + id, document.getElementById("operacion"));
     }
-
     function filtrar_tienda() {
         const searchTerm = document.getElementById('barra_busqueda').value.toLowerCase();
-        const tiendas = document.getElementsByClassName('tarjeta_tienda');
+        const tiendas = document.getElementsByClassName('tienda-card');
 
         for (let tienda of tiendas) {
             const tiendaNombre = tienda.querySelector('.card-title').textContent.toLowerCase();

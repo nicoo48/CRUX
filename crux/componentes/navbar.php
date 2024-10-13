@@ -7,18 +7,10 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <!-- Search -->
-            <!-- <? require 'navbar/search.php'; ?> -->
-        <!-- /Search -->
+
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <!-- Language -->
-            <!-- <? require 'navbar/language.php'; ?> -->
-            <!--/ Language -->
-
-            <!-- Style Switcher -->
             <? require 'navbar/switcher.php';?>
-            <!-- / Style Switcher-->
 
             <!-- Quick links  -->
             <? require 'navbar/quick_links.php'; ?> 
@@ -29,7 +21,9 @@
             <!--/ Notification -->
 
             <!-- User -->
-            <? require 'navbar/user.php'; ?>
+             <div id="componente_usuario">
+                 <? require 'navbar/user.php'; ?>
+             </div>
             <!--/ User -->
         </ul>
     </div>

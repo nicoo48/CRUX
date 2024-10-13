@@ -7,8 +7,9 @@ require "../../../carga.php";
 unset($campos);
 $campos["tnd_nombre"] = $_REQUEST["nombre"];
 $campos["tnd_direccion"] = $_REQUEST["direccion"];
+$campos["tnd_codigo"] = $_REQUEST["codigo"];
 $filtros["tnd_id"] = $_REQUEST["id"];
-$resultado = update("tiendas", $campos, $filtros);
+$resultado = update("tiendas", $campos, $filtros,);
 
 //validamos el resultado de la consulta
 if(!$resultado["error"]){

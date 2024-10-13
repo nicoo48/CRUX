@@ -7,9 +7,10 @@ require "../../../carga.php";
 unset($campos);
 $campos["tnd_nombre"] = $_REQUEST["nombre"];
 $campos["tnd_direccion"] = $_REQUEST["direccion"];
+$campos["tnd_codigo"] = $_REQUEST["codigo"];
 $campos["tnd_per_id"] = $_SESSION['usuario']['per_id'];
 
-$resultado = insert("tiendas", $campos);
+$resultado = insert("tiendas", $campos,1);
 
 //validamos el resultado de la consulta
 if (!$resultado["error"]) {

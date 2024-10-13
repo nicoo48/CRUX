@@ -14,6 +14,7 @@ $_SESSION["tienda"] = $tienda["datos"][0];
 ?>
 <script>
     alerta("Tienda: <?=$tienda["datos"][0]["tnd_nombre"]?> Seleccionado con exito", "success");
+    recargar_usuario(2);
     cargar_pagina("tiendas.php", "tienda");
 </script>
 <?

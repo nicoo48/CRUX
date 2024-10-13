@@ -88,7 +88,7 @@ require "../../../carga.php";
                             <p class="h4 needsclick my-2">Presiona aqui para subir una imagen</p>
                         </div>
                         <div class="fallback">
-                            <input name="file" type="file">
+                            <input name="file" type="file" class="form-control">
                         </div>
                     </form>
                 </div>

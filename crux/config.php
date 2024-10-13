@@ -2,6 +2,7 @@
 //iniciamos la sesion en general 
 session_start();
 /* Configuración del archivo, necesaria para cargar ciertas cosas */
+global $urlBase;
 $urlBase = "http://localhost/crux/crux/";
 
 /* Conexion a la base de datos */

@@ -1,5 +1,5 @@
 <div class="app-brand demo">
-    <a href="index.html" class="app-brand-link">
+    <a href="<?=$urlBase?>" class="app-brand-link">
         <span class="app-brand-logo demo">
             <span style="color: var(--bs-primary)">
                 <svg width="268" height="150" viewBox="0 0 38 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +48,7 @@
                 </svg>
             </span>
         </span>
-        <span class="app-brand-text demo menu-text fw-semibold ms-2">Materialize</span>
+        <span class="app-brand-text demo menu-text fw-semibold ms-2">Crux App</span>
     </a>
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
