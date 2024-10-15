@@ -8,7 +8,7 @@ unset($campos);
 $campos["mov_tipo"] = $_REQUEST["tipo"];
 $campos["mov_clase"] = $_REQUEST["clase"];
 $campos["mov_fecha"] = date("Y-m-d H:i:s");
-$campos["mov_responsable"] = $_SESSION["usuario"]["per_id"];
+$campos["mov_per_id"] = $_SESSION["usuario"]["per_id"];
 $campos["mov_glosa"] = $_REQUEST["glosa"];
 $movimientos = insert("movimientos",$campos);
 if($movimientos["error"] == 0 ){

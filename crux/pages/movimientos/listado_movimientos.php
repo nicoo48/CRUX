@@ -34,7 +34,7 @@ foreach($arreglo_datos["datos"] as $row_info){
                         <td><?php boton("", "box", "outline-info", "detalle(" . $mov["mov_id"] . ")");?></td>
                         <td><?= $mov["mov_tipo"] ?></td>
                         <td><?= $mov["mov_clase"] ?></td>
-                        <td><?= $mov["mov_responsable"] ?></td>
+                        <td><?= $mov["mov_per_id"] ?></td>
                         <td><?= $mov["mov_glosa"] ?></td>
                         <td><?= $mov["mov_fecha"] ?></td>
                         <td style="display:flex">

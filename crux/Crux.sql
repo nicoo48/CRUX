@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS `configuraciones` (
 CREATE TABLE IF NOT EXISTS `movimientos` (
   `mov_id` int(11) NOT NULL AUTO_INCREMENT,
   `mov_clase` varchar(50) DEFAULT NULL,
-  `mov_tienda` varchar(50) DEFAULT NULL,
-  `mov_responsable` varchar(50) DEFAULT NULL,
+  `mov_tnd_id` varchar(50) DEFAULT NULL,
+  `mov_per_id` varchar(50) DEFAULT NULL,
   `mov_glosa` varchar(50) DEFAULT NULL,
   `mov_fecha` datetime DEFAULT NULL,
   `mov_tipo` varchar(50) DEFAULT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `movimientos_detalle` (
   `mdet_mov_id` int(11) DEFAULT NULL,
   `mdet_cantidad` int(11) NOT NULL DEFAULT 0,
   `mdet_producto` int(11) DEFAULT NULL,
-  `mdet_tienda` int(11) NOT NULL DEFAULT 0,
+  `mdet_tnd_id` int(11) NOT NULL DEFAULT 0,
   `mdet_total` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`mdet_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 CREATE TABLE IF NOT EXISTS `productos` (
   `pro_id` int(11) NOT NULL AUTO_INCREMENT,
   `pro_unidad` varchar(50) DEFAULT NULL,
-  `pro_responsable` int(11) DEFAULT NULL,
+  `pro_per_id` int(11) DEFAULT NULL,
   `pro_codigo` varchar(255) DEFAULT NULL,
   `pro_nombre` varchar(255) DEFAULT NULL,
   `pro_descripcion` varchar(255) DEFAULT NULL,

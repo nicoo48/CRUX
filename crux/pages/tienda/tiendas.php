@@ -1,7 +1,6 @@
 <?php
 $nivel_directorio = "../../";
 require "../../carga.php";
-
 //obtenemos todas las tiendas del usuario
 $filtros["tnd_per_id"] = $_SESSION['usuario']['per_id'];
 $tiendas = select("tiendas", "*", $filtros);

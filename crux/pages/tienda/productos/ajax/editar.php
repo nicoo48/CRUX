@@ -11,7 +11,7 @@ $campos["pro_descripcion"] = $_REQUEST["descripcion"];
 $campos["pro_precio"] = $_REQUEST["precio"];
 $campos["pro_codigo_barra"] = $_REQUEST["codigo_barra"];
 $campos["pro_unidad"] = $_REQUEST["unidad"];
-$campos["pro_responsable"] = $_SESSION["usuario"]["per_id"];
+$campos["pro_per_id"] = $_SESSION["usuario"]["per_id"];
 $campos["pro_estado"] = 1;
 $productos = update("productos",$campos,$filtros);
 if($productos["error"] == 0 ){

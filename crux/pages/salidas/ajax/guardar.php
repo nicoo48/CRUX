@@ -20,9 +20,9 @@ $campos_movimiento = [
     "mov_tipo" => "sal",
     "mov_clase" => $tabla_data[0]["clase"], // Tomamos la clase del primer item
     "mov_fecha" => date("Y-m-d H:i:s"),
-    "mov_responsable" => $_SESSION["usuario"]["per_id"],
+    "mov_per_id" => $_SESSION["usuario"]["per_id"],
     "mov_glosa" => $tabla_data[0]["glosa"], // Tomamos la glosa del primer item
-    "mov_tienda" => "1"
+    "mov_tnd_id" => "1"
 ];
 
 $movimiento_principal = insert("movimientos", $campos_movimiento);
