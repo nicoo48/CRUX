@@ -15,6 +15,7 @@ $_navegacion = array(
             )
         )
     ),
+    /*
     "Ventas" => array(
         "icono" => "cart",
         "carpeta" => "ventas",
@@ -43,6 +44,7 @@ $_navegacion = array(
             )
         )
     ),
+    */
     "Configuración" => array(
         "icono" => "gear",
         "carpeta" => "configuracion",
@@ -57,17 +59,21 @@ $_navegacion = array(
             )
         )
     ),
-    "movimientos" => array(
-        "icono" => "basket",
+    "Compras y Ventas" => array(
+        "icono" => "cash-stack",
         "carpeta" => "movimientos",
         "paginas" => array(
-            "Crear Movimientos" => array(
-                "url"=>"elegir_movimiento.php",
-                "icono"=>"basket"
+            "Compras" => array(
+                "url"=>"crear_entrada.php",
+                "icono"=>"cart-plus"
             ),
-            "Listado Movimientos" => array(
+            "Ventas" => array(
+                "url"=>"crear_salida.php",
+                "icono"=> "cart-dash"
+            ),
+            "Resumen" => array(
                 "url"=>"listado_movimientos.php",
-                "icono"=>"list"
+                "icono"=>"clipboard-data"
             )
         )
     )

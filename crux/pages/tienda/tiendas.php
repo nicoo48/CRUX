@@ -5,7 +5,7 @@ require "../../carga.php";
 $filtros["tnd_per_id"] = $_SESSION['usuario']['per_id'];
 $tiendas = select("tiendas", "*", $filtros);
 if (count($tiendas["datos"]) > 0) {
-    ?>
+?>
     <div id="operacion"></div>
     <div style="display:flex;justify-content: space-between;">
         <?php
@@ -28,7 +28,7 @@ if (count($tiendas["datos"]) > 0) {
                         </h5>
                         <p class="card-text">
                             <?
-                            echo "<em>".$tienda["tnd_codigo"]."</em> - ".$tienda["tnd_direccion"] 
+                            echo "<em>" . $tienda["tnd_codigo"] . "</em> - " . $tienda["tnd_direccion"]
                             ?>
                         </p>
                         <div style="display: flex;justify-content: flex-end;margin-top: auto;">
@@ -107,6 +107,7 @@ modal("ModEliminar", "Eliminar Tienda", "¿Estás seguro de que deseas eliminar 
     function seleccionar_tienda(id) {
         AJAXPOST(urlBase + "pages/tienda/tiendas/seleccionar.php", "id=" + id, document.getElementById("operacion"));
     }
+
     function filtrar_tienda() {
         const searchTerm = document.getElementById('barra_busqueda').value.toLowerCase();
         const tiendas = document.getElementsByClassName('tienda-card');

@@ -56,6 +56,5 @@
     }
     function ir_a_ingresos() {
         AJAXPOST(urlBase + "pages/ingreso/crear_ingreso.php", "", document.getElementById("pagina_central"));
-
     }
 </script>

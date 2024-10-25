@@ -1,6 +1,6 @@
 <?php
-$nivel_directorio = "../../";
-require "../../carga.php";
+// $nivel_directorio = "../../";
+// require "../../carga.php";
 
 //Obtengo las funciones JAVASCRIPT................
 require "js/ingreso.php";

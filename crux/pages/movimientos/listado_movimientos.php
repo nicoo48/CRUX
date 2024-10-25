@@ -1,102 +1,90 @@
-<?php
+<?
 $nivel_directorio = "../../";
 require "../../carga.php";
-//Consultar a la base de datos
-$movimientos = select("movimientos", "*");
-$detalles = select("movimientos_detalle", "*");
-unset($filtros);
-$arreglo_datos = select("productos","*"); 
-foreach($arreglo_datos["datos"] as $row_info){
-    $_productos[$row_info["pro_codigo"]] = $row_info;
-}
-?>
 
+//obtenemos los movimientos
+unset($filtros);
+$filtros["mov_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
+$filtros["mov_per_id"] = $_SESSION["usuario"]["per_id"];
+$mov = select("movimientos", "*", $filtros);
+foreach ($mov["datos"] as $movi) {
+    $lista_movimientos[$movi["mov_id"]] = $movi;
+}
+
+//obtenemos los productos
+unset($filtros);
+$filtros["pro_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
+$filtros["pro_per_id"] = $_SESSION["usuario"]["per_id"];
+$pro = select("productos", "*", $filtros);
+foreach ($pro["datos"] as $produc) {
+    $lista_productos[$produc["pro_id"]] = $produc;
+}
+//obtenemos los detalles
+unset($filtros);
+$filtros["mdet_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
+$detalles = select("movimientos_detalle", "*", $filtros);
+if (count($detalles["datos"]) > 0) {
+?>
 <div class="card">
-    <h5 class="card-header">Listado de Movimientos</h5>
-    <div class="table-responsive text-nowrap">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th width="1">Folio</th>
-                    <th width="1">Detalle</th>
-                    <th width="90">Tipo</th>
-                    <th width="90">Clase</th>
-                    <th width="180">Responsable</th>
-                    <th>Glosa</th>
-                    <th width="180">Fecha</th>
-                    <th width="90">acciones</th>
-                </tr>
-            </thead>
-            <tbody class="table-border-bottom-0">
-                <?php foreach ($movimientos["datos"] as $mov) { ?>
-                    <tr id="mov_<?= $mov["mov_id"] ?>">
-                        <td><span class="fw-medium"><?= $mov["mov_id"] ?></span></td>
-                        <td><?php boton("", "box", "outline-info", "detalle(" . $mov["mov_id"] . ")");?></td>
-                        <td><?= $mov["mov_tipo"] ?></td>
-                        <td><?= $mov["mov_clase"] ?></td>
-                        <td><?= $mov["mov_per_id"] ?></td>
-                        <td><?= $mov["mov_glosa"] ?></td>
-                        <td><?= $mov["mov_fecha"] ?></td>
-                        <td style="display:flex">
-                            <?php
-                            boton("", "pencil", "outline-success", "editarmov(" . $mov["mov_id"] . ")");
-                            boton("", "trash", "outline-danger", "eliminarmov(" . $mov["mov_id"] . ")");
-                            ?>
-                        </td>
+    <h5 class="card-header" style="display:flex;justify-content:space-between">
+        <span>
+            <i class="bi bi-list-star"></i>
+            Listado de Transacciones
+        </span>
+        <span>
+            <i class="bi bi-calendar"></i>
+            Fecha: <?= fecha(date("Y-m-d H:i:s")) ?>
+        </span>
+        <span>
+            <i class="bi bi-shop"></i>
+            Tienda: <?= $_SESSION["tienda"]["tnd_nombre"] ?>
+        </span>
+    </h5>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th width="1">Fecha</th>
+                        <th>Producto</th>
+                        <th width="1">Cantidad</th>
+                        <th width="1">Precio</th>
+                        <th width="1">Total</th>
+                        <th width="120">Clase</th>
+                        <th>Comentario</th>
                     </tr>
-                    <tr id="detalle-<?= $mov["mov_id"] ?>" style="display:none;">
-                        <td colspan="8">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th width="1">Folio</th>
-                                        <th>Productos</th>
-                                        <th width="90">cantidad</th>
-                                        <th width="180">total</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-border-bottom-0">
-                                    <?php foreach ($detalles["datos"] as $mdet) { 
-                                        if ($mdet["mdet_mov_id"] == $mov["mov_id"]) { ?>
-                                            <tr>
-                                                <td><span class="fw-medium"><?= $mdet["mdet_id"] ?></span></td>
-                                                <td><?= $_productos[$mdet["mdet_producto"]]["pro_nombre"] ?></td>
-                                                <td><?= $mdet["mdet_cantidad"] ?></td>
-                                                <td><?= $mdet["mdet_total"] ?></td>
-                                            </tr>
-                                    <?php 
-                                        }
-                                    } ?>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    <?
+                    foreach ($detalles["datos"] as $detalle) {
+                        $movimiento = $lista_movimientos[$detalle["mdet_mov_id"]];
+                        $producto = $lista_productos[$detalle["mdet_pro_id"]];
+
+                    ?>
+                        <tr>
+                            <td><?= fecha($movimiento["mov_fecha"]); ?></td>
+                            <td><?= $producto["pro_nombre"] ?></td>
+                            <td><?= cantidad($detalle["mdet_cantidad"]) ?></td>
+                            <td><?= cantidad($detalle["mdet_valor_unitario"]) ?></td>
+                            <td><?= cantidad($detalle["mdet_total"]) ?></td>
+                            <td>
+                                <?
+                                //ir agregando mas mientras mas clases salgan en el camino
+                                switch ($detalle["mdet_clase"]) {
+                                    case 'VNT':echo "<i class='bi bi-currency-dollar text-success'>Venta</i>";break;
+                                    case 'MRM':echo "<i class='bi bi-recycle text-warning'>&nbsp;Merma</i>";break;
+                                }
+                                ?>
+                            </td>
+                            <td><?= $detalle["mdet_glosa"] ?></td>
+                        </tr>
+                    <?
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
-<script>
-    function detalle(id) {
-        var detalleRow = document.getElementById('detalle-' + id);
-        if (detalleRow.style.display === "none") {
-            detalleRow.style.display = "table-row";
-        } else {
-            detalleRow.style.display = "none";
-        }
-    }
-    function editarmov(id) {
-        var id_mov = document.getElementById('mov_' + id);
-        AJAXPOST(urlBase + "pages/movimientos/editar_movimiento.php", "id=" + id, document.getElementById("pagina_central"));
-        // Abrir el modal
-        var myModal = new bootstrap.Modal(document.getElementById('editarMovimientoModal'));
-        myModal.show();
-    }
-    function editarmov(id){
-        var id_mov = document.getElementById('mov_' + id);
-        AJAXPOST(url_base+"pages/movimientos/editar_movimiento.php","id=" + id,document.getElementById("pagina_central"),false,function(){	
-            $('#editarMovimientoModal').modal('show');
-        });
-    }
-</script>
+<?
+}

@@ -31,7 +31,9 @@
             <td class="campos" data-value="${claseValue}">${clase}</td>
             <td class="campos">${glosa}</td>
             <td>
-                <button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button>
+                <button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">
+                    <i class="bi bi-trash3"></i>&nbsp;Eliminar
+                </button>
             </td>
         `;
 
@@ -82,7 +84,6 @@
 
         $('#tabla_data').val(JSON.stringify(tableData));
         var campos = $(".campos").serialize();
-        console.log(campos);
         AJAXPOST(urlBase + "pages/salidas/ajax/guardar.php", campos, document.getElementById("pagina_central"));
     }
 

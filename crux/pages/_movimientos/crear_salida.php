@@ -1,16 +1,13 @@
 <?php
-$nivel_directorio = "../../";
-require "../../carga.php";
-
 //Obtengo las funciones JAVASCRIPT................
-require "js/salida.php";
+require "salidas/js/salida.php";
 
 //Tabla para agregar productos al detalle del ingreso
 ?>
 <div class="container">
     <div class="left-column">
         <div class="card">
-            <h5 class="card-header">Crea Una Salida</h5>
+            <h5 class="card-header"></h5>
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered table-hover">
                     <tbody class="table-border-bottom-0">
