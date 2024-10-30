@@ -18,18 +18,6 @@ foreach($_REQUEST as $k => $v){
         $res = insert("configuraciones",$campos);
     }
 }
-mensaje(
-    "Configuración Guardada",
-    "Se ha guardado la configuración correctamente",
-    "success",
-    "gear",
-    1
-);
-boton(
-    "Volver",
-    "arrow-left",
-    "success",
-    'cargar_pagina("aplicacion.php","configuracion")'
-)
+echo "<script>alerta('Configuración guardada correctamente','success')</script>";
 
 ?>

@@ -13,29 +13,32 @@ $campos["pro_codigo_barra"] = $_REQUEST["codigo_barra"];
 $campos["pro_unidad"] = $_REQUEST["unidad"];
 $campos["pro_per_id"] = $_SESSION["usuario"]["per_id"];
 $campos["pro_estado"] = 1;
-$productos = insert("productos",$campos);
-if($productos["error"] == 0 ){
-        mensaje(
-            "Producto creado correctamente",
-            "Se creo el producto con el codigo #".$_REQUEST["codigo_producto"],
-            "check"
-        );
-        boton(
-            "Ir al listado de productos",
-            "arrow-left",
-            "primary",
-            "ir_listado()"
-        );
-}else{
+if (isset($_FILES['imagen'])) {
+    $campos['pro_imagen'] = subir_archivo($_FILES['imagen']);
+}
+
+$productos = insert("productos", $campos);
+if ($productos["error"] == 0) {
+
+    mensaje(
+        "Producto Creado Correctamente.",
+        "El producto fue creado con exito.",
+        "primary",
+        "info-circle",
+        1
+    );
+
+    boton(
+        "Ir al listado de productos",
+        "arrow-left",
+        "primary",
+        'cargar_pagina("productos.php","tienda")'
+    );
+} else {
     mensaje(
         "No se pudo crear el producto",
         "Error al crear el producto",
-        "x"
+        "x",
+        "danger"
     );
 }
-?>
-<script>
-    function ir_listado() {
-        AJAXPOST(urlBase + "pages/tienda/productos.php", "", document.getElementById("pagina_central"));
-    }
-</script>

@@ -6,11 +6,10 @@ require "../../carga.php";
 unset($filtros);
 $filtros["mov_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
 $filtros["mov_per_id"] = $_SESSION["usuario"]["per_id"];
-$mov = select("movimientos", "*", $filtros);
+$mov = select("movimientos", "*", $filtros); 
 foreach ($mov["datos"] as $movi) {
     $lista_movimientos[$movi["mov_id"]] = $movi;
 }
-
 //obtenemos los productos
 unset($filtros);
 $filtros["pro_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
@@ -87,4 +86,6 @@ if (count($detalles["datos"]) > 0) {
     </div>
 </div>
 <?
+}else{
+    mensaje("Sin Movimientos", "No se han encontrado movimientos en esta tienda", "primary", "info-circle", 1);
 }

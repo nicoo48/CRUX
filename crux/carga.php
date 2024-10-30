@@ -19,7 +19,7 @@ if(isset($_SESSION["usuario"])){
             $configuracion[$r["cfg_nombre"]] = $r;
         }
     }
-    if($configuracion["tienda_iniciar"]["cfg_valor"]){
+    if($configuracion["tienda_iniciar"]["cfg_valor"] && !isset($_SESSION["tienda"])){
         $res = select("tiendas", "*", ["tnd_id"=>$configuracion["tienda_defecto"]["cfg_valor"]]);
         if(count($res["datos"])>0){
             $_SESSION["tienda"] = $res["datos"][0];

@@ -6,12 +6,12 @@ $_navegacion = array(
         "carpeta" => "tienda",
         "paginas" => array(
             "Mis Tiendas" => array(
-                "url"=>"tiendas.php",
-                "icono"=>"shop"
+                "url" => "tiendas.php",
+                "icono" => "shop"
             ),
             "Mis Productos" => array(
-                "url"=>"productos.php",
-                "icono"=>"bag"
+                "url" => "productos.php",
+                "icono" => "bag"
             )
         )
     ),
@@ -45,35 +45,35 @@ $_navegacion = array(
         )
     ),
     */
-    "Configuración" => array(
-        "icono" => "gear",
-        "carpeta" => "configuracion",
-        "paginas" => array(
-            "Configuración de la cuenta" => array(
-                "url"=>"configuracion.php",
-                "icono"=>"person-fill-gear"
-            ),
-            "Configuración de la Aplicación" => array(
-                "url"=>"aplicacion.php",
-                "icono"=>"house-gear"
-            )
-        )
-    ),
     "Compras y Ventas" => array(
         "icono" => "cash-stack",
         "carpeta" => "movimientos",
         "paginas" => array(
             "Compras" => array(
-                "url"=>"crear_entrada.php",
-                "icono"=>"cart-plus"
+                "url" => "crear_entrada.php",
+                "icono" => "cart-plus"
             ),
             "Ventas" => array(
-                "url"=>"crear_salida.php",
-                "icono"=> "cart-dash"
+                "url" => "crear_salida.php",
+                "icono" => "cart-dash"
             ),
             "Resumen" => array(
-                "url"=>"listado_movimientos.php",
-                "icono"=>"clipboard-data"
+                "url" => "listado_movimientos.php",
+                "icono" => "clipboard-data"
+            )
+        )
+    ),
+    "Configuración" => array(
+        "icono" => "gear",
+        "carpeta" => "configuracion",
+        "paginas" => array(
+            "Configuración de la cuenta" => array(
+                "url" => "configuracion.php",
+                "icono" => "person-fill-gear"
+            ),
+            "Configuración de la Aplicación" => array(
+                "url" => "aplicacion.php",
+                "icono" => "house-gear"
             )
         )
     )

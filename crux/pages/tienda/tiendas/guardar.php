@@ -10,7 +10,7 @@ $campos["tnd_direccion"] = $_REQUEST["direccion"];
 $campos["tnd_codigo"] = $_REQUEST["codigo"];
 $campos["tnd_per_id"] = $_SESSION['usuario']['per_id'];
 
-$resultado = insert("tiendas", $campos,1);
+$resultado = insert("tiendas", $campos);
 
 //validamos el resultado de la consulta
 if (!$resultado["error"]) {
