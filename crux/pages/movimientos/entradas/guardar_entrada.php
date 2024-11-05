@@ -3,7 +3,7 @@ $nivel_directorio = "../../../";
 require "../../../carga.php";
 
 unset($campos);
-$campos["mov_tipo"] = "SAL";
+$campos["mov_tipo"] = "ING";
 $campos["mov_tnd_id"] = $_SESSION["tienda"]["tnd_id"]??1;
 $campos["mov_fecha"] = date("Y-m-d H:i:s");
 $campos["mov_per_id"] = $_SESSION["usuario"]["per_id"];

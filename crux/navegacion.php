@@ -15,6 +15,16 @@ $_navegacion = array(
             )
         )
     ),
+    "Informes" => array(
+        "icono" => "file-earmark-bar-graph",
+        "carpeta" => "informes",
+        "paginas" => array(
+            "Stock" => array(
+                "url"=>"informe_stock.php",
+                "icono"=>"boxes"
+            )
+        )
+    ),
     /*
     "Ventas" => array(
         "icono" => "cart",
@@ -27,20 +37,6 @@ $_navegacion = array(
             "Clientes" => array(
                 "url"=>"clientes.php",
                 "icono"=>"people"
-            )
-        )
-    ),
-    "Informes" => array(
-        "icono" => "file-earmark-bar-graph",
-        "carpeta" => "informes",
-        "paginas" => array(
-            "Stock" => array(
-                "url"=>"informe_stock.php",
-                "icono"=>"boxes"
-            ),
-            "Ventas" => array(
-                "url"=>"informe_ventas.php",
-                "icono"=>"currency-dollar"
             )
         )
     ),

@@ -49,7 +49,7 @@ if (count($detalles["datos"]) > 0) {
                         <th width="1">Cantidad</th>
                         <th width="1">Precio</th>
                         <th width="1">Total</th>
-                        <th width="120">Clase</th>
+                        <th width="130">Clase</th>
                         <th>Comentario</th>
                     </tr>
                 </thead>
@@ -72,6 +72,7 @@ if (count($detalles["datos"]) > 0) {
                                 switch ($detalle["mdet_clase"]) {
                                     case 'VNT':echo "<i class='bi bi-currency-dollar text-success'>Venta</i>";break;
                                     case 'MRM':echo "<i class='bi bi-recycle text-warning'>&nbsp;Merma</i>";break;
+                                    case 'COM': echo "<i class='bi bi-bag-plus text-success'>&nbsp;Compra</i>";break;
                                 }
                                 ?>
                             </td>
