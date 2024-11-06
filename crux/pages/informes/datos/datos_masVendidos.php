@@ -19,11 +19,13 @@ LEFT JOIN
 WHERE 
     mov.mov_tipo = 'SAL' 
     AND mdet.mdet_clase = 'VNT'
+    AND MONTH(mov.mov_fecha) = MONTH(CURRENT_DATE())
 GROUP BY 
     pro.pro_id, 
     pro.pro_nombre
 ORDER BY 
-    total_vendido DESC";
+    total_vendido DESC
+LIMIT 10";
 
 $result_ventas = mysqli_query($conexion, $query_ventas);
 

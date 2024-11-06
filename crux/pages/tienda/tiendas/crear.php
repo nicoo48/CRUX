@@ -21,6 +21,10 @@ require "../../../carga.php";
                 <input type="text" name="direccion" id="direccion" class="form-control campos" placeholder="Avenida Siempre Viva #742">
                 <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Dirección</label>
             </div>
+            <div class="form-floating form-floating-outline mb-6">
+                <input type="text" name="meta_mensual" id="meta_mensual" class="form-control campos" placeholder="$800.000">
+                <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Meta Mensual</label>
+            </div>
             <?
             boton("Volver", "arrow-left-circle", "outline-primary",'cargar_pagina("tiendas.php","tienda")');
             boton("Crear", "check-lg", "outline-success", "crearTienda()");

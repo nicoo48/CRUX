@@ -28,7 +28,7 @@ if (count($tiendas["datos"]) > 0) {
                         </h5>
                         <p class="card-text">
                             <?
-                            echo "<em>" . $tienda["tnd_codigo"] . "</em> - " . $tienda["tnd_direccion"]
+                            echo "<em>" . $tienda["tnd_codigo"] . "</em> - " . $tienda["tnd_direccion"]. "</br>"." <em> Meta Mensual: $ </em>" . $tienda["tnd_meta_mensual"]
                             ?>
                         </p>
                         <div style="display: flex;justify-content: flex-end;margin-top: auto;">

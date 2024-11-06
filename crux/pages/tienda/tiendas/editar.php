@@ -27,6 +27,10 @@ $tienda = $tienda["datos"][0];
                 <input type="text" name="direccion" id="direccion" class="form-control campos" value="<?=$tienda["tnd_direccion"]?>">
                 <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Dirección</label>
             </div>
+            <div class="form-floating form-floating-outline mb-6">
+                <input type="text" name="meta_mensual" id="meta_mensual" class="form-control campos" value="<?= $tienda["tnd_meta_mensual"]?>">
+                <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Meta Mensual</label>
+            </div>
             <?
             boton("Volver", "arrow-left-circle", "outline-primary",'cargar_pagina("tiendas.php","tienda")');
             boton("Editar", "pencil", "outline-warning", "guardarEditar($tienda[tnd_id])");

@@ -1,41 +1,77 @@
 <script>
-    Highcharts.chart('ventasChart', {
-        chart: {
-            type: 'bar'
+// Configuración del gráfico de productos más vendidos
+Highcharts.chart('ventasChart', {
+    chart: {
+        type: 'bar',
+        style: {
+            fontFamily: 'Inter, sans-serif'
         },
+        backgroundColor: 'transparent'
+    },
+    title: {
+        text: null
+    },
+    xAxis: {
+        categories: <?= json_encode($nombres) ?>,
+        labels: {
+            style: {
+                color: '#8791a3',
+                fontSize: '12px'
+            }
+        },
+        lineColor: '#eee',
+        tickLength: 0
+    },
+    yAxis: {
         title: {
-            text: 'Productos más Vendidos'
-        },
-        xAxis: {
-            categories: <?= json_encode($nombres) ?>,
-            crosshair: true
-        },
-        yAxis: {
-            title: {
-                text: 'Unidades Vendidas'
+            text: 'Cantidad Vendida',
+            style: {
+                color: '#8791a3'
             }
         },
-        plotOptions: {
-            series: {
-                borderRadius: 8,  // Añade bordes redondeados a las barras
-                pointWidth: 40,   // Hace las barras más delgadas (ajusta este valor según necesites)
-                borderWidth: 0    // Elimina el borde de las barras
-            }
+        gridLineColor: '#eee',
+        gridLineDashStyle: 'Dash'
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        backgroundColor: '#fff',
+        borderWidth: 0,
+        borderRadius: 15,
+        shadow: true,
+        style: {
+            fontSize: '12px'
         },
-        series: [{
-            name: 'Unidades',
-            data: <?= json_encode($cantidades) ?>
-        }]
-    });
-
-    // Función para exportar a Excel
-    document.getElementById('exportExcel').addEventListener('click', function() {
-        // Implementar la exportación a Excel
-        alert('Función de exportación a Excel pendiente de implementar');
-    });
-
-    // Función para imprimir
-    document.getElementById('printList').addEventListener('click', function() {
-        window.print();
-    });
+        formatter: function() {
+            return '<b>' + this.x + '</b><br/>' +
+                   'Cantidad: ' + Highcharts.numberFormat(this.y, 0) + ' unidades';
+        }
+    },
+    plotOptions: {
+        bar: {
+            borderRadius: 5,
+            borderWidth: 0,
+            color: {
+                linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                stops: [
+                    [0, '#3b82f6'],
+                    [1, '#60a5fa']
+                ]
+            },
+            states: {
+                hover: {
+                    brightness: 0.1
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Ventas',
+        data: <?= json_encode($cantidades) ?>
+    }],
+    credits: {
+        enabled: false
+    }
+});
 </script>

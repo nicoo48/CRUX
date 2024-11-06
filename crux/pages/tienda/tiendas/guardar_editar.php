@@ -8,6 +8,7 @@ unset($campos);
 $campos["tnd_nombre"] = $_REQUEST["nombre"];
 $campos["tnd_direccion"] = $_REQUEST["direccion"];
 $campos["tnd_codigo"] = $_REQUEST["codigo"];
+$campos["tnd_meta_mensual"] = $_REQUEST["meta_mensual"];
 $filtros["tnd_id"] = $_REQUEST["id"];
 $resultado = update("tiendas", $campos, $filtros,);
 
