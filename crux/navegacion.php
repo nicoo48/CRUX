@@ -22,6 +22,18 @@ $_navegacion = array(
             "Stock" => array(
                 "url"=>"informe_stock.php",
                 "icono"=>"boxes"
+            ),
+            "Más Vendidos" => array(
+                "url"=>"informe_masVendidos.php",
+                "icono"=>"cash-stack"
+            ),
+            "Ventas X Mes" => array(
+                "url"=>"informe_ventasMes.php",
+                "icono"=>"cash-stack"
+            ),
+            "Listado Ventas" => array(
+                "url"=>"listado_ventas.php",
+                "icono"=>"clipboard-data"
             )
         )
     ),
