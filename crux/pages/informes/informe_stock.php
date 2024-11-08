@@ -6,8 +6,6 @@ require "datos/datos_stock.php";
 // JAVASCRIPT
 require "js/stock.php";
 ?>
-<!-- Solo incluir la librería básica de Highcharts -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">

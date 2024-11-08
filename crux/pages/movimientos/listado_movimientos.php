@@ -58,7 +58,6 @@ if (count($detalles["datos"]) > 0) {
                     foreach ($detalles["datos"] as $detalle) {
                         $movimiento = $lista_movimientos[$detalle["mdet_mov_id"]];
                         $producto = $lista_productos[$detalle["mdet_pro_id"]];
-
                     ?>
                         <tr>
                             <td><?= fecha($movimiento["mov_fecha"]); ?></td>

@@ -47,6 +47,11 @@ if (!isset($_SESSION['usuario'])) {
   <script src="template/assets/vendor/js/helpers.js"></script>
   <script src="template/assets/vendor/js/template-customizer.js"></script>
   <script src="template/assets/js/config.js"></script>
+  <!-- Solo incluir la librería básica de Highcharts -->  
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
 
 <body style="user-select:none">

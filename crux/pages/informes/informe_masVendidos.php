@@ -7,7 +7,6 @@ $meta = select("tiendas", "tnd_meta_mensual");
 $m = $meta["datos"][0]["tnd_meta_mensual"];
 
 ?>
-<script src="https://code.highcharts.com/highcharts.js"></script>
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">

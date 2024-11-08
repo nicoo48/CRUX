@@ -8,8 +8,6 @@ require "datos/datos_ventaMes.php";
 // JAVASCRIPT
 require "js/ventaMes.php";
 ?>
-<!-- Solo incluir la librería básica de Highcharts -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
 
 <!-- Dashboard de Ventas Mensuales -->
 <div class="row g-4">
