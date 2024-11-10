@@ -1,3 +1,9 @@
+<?php
+// Después de tu while loop actual, agrega esto:
+$meses_espanol = array_map('traducirMes', $meses);
+
+// Ahora tu script Highcharts:
+?>
 <script>
 Highcharts.chart('ventasMensualesChart', {
     chart: {
@@ -11,7 +17,7 @@ Highcharts.chart('ventasMensualesChart', {
         text: null
     },
     xAxis: {
-        categories: <?= json_encode($meses) ?>,
+        categories: <?= json_encode($meses_espanol) ?>, // Aquí usamos el nuevo array traducido
         labels: {
             style: {
                 color: '#8791a3',
@@ -33,7 +39,7 @@ Highcharts.chart('ventasMensualesChart', {
                 fontSize: '12px'
             },
             formatter: function() {
-                return this.value;
+                return '$' + Highcharts.numberFormat(this.value, 0);
             }
         }
     },
@@ -51,7 +57,7 @@ Highcharts.chart('ventasMensualesChart', {
         },
         formatter: function() {
             return '<b>' + this.x + '</b><br/>' +
-                   'Ventas: ' + Highcharts.numberFormat(this.y, 0);
+                   'Ventas: $' + Highcharts.numberFormat(this.y, 0);
         }
     },
     plotOptions: {

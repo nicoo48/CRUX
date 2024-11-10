@@ -20,7 +20,7 @@ $_navegacion = array(
         "carpeta" => "informes",
         "paginas" => array(
             "Stock" => array(
-                "url"=>"informe_stock.php",
+                "url"=>"buscar_producto_stock.php",
                 "icono"=>"boxes"
             ),
             "Más Vendidos" => array(

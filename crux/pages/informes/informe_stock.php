@@ -6,37 +6,57 @@ require "datos/datos_stock.php";
 // JAVASCRIPT
 require "js/stock.php";
 ?>
-
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="row">
-            <!-- Gráfico Circular -->
-            <div class="col-md-7 col-12 mb-4">
+        <!-- Buscador de Producto -->
+        <div class="row mb-4">
+            <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">Distribución de Stock</h5>
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Consulta el Stock de otro Producto</h5>
                     </div>
                     <div class="card-body">
-                        <div id="chartError" class="alert alert-danger" style="display: none;"></div>
-                        <div id="stockChart" style="min-height: 400px;"></div>
+                        <form class="row g-3 align-items-center">
+                            <div class="col-md-8">
+                                <div class="buscador">
+                                    <?php selector([
+                                        'campo' => 'producto',
+                                        'tabla' => 'productos',
+                                        'id' => 'pro_id',
+                                        'campos' => ['pro_codigo', 'pro_nombre'],
+                                        'todos' => 'Seleccione un producto',
+                                        'order_by' => 'pro_codigo ASC'
+                                    ]); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="button" class="btn btn-primary" onclick="buscarProducto()">
+                                    <i class="bx bx-search me-1"></i>
+                                    Consultar Stock
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- Estadísticas -->
-            <div class="col-md-5 col-12">
-                <!-- Resumen General -->
-                <div class="card mb-4">
+        </div>
+
+        <?php if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto'])): ?>
+        <div class="row">
+            <!-- Información del Producto -->
+            <div class="col-md-5 col-12 mb-4">
+                <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Resumen General</h5>
+                        <h5 class="card-title mb-0">Detalles del Producto</h5>
                     </div>
                     <div class="card-body">
                         <div class="d-flex flex-column gap-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="mb-0">Total Productos</h6>
-                                    <small class="text-muted">Productos únicos en inventario</small>
+                                    <h6 class="mb-0">Stock Actual</h6>
+                                    <small class="text-muted">Balance actual en inventario</small>
                                 </div>
-                                <h4 class="mb-0"><?= number_format($stats['total_productos']) ?></h4>
+                                <h4 class="mb-0"><?= number_format($stats['total_ingresos'] - $stats['total_salidas']) ?></h4>
                             </div>
                             <hr class="my-1">
                             <div class="d-flex justify-content-between align-items-center">
@@ -57,18 +77,8 @@ require "js/stock.php";
                             <hr class="my-1">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="mb-0">Balance de Stock</h6>
-                                    <small class="text-muted">Ingresos - Salidas</small>
-                                </div>
-                                <h4 class="mb-0">
-                                    <?= number_format($stats['total_ingresos'] - $stats['total_salidas']) ?>
-                                </h4>
-                            </div>
-                            <hr class="my-1">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-0">Total Movimientos</h6>
-                                    <small class="text-muted">Operaciones realizadas</small>
+                                    <h6 class="mb-0">Movimientos Totales</h6>
+                                    <small class="text-muted">Cantidad de operaciones</small>
                                 </div>
                                 <h4 class="mb-0">
                                     <?= number_format($stats['total_movimientos_ingreso'] + $stats['total_movimientos_salida']) ?>
@@ -78,16 +88,16 @@ require "js/stock.php";
                     </div>
                 </div>
 
-                <!-- Indicadores de Stock -->
-                <div class="card">
+                <!-- Indicadores -->
+                <div class="card mt-4">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Indicadores de Stock</h5>
+                        <h5 class="card-title mb-0">Métricas del Producto</h5>
                     </div>
                     <div class="card-body">
                         <div class="d-flex flex-column gap-3">
                             <div>
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h6 class="mb-0">Rotación de Inventario</h6>
+                                    <h6 class="mb-0">Rotación</h6>
                                     <span class="badge bg-label-primary">
                                         <?= number_format($stats['total_salidas'] / max(1, $stats['total_productos']), 1) ?>
                                     </span>
@@ -98,6 +108,7 @@ require "js/stock.php";
                                     ?>
                                     <div class="progress-bar bg-primary" style="width: <?= $rotacion_porcentaje ?>%;" role="progressbar"></div>
                                 </div>
+                                <small class="text-muted">Frecuencia de movimiento del producto</small>
                             </div>
                             <div>
                                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -114,11 +125,26 @@ require "js/stock.php";
                                 <div class="progress" style="height: 6px;">
                                     <div class="progress-bar bg-success" style="width: <?= max(0, min(100, $eficiencia)) ?>%;" role="progressbar"></div>
                                 </div>
+                                <small class="text-muted">Relación entre ingresos y salidas</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Gráfico de Movimientos -->
+            <div class="col-md-7 col-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Historial de Movimientos</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="chartError" class="alert alert-danger" style="display: none;"></div>
+                        <div id="stockChart" style="min-height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <?php endif; ?>
     </div>
 </div>

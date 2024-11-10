@@ -32,4 +32,4 @@ mensaje(
     "cart-dash"
 );
 boton("Ir al Resumen","arrow-left-circle","primary",'cargar_pagina("listado_movimientos.php","movimientos")');
-boton("Nueva Venta","cart-dash","success",'cargar_pagina("crear_salida.php","movimientos")');
+boton("Nueva Compra","cart-dash","success",'cargar_pagina("crear_entrada.php","movimientos")');

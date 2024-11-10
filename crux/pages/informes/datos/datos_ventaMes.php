@@ -1,5 +1,27 @@
 <?php
-// Consulta para ventas mensuales
+// Función para traducir meses
+function traducirMes($mes_ingles) {
+    $meses = [
+        'January' => 'Enero',
+        'February' => 'Febrero',
+        'March' => 'Marzo',
+        'April' => 'Abril',
+        'May' => 'Mayo',
+        'June' => 'Junio',
+        'July' => 'Julio',
+        'August' => 'Agosto',
+        'September' => 'Septiembre',
+        'October' => 'Octubre',
+        'November' => 'Noviembre',
+        'December' => 'Diciembre'
+    ];
+    
+    // Separar el mes y el año
+    $partes = explode(' ', $mes_ingles);
+    return $meses[$partes[0]] . ' ' . $partes[1];
+}
+
+// Modificar la consulta SQL para usar el formato de fecha en español
 $query_ventas_mensuales = "SELECT 
     DATE_FORMAT(mov.mov_fecha, '%Y-%m') as mes,
     DATE_FORMAT(mov.mov_fecha, '%M %Y') as mes_nombre,
@@ -12,8 +34,7 @@ FROM
 JOIN 
     movimientos_detalle AS mdet ON mov.mov_id = mdet.mdet_mov_id
 JOIN
-	productos AS pro ON mdet.mdet_pro_id = pro.pro_id
-    
+    productos AS pro ON mdet.mdet_pro_id = pro.pro_id
 WHERE 
     mov.mov_tipo = 'SAL' 
     AND mdet.mdet_clase = 'VNT'
@@ -46,4 +67,7 @@ while ($row = mysqli_fetch_assoc($result_mensual)) {
 $promedio_ventas = $total_ventas / count($ventas);
 $tendencia = end($ventas) > $ventas[count($ventas)-2] ? 'up' : 'down';
 
+// Meta Mensual
+$meta = select("tiendas", "tnd_meta_mensual");
+$m = $meta["datos"][0]["tnd_meta_mensual"];
 ?>

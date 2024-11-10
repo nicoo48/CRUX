@@ -10,236 +10,193 @@ require "js/ventaMes.php";
 ?>
 
 <!-- Dashboard de Ventas Mensuales -->
-<div class="row g-4">
-    <!-- Tarjetas de Resumen Superior -->
-    <div class="col-12">
-        <div class="row g-4">
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Tarjetas de Resumen Superior -->
+        <div class="row g-4 mb-4">
+            <!-- Total Ventas -->
             <div class="col-xl-3 col-md-6">
-                <div class="card hover-shadow-lg">
+                <div class="card hover-shadow-lg h-100">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
                             <div class="avatar avatar-md bg-primary-subtle rounded-3">
                                 <i class="ri-shopping-bag-line text-primary fs-4"></i>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-icon btn-sm btn-ghost rounded-circle" data-bs-toggle="dropdown">
+                                <button class="btn btn-icon btn-sm btn-ghost rounded-circle">
                                     <i class="ri-more-2-fill"></i>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Ver Detalles</a></li>
-                                    <li><a class="dropdown-item" href="#">Generar Reporte</a></li>
-                                </ul>
                             </div>
                         </div>
-                        <h3 class="mb-1 display-6">$<?= number_format($total_ventas, 2) ?></h3>
-                        <p class="text-muted mb-2">Total Ventas</p>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-<?= $tendencia === 'up' ? 'success' : 'danger' ?>-subtle text-<?= $tendencia === 'up' ? 'success' : 'danger' ?> rounded-pill">
-                                <i class="ri-arrow-<?= $tendencia ?>-s-line"></i> <?= $tendencia === 'up' ? '+' : '-' ?>2.5%
-                            </span>
-                            <span class="text-muted ms-2 small">vs mes anterior</span>
+                        <div>
+                            <h3 class="mb-2 display-6">$<?= number_format($total_ventas, 2) ?></h3>
+                            <p class="text-muted mb-0">Total Ventas</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Venta más Alta -->
             <div class="col-xl-3 col-md-6">
-                <div class="card hover-shadow-lg">
+                <div class="card hover-shadow-lg h-100">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
                             <div class="avatar avatar-md bg-success-subtle rounded-3">
                                 <i class="ri-line-chart-line text-success fs-4"></i>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn btn-icon btn-sm btn-ghost rounded-circle" data-bs-toggle="dropdown">
-                                    <i class="ri-more-2-fill"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Ver Detalles</a></li>
-                                    <li><a class="dropdown-item" href="#">Generar Reporte</a></li>
-                                </ul>
-                            </div>
                         </div>
-                        <h3 class="mb-1 display-6">$<?= number_format($max_ventas, 2) ?></h3>
-                        <p class="text-muted mb-2">Venta más Alta</p>
-                        <div class="text-muted small">Mejor desempeño mensual</div>
+                        <div>
+                            <h3 class="mb-2 display-6">$<?= number_format($max_ventas, 2) ?></h3>
+                            <p class="text-muted mb-0">Venta más Alta</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Promedio Mensual -->
             <div class="col-xl-3 col-md-6">
-                <div class="card hover-shadow-lg">
+                <div class="card hover-shadow-lg h-100">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
                             <div class="avatar avatar-md bg-warning-subtle rounded-3">
                                 <i class="ri-funds-line text-warning fs-4"></i>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn btn-icon btn-sm btn-ghost rounded-circle" data-bs-toggle="dropdown">
-                                    <i class="ri-more-2-fill"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Ver Detalles</a></li>
-                                    <li><a class="dropdown-item" href="#">Generar Reporte</a></li>
-                                </ul>
-                            </div>
                         </div>
-                        <h3 class="mb-1 display-6">$<?= number_format($promedio_ventas, 2) ?></h3>
-                        <p class="text-muted mb-2">Promedio Mensual</p>
-                        <div class="text-muted small">Basado en los últimos 12 meses</div>
+                        <div>
+                            <h3 class="mb-2 display-6">$<?= number_format($promedio_ventas, 2) ?></h3>
+                            <p class="text-muted mb-0">Promedio Mensual</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Meta Mensual -->
             <div class="col-xl-3 col-md-6">
-                <div class="card hover-shadow-lg">
+                <div class="card hover-shadow-lg h-100">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <div class="avatar avatar-md bg-info-subtle rounded-3">
-                                <i class="ri-target-line text-info fs-4"></i>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="avatar avatar-md bg-warning-subtle rounded-3">
+                                <i class="bi bi-currency-dollar text-primary fs-5"></i>
                             </div>
+                        </div>
+                        <?php
+                        $porcentaje = ($total_ventas / $m) * 100;
+                        if ($porcentaje >= 100) {
+                            $colorClase = 'bg-success';
+                            $badgeText = 'Meta Alcanzada';
+                        } elseif ($porcentaje <= 40) {
+                            $colorClase = 'bg-danger';
+                            $badgeText = 'Meta Baja';
+                        } else {
+                            $colorClase = 'bg-warning';
+                            $badgeText = 'Meta en Progreso';
+                        }
+                        ?>
+                        <div class="mb-3">
+                            <h3 class="mb-2 display-6" style="font-size: 1.5rem;">
+                                $<?= number_format($total_ventas, 2) ?>
+                                <span class="text-muted" style="font-size: 1rem;">/ $<?= number_format($m, 2) ?></span>
+                            </h3>
+                            <p class="text-muted mb-0">Meta Mensual</p>
+                        </div>
+                        <div class="progress mb-2" style="height: 6px;">
+                            <div class="progress-bar <?= $colorClase ?>" style="width: <?= min($porcentaje, 100) ?>%;"
+                                role="progressbar">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><?= number_format($porcentaje, 1) ?>% completado</small>
+                            <span class="badge <?= $colorClase ?> rounded-pill"><?= $badgeText ?></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Gráfico Principal -->
+            <div class="col-xl-8 mb-4">
+                <div class="card hover-shadow-lg">
+                    <div class="card-header border-0 bg-transparent pt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-1">Análisis de Ventas</h5>
+                                <p class="text-muted mb-0">Comportamiento mensual de ventas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="ventasMensualesChart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel Lateral -->
+            <div class="col-xl-4">
+                <div class="card hover-shadow-lg">
+                    <div class="card-header border-0 bg-transparent pt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Ventas por Mes</h5>
                             <div class="dropdown">
-                                <button class="btn btn-icon btn-sm btn-ghost rounded-circle" data-bs-toggle="dropdown">
+                                <button class="btn btn-icon btn-sm btn-ghost rounded-circle">
                                     <i class="ri-more-2-fill"></i>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Ver Detalles</a></li>
-                                    <li><a class="dropdown-item" href="#">Generar Reporte</a></li>
-                                </ul>
                             </div>
                         </div>
-                        <h3 class="mb-1 display-6">78%</h3>
-                        <p class="text-muted mb-2">Meta Mensual</p>
-                        <div class="progress" style="height: 4px;">
-                            <div class="progress-bar bg-info" style="width: 78%;" role="progressbar"></div>
-                        </div>
+                        <p class="text-muted mb-0">Últimos 12 meses</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <?php
+                            $result_mensual = mysqli_query($conexion, $query_ventas_mensuales);
+                            while ($row = mysqli_fetch_assoc($result_mensual)) {
+                                // Traducir el nombre del mes
+                                $mes_espanol = traducirMes($row['mes_nombre']);
 
-    <!-- Gráfico Principal -->
-    <div class="col-xl-8">
-        <div class="card hover-shadow-lg">
-            <div class="card-header border-0 bg-transparent pt-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 class="mb-1">Análisis de Ventas</h5>
-                        <p class="text-muted mb-0">Comportamiento mensual de ventas</p>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-soft-primary btn-sm rounded-pill px-3">
-                            <i class="ri-download-2-line me-1"></i> Exportar
-                        </button>
-                        <select class="form-select form-select-sm w-auto">
-                            <option>Últimos 12 meses</option>
-                            <option>Últimos 6 meses</option>
-                            <option>Este año</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div id="ventasMensualesChart" style="height: 400px;"></div>
-            </div>
-        </div>
-    </div>
+                                // Calcular el incremento respecto al mes anterior
+                                $venta_actual = (float) $row['total_ventas'];
+                                $crecimiento = isset($venta_anterior) ? (($venta_actual - $venta_anterior) / $venta_anterior) * 100 : 0;
+                                $venta_anterior = $venta_actual;
 
-    <!-- Panel Lateral -->
-    <div class="col-xl-4">
-        <!-- Métricas Clave -->
-        <div class="card hover-shadow-lg mb-4">
-            <div class="card-header border-0 bg-transparent pt-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Métricas Clave</h5>
-                    <div class="dropdown">
-                        <button class="btn btn-icon btn-sm btn-ghost rounded-circle" data-bs-toggle="dropdown">
-                            <i class="ri-more-2-fill"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Ver Detalles</a></li>
-                            <li><a class="dropdown-item" href="#">Exportar Datos</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="list-group list-group-flush">
-                    <div class="list-group-item border-0 px-0">
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-sm me-3 bg-primary-subtle rounded">
-                                    <i class="ri-shopping-bag-line text-primary"></i>
+                                // Determinar el color del indicador
+                                $indicator_class = $crecimiento >= 0 ? 'text-success' : 'text-danger';
+                                $indicator_icon = $crecimiento >= 0 ? 'ri-arrow-up-s-fill' : 'ri-arrow-down-s-fill';
+                                ?>
+                                <div class="list-group-item border-0 py-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1"><?= $mes_espanol ?></h6>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="text-muted small">
+                                                    <?= number_format($row['total_transacciones']) ?> ventas
+                                                </span>
+                                                •
+                                                <span class="text-muted small">
+                                                    <?= number_format($row['total_unidades']) ?> unidades
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            <h6 class="mb-1">$<?= number_format($row['total_ventas'], 2) ?></h6>
+                                            <?php if ($crecimiento != 0): ?>
+                                                <small class="<?= $indicator_class ?>">
+                                                    <i class="<?= $indicator_icon ?>"></i>
+                                                    <?= abs(number_format($crecimiento, 1)) ?>%
+                                                </small>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    // Calcular el porcentaje respecto al mes con mayores ventas
+                                    $porcentaje_del_maximo = ($row['total_ventas'] / $max_ventas) * 100;
+                                    ?>
+                                    <div class="progress mt-2" style="height: 4px;">
+                                        <div class="progress-bar bg-primary" style="width: <?= $porcentaje_del_maximo ?>%;"
+                                            role="progressbar">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h6 class="mb-0">Total Transacciones</h6>
-                                    <small class="text-muted">Este mes</small>
-                                </div>
-                            </div>
-                            <h5 class="mb-0">1,245</h5>
-                        </div>
-                        <div class="progress" style="height: 4px;">
-                            <div class="progress-bar bg-primary" style="width: 85%;" role="progressbar"></div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item border-0 px-0">
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-sm me-3 bg-success-subtle rounded">
-                                    <i class="ri-user-line text-success"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">Clientes Nuevos</h6>
-                                    <small class="text-muted">Este mes</small>
-                                </div>
-                            </div>
-                            <h5 class="mb-0">845</h5>
-                        </div>
-                        <div class="progress" style="height: 4px;">
-                            <div class="progress-bar bg-success" style="width: 65%;" role="progressbar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Indicadores de Rendimiento -->
-        <div class="card hover-shadow-lg">
-            <div class="card-header border-0 bg-transparent pt-4">
-                <h5 class="mb-0">Rendimiento</h5>
-            </div>
-            <div class="card-body">
-                <div class="d-flex align-items-center mb-4">
-                    <div class="flex-shrink-0">
-                        <div class="avatar avatar-lg bg-success-subtle rounded">
-                            <i class="ri-line-chart-line text-success fs-3"></i>
-                        </div>
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                        <h6 class="mb-1">Crecimiento Anual</h6>
-                        <div class="d-flex align-items-center">
-                            <h4 class="mb-0 me-2">62%</h4>
-                            <small class="text-success">
-                                <i class="ri-arrow-up-s-fill"></i> 12%
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                        <div class="avatar avatar-lg bg-warning-subtle rounded">
-                            <i class="ri-funds-line text-warning fs-3"></i>
-                        </div>
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                        <h6 class="mb-1">ROI</h6>
-                        <div class="d-flex align-items-center">
-                            <h4 class="mb-0 me-2">89%</h4>
-                            <small class="text-success">
-                                <i class="ri-arrow-up-s-fill"></i> 8%
-                            </small>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -247,87 +204,3 @@ require "js/ventaMes.php";
         </div>
     </div>
 </div>
-
-<style>
-/* Estilos mejorados */
-.hover-shadow-lg {
-    transition: all 0.3s ease;
-}
-
-.hover-shadow-lg:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
-}
-
-.card {
-    border: none;
-    border-radius: 1rem;
-    background: #fff;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
-}
-
-.btn-soft-primary {
-    background-color: rgba(var(--bs-primary-rgb), 0.1);
-    color: var(--bs-primary);
-    border: none;
-}
-
-.btn-soft-primary:hover {
-    background-color: var(--bs-primary);
-    color: #fff;
-}
-
-.btn-ghost {
-    color: #6c757d;
-    background: transparent;
-    border: none;
-}
-
-.btn-ghost:hover {
-    background-color: rgba(108, 117, 125, 0.1);
-}
-
-.avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-}
-
-.avatar-md {
-    width: 3.5rem;
-    height: 3.5rem;
-}
-
-.avatar-lg {
-    width: 4rem;
-    height: 4rem;
-}
-
-.progress {
-    background-color: rgba(var(--bs-primary-rgb), 0.1);
-    border-radius: 1rem;
-}
-
-.form-select {
-    border-radius: 0.5rem;
-}
-
-.list-group-item {
-    padding: 1rem 0;
-}
-
-/* Estilos para el tema oscuro (opcional) */
-[data-bs-theme="dark"] .card {
-    background: #2b2c40;
-}
-
-[data-bs-theme="dark"] .btn-soft-primary {
-    background-color: rgba(var(--bs-primary-rgb), 0.2);
-}
-
-[data-bs-theme="dark"] .text-muted {
-    color: #7983a9 !important;
-}
-</style>

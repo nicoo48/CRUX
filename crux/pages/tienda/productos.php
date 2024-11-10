@@ -61,6 +61,20 @@ if($registros > 0){
     </div>  
     <?
 }else{
+    ?>
+    <div class="card">
+        <div class="card-header">
+            <?
+            boton(
+                "Crear Producto",
+                "plus-circle",
+                "info",
+                "crearProducto()"
+            );
+            ?>
+        </div>
+    </div>
+    <?
     mensaje(
         "No hay productos",
         "No se encontraron productos en la base de datos",
