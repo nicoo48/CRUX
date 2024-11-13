@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 
 -- Volcando datos para la tabla crux.personas: ~0 rows (aproximadamente)
 INSERT INTO `personas` (`per_id`, `per_clave`, `per_usuario`, `per_apellidos`, `per_imagen`, `per_telefono`, `per_nombre`, `per_correo`) VALUES
-	(1, '123', 'nico', NULL, NULL, NULL, NULL, NULL);
+	(1, '123', 'admin', NULL, NULL, NULL, NULL, NULL);
 
 -- Volcando estructura para tabla crux.productos
 CREATE TABLE IF NOT EXISTS `productos` (

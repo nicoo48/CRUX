@@ -2,13 +2,33 @@
 $nivel_directorio = "../../";
 require "../../carga.php";
 
+//declaramos las variables
+$lista_compras = [];
+$lista_ventas = [];
+$lista_productos = [];
+
 //obtenemos los movimientos
 unset($filtros);
 $filtros["mov_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
 $filtros["mov_per_id"] = $_SESSION["usuario"]["per_id"];
-$mov = select("movimientos", "*", $filtros); 
+$mov = select("movimientos", "*", $filtros);
 foreach ($mov["datos"] as $movi) {
-    $lista_movimientos[$movi["mov_id"]] = $movi;
+    if ($movi["mov_tipo"] == "ING") {
+        $lista_compras[$movi["mov_id"]] = $movi;
+    } else {
+        $lista_ventas[$movi["mov_id"]] = $movi;
+    }
+}
+//obtenemos los detalles y los agrupamos por movimiento
+unset($filtros);
+$filtros["mdet_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
+$detalles = select("movimientos_detalle", "*", $filtros);
+foreach ($detalles["datos"] as $det) {
+    if (isset($lista_compras[$det["mdet_mov_id"]])) {
+        $lista_compras[$det["mdet_mov_id"]]["detalles"][] = $det;
+    } else {
+        $lista_ventas[$det["mdet_mov_id"]]["detalles"][] = $det;
+    };
 }
 
 //obtenemos los productos
@@ -20,105 +40,39 @@ foreach ($pro["datos"] as $produc) {
     $lista_productos[$produc["pro_id"]] = $produc;
 }
 
-//obtenemos los detalles y los agrupamos por movimiento
-unset($filtros);
-$filtros["mdet_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
-$detalles = select("movimientos_detalle", "*", $filtros);
-
-// Agrupar detalles por movimiento
-$detalles_por_movimiento = [];
-foreach ($detalles["datos"] as $detalle) {
-    $detalles_por_movimiento[$detalle["mdet_mov_id"]][] = $detalle;
-}
-
-if (count($detalles["datos"]) > 0) {
 ?>
-<div class="card">
-    <h5 class="card-header" style="display:flex;justify-content:space-between">
-        <span>
-            <i class="bi bi-list-star"></i>
-            Listado de Transacciones
-        </span>
-        <span>
-            <i class="bi bi-calendar"></i>
-            Fecha: <?= fecha(date("Y-m-d H:i:s")) ?>
-        </span>
-        <span>
-            <i class="bi bi-shop"></i>
-            Tienda: <?= $_SESSION["tienda"]["tnd_nombre"] ?>
-        </span>
-    </h5>
-    <div class="card-body">
-        <div class="table-responsive text-nowrap">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th width="1">Fecha</th>
-                        <th>Producto</th>
-                        <th width="1">Cantidad</th>
-                        <th width="1">Precio</th>
-                        <th width="1">Total</th>
-                        <th width="130">Clase</th>
-                        <th>Comentario</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    <?php
-                    $movimiento_anterior = null;
-                    foreach ($detalles["datos"] as $detalle) {
-                        $movimiento = $lista_movimientos[$detalle["mdet_mov_id"]];
-                        $producto = $lista_productos[$detalle["mdet_pro_id"]];
-                        $total_detalles = count($detalles_por_movimiento[$detalle["mdet_mov_id"]]);
-                        
-                        // Si es un nuevo movimiento o el primer registro
-                        $es_nuevo_movimiento = $movimiento_anterior !== $detalle["mdet_mov_id"];
-                        
-                        if ($es_nuevo_movimiento) {
-                            $movimiento_anterior = $detalle["mdet_mov_id"];
-                        }
-                    ?>
-                        <tr class="<?= $es_nuevo_movimiento ? '' : 'table-light' ?>">
-                            <?php if ($es_nuevo_movimiento): ?>
-                                <td rowspan="<?= $total_detalles ?>"><?= fecha($movimiento["mov_fecha"]); ?></td>
-                            <?php endif; ?>
-                            <td>
-                                <?= $producto["pro_nombre"] ?>
-                                <?php if ($es_nuevo_movimiento && $total_detalles > 1): ?>
-                                    <span class="badge bg-info">+<?= $total_detalles - 1 ?> productos más</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?= cantidad($detalle["mdet_cantidad"]) ?></td>
-                            <td><?= cantidad($detalle["mdet_valor_unitario"]) ?></td>
-                            <td><?= cantidad($detalle["mdet_total"]) ?></td>
-                            <?php if ($es_nuevo_movimiento): ?>
-                                <td rowspan="<?= $total_detalles ?>">
-                                    <?php
-                                    switch ($detalle["mdet_clase"]) {
-                                        case 'VNT':
-                                            echo "<i class='bi bi-currency-dollar text-success'>Venta</i>";
-                                            break;
-                                        case 'MRM':
-                                            echo "<i class='bi bi-recycle text-warning'>&nbsp;Merma</i>";
-                                            break;
-                                        case 'COM':
-                                            echo "<i class='bi bi-bag-plus text-success'>&nbsp;Compra</i>";
-                                            break;
-                                    }
-                                    ?>
-                                </td>
-                                <td rowspan="<?= $total_detalles ?>"><?= $detalle["mdet_glosa"] ?></td>
-                            <?php endif; ?>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+<div class="nav-align-top mb-6">
+    <ul class="nav nav-pills mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button type="button" class="nav-link waves-effect waves-light active" role="tab" data-bs-toggle="tab" data-bs-target="#tab_1" aria-controls="navs-pills-top-home" aria-selected="false" tabindex="-1">
+                Compras
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button type="button" class="nav-link waves-effect waves-light " role="tab" data-bs-toggle="tab" data-bs-target="#tab_2" aria-controls="navs-pills-top-profile" aria-selected="true">
+                Ventas
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade active show" id="tab_1" role="tabpanel">
+            <div class="card-header d-flex align-items-center justify-content-between" style="flex-direction:column">
+                <h5 class="card-title m-0 me-2 text-success">
+                    <i class="bi bi-box-arrow-in-left" style="font-size:24px"></i>
+                    Ultimas Compras
+                </h5>
+            </div>
+            <? require "movimientos/tabla_compras.php"; ?>
+        </div>
+        <div class="tab-pane fade" id="tab_2" role="tabpanel">
+            <div class="card-header d-flex align-items-center justify-content-between" style="flex-direction:column">
+                <h5 class="card-title m-0 me-2 text-primary">
+                    <i class="bi bi-box-arrow-left" style="font-size:24px"></i>
+                    Ultimas Ventas
+                </h5>
+            </div>
+            <? require "movimientos/tabla_ventas.php"; ?>
         </div>
     </div>
 </div>
-<?php
-} else {
-    mensaje("Sin Movimientos", "No se han encontrado movimientos en esta tienda", "primary", "info-circle", 1);
-}
-?>
+<?

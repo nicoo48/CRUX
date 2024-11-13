@@ -58,11 +58,10 @@ $persona = $_SESSION['usuario'];
         </li>
     </ul>
 </li>
+<div id="logout"></div>
 <script>
     function salir() {
-        AJAXPOST(urlBase + "logout.php", "", null);
-        setTimeout(function() {
-            window.location.href = "login.php";
-        }, 1000);
+        var div = document.getElementById("logout");
+        AJAXPOST(urlBase + "logout.php", "",div);
     }
 </script>
