@@ -15,15 +15,6 @@ $m = $meta["datos"][0]["tnd_meta_mensual"];
             <!-- Meta Mensual -->
             <div class="col-md-6 col-xl-8 mb-4">
                 <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="card-title mb-0" style="font-size:24px">Bienvenido
-                                <b><?= "@", $_SESSION["usuario"]["per_usuario"] ?></b>
-                            </h5>
-                            <p class="text-muted mb-0">Resumen de Ventas</p>
-                        </div>
-                        <small class="text-muted"><?= date("d/m/Y") ?></small>
-                    </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>

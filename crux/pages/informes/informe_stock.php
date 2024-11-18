@@ -5,6 +5,38 @@ require "../../carga.php";
 require "datos/datos_stock.php";
 // JAVASCRIPT
 require "js/stock.php";
+
+// Inicializar variables
+$mostrar_contenido = false;
+$mensaje = "";
+
+// Validar si hay un producto seleccionado
+if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto'])) {
+    // Calcular el stock actual
+    $stock_actual = $stats['total_ingresos'] - $stats['total_salidas'];
+    
+    // Si hay movimientos (ingresos o salidas diferentes de 0)
+    if ($stats['total_ingresos'] !== 0 || $stats['total_salidas'] !== 0) {
+        if ($stock_actual === 0) {
+            $mensaje = "El producto seleccionado no tiene stock disponible.";
+            $mostrar_contenido = false;
+        } else {
+            $mostrar_contenido = true;
+        }
+    } else {
+        $mensaje = "El producto seleccionado no tiene movimientos registrados.";
+        $mostrar_contenido = false;
+    }
+}
+
+// Si hay producto seleccionado pero no debe mostrar el contenido, mostrar mensaje
+if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto']) && !$mostrar_contenido) {
+    mensaje(
+        "No hay datos para mostrar, Consulte Otro Producto",
+        $mensaje,
+        "info"
+    );
+}
 ?>
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -41,7 +73,7 @@ require "js/stock.php";
             </div>
         </div>
 
-        <?php if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto'])): ?>
+        <?php if ($mostrar_contenido): ?>
         <div class="row">
             <!-- Información del Producto -->
             <div class="col-md-5 col-12 mb-4">
