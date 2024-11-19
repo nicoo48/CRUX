@@ -42,7 +42,7 @@ switch ($modo) {
             // Guardar el resto de los datos del producto
             $campos["tnd_id"] = $_REQUEST["tienda"];
             $campos["nombre"] = $_REQUEST["nombre"];
-            $campos["precio"] = $_REQUEST["costo"];
+            $campos["precio"] = $_REQUEST["precio"];
             $campos["descripcion"] = $_REQUEST["Descripcion"];
             $campos["umed"] = $_REQUEST["umed"];
             $campos["ancho"] = $_REQUEST["ancho"];
@@ -107,7 +107,7 @@ switch ($modo) {
             // Guardar el resto de los datos del producto
             $campos["tnd_id"] = $_REQUEST["tienda"];
             $campos["nombre"] = $_REQUEST["nombre"];
-            $campos["precio"] = $_REQUEST["costo"];
+            $campos["precio"] = $_REQUEST["precio"];
             $campos["descripcion"] = $_REQUEST["Descripcion"];
             $campos["umed"] = $_REQUEST["umed"];
             $campos["ancho"] = $_REQUEST["ancho"];

@@ -32,7 +32,7 @@ if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto'])) {
 // Si hay producto seleccionado pero no debe mostrar el contenido, mostrar mensaje
 if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto']) && !$mostrar_contenido) {
     mensaje(
-        "No hay datos para mostrar, Consulte Otro Producto",
+        "Sin Información Disponible, Consulte Otro Producto",
         $mensaje,
         "info"
     );

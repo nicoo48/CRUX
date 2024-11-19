@@ -12,6 +12,10 @@ $_navegacion = array(
             "Mis Productos" => array(
                 "url" => "productos.php",
                 "icono" => "bag"
+            ),
+            "Mis Unidades" => array(
+                "url" => "unidades.php",
+                "icono" => "bag"
             )
         )
     ),

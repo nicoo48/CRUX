@@ -11,10 +11,6 @@ require "datos/datos_masVendidos.php";
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Listado Completo de Productos Vendidos</h5>
-            <div>
-                <button class="btn btn-sm btn-outline-secondary me-2" id="exportExcel">Exportar Excel</button>
-                <button class="btn btn-sm btn-primary" id="printList">Imprimir</button>
-            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">

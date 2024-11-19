@@ -39,7 +39,7 @@ require "js_pagina/js_pagina.php";
                                     Bienvenido, <?= htmlspecialchars($_SESSION["usuario"]["per_usuario"]) ?>
                                 </h2>
                                 <p class="mb-0 text-white text-opacity-75">
-                                    Dashboard de control - <?= date("d/m/Y") ?>
+                                    Dashboard de control
                                 </p>
                             </div>
                         </div>
@@ -72,8 +72,6 @@ require "js_pagina/js_pagina.php";
                     </div>
                 </div>
             </div>
-
-            <!-- Decorative Elements -->
             <div class="position-absolute" style="
                 bottom: -20px;
                 right: -20px;
@@ -93,7 +91,6 @@ require "js_pagina/js_pagina.php";
                 z-index: 1;
             "></div>
         </div>
-        <!-- First Row - Progress and Stats -->
         <div class="row g-4 mb-4">
             <!-- Progress Card -->
             <div class="col-xl-8">
@@ -104,21 +101,10 @@ require "js_pagina/js_pagina.php";
                                 <h4 class="card-title mb-1">Progreso de Meta Mensual</h4>
                                 <p class="text-muted small">Actualizado en tiempo real</p>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn btn-ghost-primary btn-icon rounded-circle" data-bs-toggle="dropdown">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#"><i
-                                                class="bi bi-download me-2"></i>Exportar</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-graph-up me-2"></i>Ver
-                                            Detalles</a></li>
-                                </ul>
-                            </div>
                         </div>
 
                         <div class="row align-items-center">
-                            <!-- Progress Ring -->
+                            <!-- Aro de progreso -->
                             <div class="col-md-5">
                                 <div class="position-relative" style="width: 220px; height: 220px; margin: 0 auto;">
                                     <div class="progress-ring">
@@ -214,7 +200,7 @@ require "js_pagina/js_pagina.php";
                                                 <i class="bi bi-currency-dollar text-success fs-4"></i>
                                             </div>
                                             <div>
-                                                <p class="text-muted small mb-0">Ingresos del Mes</p>
+                                                <p class="text-muted small mb-0">Compras del Mes</p>
                                                 <h3 class="mb-0">$<?= number_format($stats['total_ingresos'], 0) ?></h3>
                                             </div>
                                         </div>
@@ -274,7 +260,7 @@ require "js_pagina/js_pagina.php";
                                         <i class="bi bi-receipt text-warning fs-4"></i>
                                     </div>
                                     <div>
-                                        <p class="text-muted small mb-0">Total Transacciones</p>
+                                        <p class="text-muted small mb-0">Total Unidades Utilizadas en Movimientos</p>
                                         <h3 class="mb-0"><?= number_format($total_unidades) ?></h3>
                                     </div>
                                 </div>
@@ -291,7 +277,7 @@ require "js_pagina/js_pagina.php";
                                         <i class="bi bi-cash-stack text-success fs-4"></i>
                                     </div>
                                     <div>
-                                        <p class="text-muted small mb-0">Ticket Promedio</p>
+                                        <p class="text-muted small mb-0">Saldo Promedio de Venta</p>
                                         <h3 class="mb-0">
                                             $<?= number_format($total_ventas / max($total_unidades, 1), 0) ?></h3>
                                     </div>
@@ -308,8 +294,8 @@ require "js_pagina/js_pagina.php";
                     <div class="card-header border-0 bg-transparent pt-4">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h5 class="mb-1">Análisis de Ventas</h5>
-                                <p class="text-muted mb-0">Comportamiento mensual de ventas</p>
+                                <h5 class="mb-1">Análisis Gráfico de Ventas</h5>
+                                <p class="text-muted mb-0">Comportamiento mensual de ventas de los últimos 12 meses</p>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ $producto = select("productos", "*", $filtros);
 $producto = $producto["datos"][0];
 ?>
 <input type="hidden" value="<?=$producto["pro_id"]?>" class="campos" name="id_producto">
-<div id="crear">
+<div id="editar">
     <div class="row">
         <!-- Columna izquierda - Información del Producto y Precio -->
         <div class="col-12 col-lg-8">
@@ -42,18 +42,26 @@ $producto = $producto["datos"][0];
                         <label for="descripcion">Descripción del Producto</label>
                     </div>
 
-                    <div class="form-floating form-floating-outline mb-5">
-                        <?
-                        selector([
-                            'campo' => 'unidad',
-                            'tabla' => 'unidad_medida',
-                            'id' => 'uni_id',
-                            'campos' => ['uni_codigo', 'uni_nombre'],
-                            'todos' => 'Seleccione una unidad de medida',
-                            'order_by' => 'uni_id ASC',
-                            "selected" => $producto["pro_unidad"]
-                        ]);
-                        ?>
+                    <div class="row mb-5 gx-5">
+                        <div class="col">
+                            <?
+                            selector([
+                                'campo' => 'unidad',
+                                'tabla' => 'unidad_medida',
+                                'id' => 'uni_id',
+                                'campos' => ['uni_codigo', 'uni_nombre'],
+                                'todos' => 'Seleccione una unidad de medida',
+                                'order_by' => 'uni_id ASC',
+                                'selected' => $producto["pro_unidad"]
+                            ]);
+                            ?>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating form-floating-outline">
+                                <input type="number" class="form-control campos" id="ecommerce-product-price" value="<?= $producto["pro_precio"] ?>" name="precio">
+                                <label for="ecommerce-product-price">Precio</label>
+                            </div>
+                        </div>
                     </div>
                     <!-- Instock switch (moved here) -->
                     <div class="d-flex justify-content-between align-items-center border-top pt-4">
@@ -94,74 +102,8 @@ $producto = $producto["datos"][0];
         if (!validar_input("unidad", "Debe seleccionar una unidad de medida")) {
             return;
         }
-
-        // Crear un objeto FormData
-        var formData = new FormData();
-
-        // Agregar los campos y archivos al FormData
-        $(".campos").each(function() {
-            var input = $(this);
-            if (input.attr('type') === 'file') {
-                formData.append(input.attr('name'), input[0].files[0]);
-            } else {
-                formData.append(input.attr('name'), input.val());
-            }
-        });
-
-        // Realizar la petición AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", urlBase + "pages/tienda/productos/ajax/editar.php", true);
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Insertar el contenido en el div
-                var div = document.getElementById("crear");
-                div.innerHTML = xhr.responseText;
-
-                // Extraer y ejecutar el script devuelto
-                var scripts = div.getElementsByTagName('script');
-                for (var i = 0; i < scripts.length; i++) {
-                    eval(scripts[i].text);
-                }
-
-                // Restaurar el cursor
-                document.body.style.cursor = "auto";
-            } else {
-                console.log("Error en la solicitud: " + xhr.status);
-            }
-        };
-
-        // Mostrar la animación de carga
-        document.body.style.cursor = "wait";
-
-        // Enviar el formulario
-        xhr.send(formData);
-    }
-
-    // Event Listeners para el documento listo
-    $(document).ready(function() {
-        // Aquí puedes agregar cualquier inicialización adicional que necesites
-    });
-
-    // Preview de imagen
-    document.getElementById('imagen').addEventListener('change', function(event) {
-        var file = event.target.files[0];
-        var imagePreview = document.getElementById('preview');
-
-        // Lista de tipos MIME permitidos
-        var allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-
-        if (file && allowedTypes.includes(file.type)) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
-            }
-
-            reader.readAsDataURL(file);
-        } else {
-            alerta("El archivo no está en un formato permitido.", "error");
-            $("#imagen").val("");
-        }
-    });
+        var campos = $(".campos").serialize();
+        var div = document.getElementById("editar");
+        AJAXPOST(urlBase + "pages/tienda/productos/ajax/editar.php", campos, div);
+    };
 </script>

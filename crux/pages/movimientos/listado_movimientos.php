@@ -11,7 +11,7 @@ $lista_productos = [];
 unset($filtros);
 $filtros["mov_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
 $filtros["mov_per_id"] = $_SESSION["usuario"]["per_id"];
-$mov = select("movimientos", "*", $filtros);
+$mov = select("movimientos", "*", $filtros, "mov_id DESC");
 foreach ($mov["datos"] as $movi) {
     if ($movi["mov_tipo"] == "ING") {
         $lista_compras[$movi["mov_id"]] = $movi;
@@ -22,7 +22,7 @@ foreach ($mov["datos"] as $movi) {
 //obtenemos los detalles y los agrupamos por movimiento
 unset($filtros);
 $filtros["mdet_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
-$detalles = select("movimientos_detalle", "*", $filtros);
+$detalles = select("movimientos_detalle", "*", $filtros,"mdet_mov_id DESC");
 foreach ($detalles["datos"] as $det) {
     if (isset($lista_compras[$det["mdet_mov_id"]])) {
         $lista_compras[$det["mdet_mov_id"]]["detalles"][] = $det;

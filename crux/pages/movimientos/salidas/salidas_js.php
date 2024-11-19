@@ -1,11 +1,47 @@
 <script>
+// Verificar si productoPreciosMap ya existe antes de declararlo
+if (typeof productoPreciosMap === 'undefined') {
+    var productoPreciosMap = <?php echo json_encode($precios); ?>;
+}
+
+// Definir la función solo si no existe
+if (typeof cargarPrecioProducto === 'undefined') {
+    function cargarPrecioProducto() {
+        const productoSelect = document.getElementById('producto');
+        const productoId = productoSelect.value;
+        const precio = productoPreciosMap[productoId] || '';
+        
+        document.getElementById('precio').value = precio;
+        document.getElementById('precio_display').value = precio ? formatearMoneda(precio) : '';
+        calcular_total();
+    }
+}
+
+if (typeof calcular_total === 'undefined') {
+    function calcular_total() {
+        var cantidad = document.getElementById('cantidad').value;
+        cantidad = cantidad === "" ? 0 : parseFloat(cantidad);
+
+        var precio = document.getElementById('precio').value;
+        precio = precio === "" ? 0 : parseFloat(precio);
+
+        var total = cantidad * precio;
+        document.getElementById('total').value = formatearMoneda(total);
+    }
+}
+
+if (typeof formatearMoneda === 'undefined') {
+    function formatearMoneda(numero) {
+        return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+}
+
+if (typeof agregar_linea === 'undefined') {
     function agregar_linea() {
-        // Validar campos
         if (!validar_input("producto", "Debe ingresar un producto para Continuar.")) return;
         if (!validar_input("clase", "Debe ingresar la clase de venta.")) return;
         if (!validar_input("cantidad", "Debe ingresar una Cantidad.")) return;
 
-        // Obtener valores del formulario
         const producto = document.getElementById('producto');
         const productoTexto = producto.options[producto.selectedIndex].text;
         const productoValor = producto.value;
@@ -16,71 +52,57 @@
         const precio = document.getElementById('precio').value;
         const comentario = document.getElementById('comentario').value.trim();
         const total = cantidad * precio;
-        //traemos el hidden para actualizarlo
+
         const oculto = document.getElementById('oculto');
         oculto.value = oculto.value + productoValor + "," + claseValor + "," + cantidad + "," + precio + "," + comentario + ";";
 
-
-        // Ocultar mensaje de "Sin Productos" y mostrar la tabla
         $("#mensaje_sin_items").hide("fast");
         $("#tabla-detalle").show("fast");
         $("#boton_guardar").show("fast");
 
-        // Obtener el tbody de la tabla
         const tbody = document.querySelector('#tabla-detalle tbody');
-
-        // Crear nueva fila
         const tr = document.createElement('tr');
         tr.className = 'new-row';
 
-        // Obtener el número de fila actual
-        const rowNumber = tbody.children.length + 1;
-
-        // Construir la fila con los datos
         tr.innerHTML = `
-        <td>${productoTexto}</td>
-        <td>${comentario}</td>
-        <td>${claseTexto}</td>
-        <td class="center">${cantidad}</td>
-        <td class="center">${formatearMoneda(precio)}</td>
-        <td class="center">${formatearMoneda(total)}</td>
-        <td>
-            <button class="btn btn-outline-danger btn-sm" onclick="eliminarFila(this)">
-                <i class="bi bi-trash"></i>
-            </button>
-        </td>`;
+            <td>${productoTexto}</td>
+            <td>${comentario}</td>
+            <td>${claseTexto}</td>
+            <td class="center">${cantidad}</td>
+            <td class="center">${formatearMoneda(precio)}</td>
+            <td class="center">${formatearMoneda(total)}</td>
+            <td>
+                <button class="btn btn-outline-danger btn-sm" onclick="eliminarFila(this)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>`;
 
-        // Agregar la fila a la tabla
         tbody.appendChild(tr);
 
-        // Activar la animación
         setTimeout(() => {
             tr.className = 'new-row visible';
         }, 50);
 
-        // Limpiar el formulario
         document.getElementById('producto').selectedIndex = 0;
         document.getElementById('clase').selectedIndex = 0;
         document.getElementById('cantidad').value = '';
         document.getElementById('comentario').value = '';
         document.getElementById('precio').value = '';
+        document.getElementById('precio_display').value = '';
         document.getElementById('total').value = '';
     }
+}
 
+if (typeof eliminarFila === 'undefined') {
     function eliminarFila(button) {
         const row = button.closest('tr');
         const tbody = document.querySelector('#tabla-detalle tbody');
 
-        // Obtener los datos de la fila que se eliminará
         const productoTexto = row.cells[0].textContent;
         const comentario = row.cells[1].textContent;
-        const cantidad = row.cells[2].textContent;
-        const claseTexto = row.cells[3].textContent;
-
-        // Obtener el campo oculto
-        const oculto = document.getElementById('oculto');
-
-        // Buscar el producto en el selector para obtener su valor
+        const cantidad = row.cells[3].textContent;
+        const precio = row.cells[4].textContent.replace(/\./g, '');
+        
         const productoSelect = document.getElementById('producto');
         let productoValor = '';
         for (let i = 0; i < productoSelect.options.length; i++) {
@@ -90,33 +112,24 @@
             }
         }
 
-        // Buscar la clase en el selector para obtener su valor
         const claseSelect = document.getElementById('clase');
         let claseValor = '';
         for (let i = 0; i < claseSelect.options.length; i++) {
-            if (claseSelect.options[i].text === claseTexto) {
+            if (claseSelect.options[i].text === row.cells[2].textContent) {
                 claseValor = claseSelect.options[i].value;
                 break;
             }
         }
 
-        // Obtener el precio del elemento original
-        const precio = document.getElementById('precio').value;
-
-        // Crear el string que queremos eliminar del campo oculto
         const stringToRemove = productoValor + "," + claseValor + "," + cantidad + "," + precio + "," + comentario + ";";
-
-        // Actualizar el valor del campo oculto
+        const oculto = document.getElementById('oculto');
         oculto.value = oculto.value.replace(stringToRemove, '');
 
-        // Animación de eliminación
         row.style.opacity = '0';
         row.style.transform = 'translateY(-20px)';
 
         setTimeout(() => {
             row.remove();
-
-            // Si no hay más filas, mostrar el mensaje inicial y ocultar la tabla y el botón guardar
             if (tbody.children.length === 0) {
                 $("#mensaje_sin_items").show("fast");
                 $("#tabla-detalle").hide("fast");
@@ -124,29 +137,10 @@
             }
         }, 500);
     }
+}
 
-    function formatearMoneda(numero) {
-        return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-
-    function calcular_total() {
-        // Obtener y validar cantidad
-        var cantidad = document.getElementById('cantidad').value;
-        cantidad = cantidad === "" ? 0 : parseFloat(cantidad);
-
-        // Obtener y validar precio
-        var precio = document.getElementById('precio').value;
-        precio = precio === "" ? 0 : parseFloat(precio);
-
-        // Calcular total
-        var total = cantidad * precio;
-
-        // Formatear y mostrar el total
-        document.getElementById('total').value = formatearMoneda(total);
-    }
-
+if (typeof preguardar === 'undefined') {
     function preguardar() {
-        // Eliminar la última coma del campo oculto
         const oculto = document.getElementById('oculto');
         if (oculto.value == "") {
             alerta("Debe ingresar al menos un producto para continuar", "warning");
@@ -154,9 +148,12 @@
         }
         abrir_modal("modConfirmar");
     }
+}
 
+if (typeof guardar === 'undefined') {
     function guardar() {
         var oculto = document.getElementById('oculto').value;
         AJAXPOST(urlBase + "pages/movimientos/salidas/guardar_salida.php?datos=" + oculto, "", document.getElementById("pagina_central"));
     }
+}
 </script>

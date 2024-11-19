@@ -37,18 +37,26 @@ require "../../../carga.php";
                         <textarea class="form-control h-px-100 campos" id="descripcion" name="descripcion" placeholder="Descripción aquí."></textarea>
                         <label for="descripcion">Descripción del Producto</label>
                     </div>
-
-                    <div class="form-floating form-floating-outline mb-5">
-                        <?
-                        selector([
-                            'campo' => 'unidad',
-                            'tabla' => 'unidad_medida',
-                            'id' => 'uni_id',
-                            'campos' => ['uni_codigo', 'uni_nombre'],
-                            'todos' => 'Seleccione una unidad de medida',
-                            'order_by' => 'uni_id ASC'
-                        ]);
-                        ?>
+                    <!-- Price -->    
+                    <div class="row mb-5 gx-5">
+                        <div class="col">
+                            <?
+                            selector([
+                                'campo' => 'unidad',
+                                'tabla' => 'unidad_medida',
+                                'id' => 'uni_id',
+                                'campos' => ['uni_codigo', 'uni_nombre'],
+                                'todos' => 'Seleccione una unidad de medida',
+                                'order_by' => 'uni_id ASC'
+                            ]);
+                            ?>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating form-floating-outline">
+                                <input type="number" class="form-control campos" id="ecommerce-product-price" placeholder="$5000" name="precio">
+                                <label for="ecommerce-product-price">Precio</label>
+                            </div>
+                        </div>
                     </div>
                     <!-- Instock switch (moved here) -->
                     <div class="d-flex justify-content-between align-items-center border-top pt-4">

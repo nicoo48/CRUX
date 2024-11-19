@@ -91,70 +91,85 @@ $prod = $productos["datos"][0];
 </div>
 
 <script>
-    function guardar_edicion() {
-        // Validar campos obligatorios
-        if (!validar_input("ecommerce-product-name", "Debe ingresar un nombre para el producto")) {
-            return;
-        }
-        if (!validar_input("ecommerce-product-sku", "Debe ingresar un código para el producto")) {
-            return;
-        }
-        if (!validar_input("ecommerce-product-price", "Debe ingresar un precio para el producto")) {
-            return;
-        }
-        if (!validar_input("unidad", "Debe seleccionar una unidad de medida")) {
-            return;
-        }
-
-        var formData = new FormData();
-
-        $(".campos").each(function() {
-            var input = $(this);
-            if (input.attr('type') === 'file') {
-                formData.append(input.attr('name'), input[0].files[0]);
-            } else {
-                formData.append(input.attr('name'), input.val());
-            }
-        });
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", urlBase + "pages/tienda/productos/editar.php", true);
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var div = document.getElementById("respuesta");
-                div.innerHTML = xhr.responseText;
-                var scripts = div.getElementsByTagName('script');
-                for (var i = 0; i < scripts.length; i++) {
-                    eval(scripts[i].text);
-                }
-                document.body.style.cursor = "auto";
-            } else {
-                console.log("Error en la solicitud: " + xhr.status);
-            }
-        };
-
-        document.body.style.cursor = "wait";
-        xhr.send(formData);
+    ffunction guardar_edicion() {
+    // Validar campos obligatorios
+    if (!validar_input("nombre_producto", "Debe ingresar un nombre para el producto")) {
+        return;
+    }
+    if (!validar_input("codigo_producto", "Debe ingresar un código para el producto")) {
+        return;
+    }
+    if (!validar_input("precio", "Debe ingresar un precio para el producto")) {
+        return;
+    }
+    if (!validar_input("unidad", "Debe seleccionar una unidad de medida")) {
+        return;
     }
 
-    // Preview de imagen
-    document.getElementById('imagen').addEventListener('change', function(event) {
-        var file = event.target.files[0];
-        var imagePreview = document.getElementById('preview');
+    // Crear un objeto FormData
+    var formData = new FormData();
 
-        // Lista de tipos MIME permitidos
-        var allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-
-        if (file && allowedTypes.includes(file.type)) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
+    // Agregar los campos y archivos al FormData
+    $(".campos").each(function() {
+        var input = $(this);
+        if (input.attr('type') === 'file') {
+            if (input[0].files.length > 0) {
+                formData.append(input.attr('name'), input[0].files[0]);
             }
-            reader.readAsDataURL(file);
         } else {
-            alerta("El archivo no está en un formato permitido.", "error");
-            $("#imagen").val("");
+            formData.append(input.attr('name'), input.val());
         }
     });
+
+    // Realizar la petición AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", urlBase + "pages/tienda/productos/guardar_editar.php", true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Insertar el contenido en el div
+            var div = document.getElementById("operacion");
+            div.innerHTML = xhr.responseText;
+
+            // Extraer y ejecutar el script devuelto
+            var scripts = div.getElementsByTagName('script');
+            for (var i = 0; i < scripts.length; i++) {
+                eval(scripts[i].text);
+            }
+
+            // Restaurar el cursor
+            document.body.style.cursor = "auto";
+        } else {
+            console.log("Error en la solicitud: " + xhr.status);
+        }
+    };
+
+    // Mostrar la animación de carga
+    document.body.style.cursor = "wait";
+
+    // Enviar el formulario
+    xhr.send(formData);
+}
+
+// Event listener para la vista previa de imagen
+document.getElementById('imagen').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+    var imagePreview = document.getElementById('preview');
+
+    // Lista de tipos MIME permitidos
+    var allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+    if (file && allowedTypes.includes(file.type)) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+    } else {
+        alerta("El archivo no está en un formato permitido.", "error");
+        $("#imagen").val("");
+    }
+});
 </script>

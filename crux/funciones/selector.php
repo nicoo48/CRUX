@@ -3,9 +3,17 @@ function selector($params) {
     global $conexion;
 
     $p = array_merge([
-        'campo' => '', 'tabla' => '', 'id' => '', 'campos' => [],
-        'minimo' => 3, 'id_defecto' => '', 'onchange' => '', 
-        'onclick' => '', 'todos' => '', 'where' => '', 'order_by' => '',
+        'campo' => '', 
+        'tabla' => '', 
+        'id' => '', 
+        'campos' => [],
+        'minimo' => 3,
+        'id_defecto' => '', 
+        'onchange' => '', 
+        'onclick' => '', 
+        'todos' => '', 
+        'where' => '', 
+        'order_by' => '',
         'selected' => null // Nuevo parámetro para el valor pre-seleccionado
     ], $params);
 

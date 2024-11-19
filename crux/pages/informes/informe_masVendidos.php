@@ -10,144 +10,84 @@ $m = $meta["datos"][0]["tnd_meta_mensual"];
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <!-- Fila Superior - KPIs -->
-        <div class="row">
-            <!-- Meta Mensual -->
-            <div class="col-md-6 col-xl-8 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <br>
-                                <h5 class="mb-0"><i class="bi bi-currency-dollar"></i> Meta Mensual</h5>
-                                <p class="text-muted small mb-0">Progreso actual del mes</p>
-                            </div>
-                            <div class="d-flex align-items-baseline">
-                                <h4 class="mb-0 me-2">
-                                    $<?= number_format($stats['total_salidas'], 0) . " / $" . $m ?>
-                                </h4>
-                            </div>
-                        </div>
-                        <?php
-                        $porcentaje = ($stats['total_salidas'] / $m) * 100;
-
-                        // Determinar el color según el porcentaje
-                        if ($porcentaje >= 100) {
-                            $colorClase = 'bg-success';
-                        } elseif ($porcentaje <= 40) {
-                            $colorClase = 'bg-danger';
-                        } else {
-                            $colorClase = 'bg-warning';
-                        }
-                        ?>
-                        <div class="progress rounded-pill mb-2" style="height: 8px">
-                            <div class="progress-bar <?= $colorClase ?>" role="progressbar"
-                                style="width: <?= min($porcentaje, 100) ?>%" aria-valuenow="<?= $porcentaje ?>"
-                                aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                        <!-- Opcional: Mostrar el porcentaje debajo de la barra -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted">Progreso: <?= number_format($porcentaje, 1) ?>%</small>
-                            <?php if ($porcentaje >= 100): ?>
-                                <span class="badge bg-success">Meta Alcanzada</span>
-                            <?php elseif ($porcentaje <= 40): ?>
-                                <span class="badge bg-danger">Meta Baja</span>
-                            <?php else: ?>
-                                <span class="badge bg-warning">Meta en Progreso</span>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- KPI - Total Ventas -->
-            <div class="col-md-6 col-xl-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start justify-content-between">
-                            <div class="content-left">
-                                <span class="fw-medium d-block mb-1">Total Ventas</span>
-                                <div class="d-flex align-items-baseline mb-2">
-                                    <h4 class="mb-0 me-2">$<?= number_format($total_mes['total_ventas'], 0) ?></h4>
-                                    <small class="text-success"><i class="bi bi-arrow-up"></i> +14%</small>
-                                </div>
-                                <span class="badge bg-label-primary rounded-pill">Este Mes</span>
-                            </div>
-                            <div class="avatar bg-primary-subtle p-3 rounded">
-                                <i class="bi bi-currency-dollar text-primary fs-4"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Fila Principal - Gráfico y Estadísticas -->
-        <div class="row">
+        <div class="row g-4">
             <!-- Gráfico Principal -->
-            <div class="col-xl-8 col-12 mb-4">
-                <div class="card">
+            <div class="col-xl-8">
+                <div class="card h-100 shadow-sm">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>
-                            <h5 class="card-title mb-0">Productos más Vendidos</h5>
-                            <small class="text-muted">Análisis mensual de ventas por producto</small>
+                            <h5 class="card-title mb-1">Top 10 Productos más Vendidos</h5>
+                            <p class="text-muted small mb-0">Análisis mensual de ventas por producto</p>
                         </div>
                     </div>
-                    <div class="card-body pt-3">
-                        <div id="ventasChart" style="height: 360px;"></div>
+                    <div class="card-body">
+                        <div id="ventasChart" style="height: 400px;"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Panel Lateral -->
-            <div class="col-xl-4 col-12">
-                <!-- Estadísticas Rápidas -->
-                <div class="card mb-4">
-                    <div class="card-header d-flex justify-content-between">
-                        <h5 class="card-title mb-0">Resumen Estadístico</h5>
+            <!-- Panel Lateral de Estadísticas -->
+            <div class="col-xl-4">
+                <div class="row g-4">
+                    <!-- Tarjeta de Ventas Totales -->
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="avatar bg-primary-subtle rounded p-2">
+                                            <i class="bi bi-graph-up text-primary fs-4"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted small mb-0">Ventas Totales</p>
+                                            <h4 class="mb-0">$<?= number_format($stats['total_salidas'], 0) ?></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progress rounded-pill" style="height: 6px">
+                                    <div class="progress-bar bg-primary" style="width: <?= ($stats['total_salidas'] / $m) * 100 ?>%"></div>
+                                </div>
+                                <small class="text-muted">vs. Meta Mensual</small>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <!-- Productos en Stock -->
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar bg-info-subtle rounded p-2">
-                                    <i class="bi bi-box text-info"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">Productos en Stock</h6>
-                                    <small class="text-muted">Inventario actual</small>
-                                </div>
-                            </div>
-                            <h4 class="mb-0 text-info"><?= number_format($stats['total_productos']) ?></h4>
-                        </div>
 
-                        <!-- Total Compras -->
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar bg-success-subtle rounded p-2">
-                                    <i class="bi bi-cart-plus text-success"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">Total Compras</h6>
-                                    <small class="text-muted">Este mes</small>
+                    <!-- Lista de Productos Top -->
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h6 class="text-muted mb-3">Detalles de Productos Top</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-muted">Producto</th>
+                                                <th class="text-end text-muted">Unidades</th>
+                                                <th class="text-end text-muted">Ingresos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach (array_slice($data_productos, 0, 5) as $producto): ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div class="avatar avatar-xs bg-primary-subtle rounded-circle">
+                                                            <small class="text-primary"><?= substr($producto['pro_nombre'], 0, 1) ?></small>
+                                                        </div>
+                                                        <span class="text-truncate" style="max-width: 150px;" title="<?= htmlspecialchars($producto['pro_nombre']) ?>">
+                                                            <?= htmlspecialchars($producto['pro_nombre']) ?>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end"><?= number_format($producto['total_vendido']) ?></td>
+                                                <td class="text-end">$<?= number_format($producto['total_ingresos']) ?></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <h4 class="mb-0 text-success">$<?= number_format($stats['total_ingresos']) ?></h4>
-                        </div>
-
-                        <!-- Total Ventas -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar bg-danger-subtle rounded p-2">
-                                    <i class="bi bi-cart-check text-danger"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">Total Ventas</h6>
-                                    <small class="text-muted">Este mes</small>
-                                </div>
-                            </div>
-                            <h4 class="mb-0 text-danger">$<?= number_format($stats['total_salidas']) ?></h4>
                         </div>
                     </div>
                 </div>

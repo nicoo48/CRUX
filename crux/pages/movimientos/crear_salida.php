@@ -1,10 +1,20 @@
-<?
+<?php
 $nivel_directorio = "../../";
 require "../../carga.php";
 
-//Tabla para agregar productos al detalle del ingreso
+// Obtener todos los precios de productos
+$sql_precios = "SELECT pro_id, pro_precio FROM productos";
+$result_precios = mysqli_query($conexion, $sql_precios);
+$precios = [];
+while ($row = mysqli_fetch_assoc($result_precios)) {
+    $precios[$row['pro_id']] = floatval($row['pro_precio']);
+}
+require "salidas/salidas_js.php";
 ?>
+<!-- Campos ocultos -->
 <input type="hidden" id="oculto" name="oculto" class="campos">
+<input type="hidden" id="precio" name="precio" class="campos">
+
 <div class="container" id="formulario_completo_salidas">
     <div class="left-column">
         <div class="card mb-6">
@@ -14,14 +24,15 @@ require "../../carga.php";
             </div>
             <div class="card-body">
                 <div class="form-floating form-floating-outline mb-6">
-                    <?
+                    <?php
                     selector([
                         'campo' => 'producto',
                         'tabla' => 'productos',
                         'id' => 'pro_id',
                         'campos' => ['pro_codigo', 'pro_nombre'],
                         'todos' => 'Seleccione un producto',
-                        'order_by' => 'pro_codigo ASC'
+                        'order_by' => 'pro_codigo ASC',
+                        'onchange' => 'if(typeof cargarPrecioProducto === "function") cargarPrecioProducto()'
                     ]);
                     ?>
                     <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Producto</label>
@@ -41,11 +52,12 @@ require "../../carga.php";
                         <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Cant.</label>
                     </div>
                     <div class="form-floating form-floating-outline col-sm">
-                        <input type="number" onchange="calcular_total()" name="precio" id="precio" class="form-control campos" placeholder="$$$">
-                        <label for="basic-default-company"><i class="bi bi-star"></i>&nbsp;Precio</label>
+                        <input type="text" name="precio_display" id="precio_display" class="form-control campos" placeholder="$$$" disabled>
+                        <label for="basic-default-company">Precio U.</label>
                     </div>
                     <div class="form-floating form-floating-outline col-sm">
                         <input type="text" name="total" id="total" class="form-control campos" placeholder="100" disabled>
+                        <label for="basic-default-company">Total</label>
                     </div>
                 </div>
                 <br>
@@ -55,7 +67,7 @@ require "../../carga.php";
                 </div>
             </div>
             <div style="margin:10px;display:flex;justify-content:space-between">
-                <?
+                <?php
                 boton(
                     "agregar linea",
                     "box",
@@ -64,7 +76,7 @@ require "../../carga.php";
                 );
                 ?>
                 <div id="boton_guardar" style="display:none">
-                    <?
+                    <?php
                     boton(
                         "Guardar",
                         "save",
@@ -77,18 +89,16 @@ require "../../carga.php";
         </div>
     </div>
     <div class="right-column">
-        <div id="mensaje_sin_items"><? mensaje("Sin Productos", "Ingresa Algun Producto Para Continuar", "info", "info-circle", 1); ?></div>
+        <div id="mensaje_sin_items"><?php mensaje("Sin Productos", "Ingresa Algun Producto Para Continuar", "info", "info-circle", 1); ?></div>
         <table id="tabla-detalle" class="table table-bordered table-hover" style="display:none">
             <thead>
-                <tr>
-                </tr>
                 <tr>
                     <th>Producto</th>
                     <th>Comentario</th>
                     <th width="1">Clase</th>
                     <th width="1">Cantidad</th>
                     <th>Precio U.</th>
-                    <th >Total</th>
+                    <th>Total</th>
                     <th width="1"></th>
                 </tr>
             </thead>
@@ -97,6 +107,7 @@ require "../../carga.php";
         </table>
     </div>
 </div>
+
 <style>
     .center {
         text-align: center;
@@ -133,7 +144,8 @@ require "../../carga.php";
         text-align: center;
     }
 </style>
-<?
+
+<?php
 modal(
     "modConfirmar",
     "Confirmar Transacción",
@@ -142,6 +154,4 @@ modal(
     "l",
     "guardar()"
 );
-
-require "salidas/js.php";
 ?>
