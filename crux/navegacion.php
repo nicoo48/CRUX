@@ -5,15 +5,15 @@ $_navegacion = array(
         "icono" => "shop-window",
         "carpeta" => "tienda",
         "paginas" => array(
-            "Mis Tiendas" => array(
+            "Tiendas" => array(
                 "url" => "tiendas.php",
                 "icono" => "shop"
             ),
-            "Mis Productos" => array(
+            "Productos" => array(
                 "url" => "productos.php",
                 "icono" => "bag"
             ),
-            "Mis Unidades" => array(
+            "Unidades" => array(
                 "url" => "unidades.php",
                 "icono" => "bag"
             )
@@ -24,7 +24,7 @@ $_navegacion = array(
         "carpeta" => "informes",
         "paginas" => array(
             "Stock" => array(
-                "url"=>"buscar_producto_stock.php",
+                "url"=>"informe_stock.php",
                 "icono"=>"boxes"
             ),
             "Más Vendidos" => array(

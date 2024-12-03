@@ -11,7 +11,7 @@
             text: 'Entradas y Salidas del Producto'
         },
         xAxis: {
-            categories: ['Producto1'], // Usar un array para las categorías
+            categories: ['<?=$nombre?>'], // Usar un array para las categorías
             crosshair: true,
             labels: {
                 rotation: -45,
@@ -118,8 +118,5 @@
         }
     });
 
-    function buscarProducto() {
-        var campos = $(".campos").serialize();
-        AJAXPOST(urlBase + "pages/informes/informe_stock.php", campos, document.getElementById("pagina_central"));
-    }
+
 </script>

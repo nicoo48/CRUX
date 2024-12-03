@@ -1,29 +1,23 @@
 <?php
 $nivel_directorio = "../../";
 require "../../carga.php";
-// CONSULTAS A LA BBDD
-$stats = select("stock", '*', ["producto" => $_REQUEST["producto"]]);
 // Inicializar variables
 $mostrar_contenido = false;
 $mensaje = "";
 
 // Validar si hay un producto seleccionado
 if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto'])) {
+    $stats = select("stock", '*', ["producto" => $_REQUEST["producto"]]);
     // Calcular el stock actual
     $stats = $stats["datos"][0];
     $stock_actual = $stats['total_entradas'] - $stats['total_salidas'];
 
     // Si hay movimientos (ingresos o salidas diferentes de 0)
-    if ($stats['total_entradas'] !== 0 || $stats['total_salidas'] !== 0) {
-        if ($stock_actual === 0) {
-            $mensaje = "El producto seleccionado no tiene stock disponible.";
-            $mostrar_contenido = false;
-        } else {
-            $mostrar_contenido = true;
-        }
-    } else {
+    if ($stats['total_entradas'] == 0 && $stats['total_salidas'] == 0) {
         $mensaje = "El producto seleccionado no tiene movimientos registrados.";
         $mostrar_contenido = false;
+    }else{
+        $mostrar_contenido = true;
     }
 }
 
@@ -43,7 +37,7 @@ if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto']) && !$mostrar_c
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Consulta el Stock de otro Producto</h5>
+                        <h5 class="card-title mb-0">Consulta el Stock de un Producto</h5>
                     </div>
                     <div class="card-body">
                         <form class="row g-3 align-items-center">
@@ -151,7 +145,7 @@ if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto']) && !$mostrar_c
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <h6 class="mb-0">Eficiencia de Stock</h6>
                                         <span class="badge bg-label-success">
-                                            <?= cantidad($stats['total_entradas'] > 0 ? ($stats['total_salidas'] / $stats['total_entradas']) * 100 : 0, 1) ?>%
+                                            <?= cantidad($stats['total_entradas'] > 0 ? ($stats['total_salidas'] / $stats['total_entradas']) * 100 : 0) ?>%
                                         </span>
                                     </div>
                                     <div class="progress" style="height: 6px;">
@@ -187,26 +181,35 @@ if (isset($_REQUEST['producto']) && !empty($_REQUEST['producto']) && !$mostrar_c
     </div>
 </div>
 <?
-// creamos el json para el gráfico
-
 // Extraemos los valores para el producto
-$totalEntradas = $stats['total_entradas'];
-$totalSalidas = $stats['total_salidas'];
+if ($mostrar_contenido) {
+    $producto = select("productos", "*", ["pro_id" => $_REQUEST["producto"]]);
+    $nombre = $producto["datos"][0]["pro_nombre"];
+    $totalEntradas = $stats['total_entradas'];
+    $totalSalidas = $stats['total_salidas'];
 
-// Calculamos la eficiencia de stock (en porcentaje)
-$eficiencia = ($totalEntradas > 0) ? ($totalSalidas / $totalEntradas) * 100 : 0;
+    // Calculamos la eficiencia de stock (en porcentaje)
+    $eficiencia = ($totalEntradas > 0) ? ($totalSalidas / $totalEntradas) * 100 : 0;
 
-// Preparamos los JSONs para ser pasados a JavaScript
-$jsonIngresos = json_encode([$totalEntradas]); // Solo un valor, ya que es para un producto
-$jsonSalidas = json_encode([$totalSalidas]); // Solo un valor, ya que es para un producto
-$jsonEficiencia = json_encode([$eficiencia]); // Solo un valor, ya que es para un producto
+    // Preparamos los JSONs para ser pasados a JavaScript
+    $jsonIngresos = json_encode([$totalEntradas]); // Solo un valor, ya que es para un producto
+    $jsonSalidas = json_encode([$totalSalidas]); // Solo un valor, ya que es para un producto
+    $jsonEficiencia = json_encode([$eficiencia]); // Solo un valor, ya que es para un producto
 
-// Ahora pasamos estos valores a la vista de JavaScript
+    // Ahora pasamos estos valores a la vista de JavaScript
+?>
+    <script>
+        var jsonIngresos = <?= $jsonIngresos ?>;
+        var jsonSalidas = <?= $jsonSalidas ?>;
+        var jsonEficiencia = <?= $jsonEficiencia ?>;
+    </script>
+<?
+    require "js/stock.php";
+}
 ?>
 <script>
-    var jsonIngresos = <?= $jsonIngresos ?>;
-    var jsonSalidas = <?= $jsonSalidas ?>;
-    var jsonEficiencia = <?= $jsonEficiencia ?>;
+    function buscarProducto() {
+        var campos = $(".campos").serialize();
+        AJAXPOST(urlBase + "pages/informes/informe_stock.php", campos, document.getElementById("pagina_central"));
+    }   
 </script>
-<?
-require "js/stock.php";
