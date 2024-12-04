@@ -8,18 +8,23 @@
  * @param bool $depurar Si es true, muestra la consulta SQL
  * @return array Devuelve un array con los datos de la consulta
  */
-function select($tabla, $campos = '*', $filtro = array(), $ordenar = '', $depurar = false) {
+function select($tabla, $campos = '*', $filtro = array(),  $depurar = false,$ordenar = '') {
     global $conexion;
     $consulta = "SELECT $campos FROM $tabla";
     
     // Agregar filtros WHERE si existen
     if (count($filtro) > 0) {
-        $consulta .= " WHERE ";
-        foreach ($filtro as $campo => $valor) {
-            $consulta .= "$campo = '$valor' AND ";
+        if($filtro["where"] != ""){
+            $consulta .= " WHERE " . $filtro["where"];
+        }else{
+            $consulta .= " WHERE ";
+            foreach ($filtro as $campo => $valor) {
+                $consulta .= "$campo = '$valor' AND ";
+            }
+            $consulta = substr($consulta, 0, -4);
         }
-        $consulta = substr($consulta, 0, -4);
     }
+
     
     // Agregar ORDER BY si existe
     if (!empty($ordenar)) {

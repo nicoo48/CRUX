@@ -13,11 +13,8 @@ require "js_pagina/js_pagina.php";
 
         <div class="card shadow-lg mb-4 position-relative overflow-hidden">
             <!-- Background Gradient -->
-            <div class="position-absolute w-100 h-100" style="
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        opacity: 0.95;
-        z-index: 1;">
-        </div>
+            <div class="position-absolute w-100 h-100" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);opacity: 0.95;z-index: 1;">
+            </div>
 
             <!-- Content -->
             <div class="card-body py-4 position-relative" style="z-index: 2;">
@@ -27,10 +24,9 @@ require "js_pagina/js_pagina.php";
                         <div class="d-flex align-items-center">
                             <div class="avatar-wrapper me-4">
                                 <div class="avatar avatar-xl rounded-circle" style="
-                            background: rgba(255, 255, 255, 0.2);
-                            backdrop-filter: blur(8px);
-                            border: 2px solid rgba(255, 255, 255, 0.3);
-                        ">
+                                        background: rgba(255, 255, 255, 0.2);
+                                        backdrop-filter: blur(8px);
+                                        border: 2px solid rgba(255, 255, 255, 0.3);">
                                     <i class="bi bi-person-circle text-white fs-2"></i>
                                 </div>
                             </div>
@@ -48,13 +44,12 @@ require "js_pagina/js_pagina.php";
                     <!-- Meta Info Section -->
                     <div class="col-lg-4">
                         <div class="p-4 rounded-4" style="
-                    background: rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(8px);
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                ">
+                            background: rgba(255, 255, 255, 0.1);
+                            backdrop-filter: blur(8px);
+                            border: 1px solid rgba(255, 255, 255, 0.2);">
                             <div class="text-center">
                                 <h3 class="fw-bold mb-3 text-white">
-                                    Meta Mensual: $<?= number_format($m, 0) ?>
+                                    Meta Mensual: $<?= cantidad($m) ?>
                                 </h3>
                                 <div class="progress mb-2" style="height: 10px; background: rgba(255, 255, 255, 0.2);">
                                     <div class="progress-bar" role="progressbar"
@@ -65,7 +60,7 @@ require "js_pagina/js_pagina.php";
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-white text-opacity-75">Progreso</span>
-                                    <span class="fw-semibold text-white"><?= number_format($porcentaje, 1) ?>%</span>
+                                    <span class="fw-semibold text-white"><?= cantidad($porcentaje) ?>%</span>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +113,7 @@ require "js_pagina/js_pagina.php";
                                                        transition: stroke-dashoffset 1s ease-in-out" />
                                         </svg>
                                         <div class="progress-ring-value">
-                                            <span class="display-5 fw-bold"><?= number_format($porcentaje, 1) ?>%</span>
+                                            <span class="display-5 fw-bold"><?= cantidad($porcentaje) ?>%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +127,7 @@ require "js_pagina/js_pagina.php";
                                             <div class="d-flex justify-content-between align-items-center mb-2">
                                                 <span class="text-muted">Venta Actual</span>
                                                 <span
-                                                    class="h5 mb-0">$<?= number_format($stats['total_salidas'], 0) ?></span>
+                                                    class="h5 mb-0">$<?= cantidad($stats['total_salidas']) ?></span>
                                             </div>
                                             <div class="progress" style="height: 8px;">
                                                 <div class="progress-bar bg-<?= $colorClase ?>"
@@ -143,7 +138,7 @@ require "js_pagina/js_pagina.php";
                                         <div class="list-group-item border-0 px-0">
                                             <div class="d-flex justify-content-between align-items-center mb-2">
                                                 <span class="text-muted">Meta Mensual</span>
-                                                <span class="h5 mb-0">$<?= number_format($m, 0) ?></span>
+                                                <span class="h5 mb-0">$<?= cantidad($m) ?></span>
                                             </div>
                                             <div class="progress" style="height: 8px;">
                                                 <div class="progress-bar bg-primary" style="width: 100%"></div>
@@ -156,7 +151,6 @@ require "js_pagina/js_pagina.php";
                     </div>
                 </div>
             </div>
-
             <!-- Stats Column -->
             <div class="col-xl-4">
                 <div class="row g-4">
@@ -172,15 +166,15 @@ require "js_pagina/js_pagina.php";
                                 </div>
                                 <div class="row text-center g-3">
                                     <div class="col-4">
-                                        <p class="h5 mb-1">$<?= number_format($total_ventas, 0) ?></p>
+                                        <p class="h5 mb-1">$<?= cantidad($total_ventas) ?></p>
                                         <p class="text-muted small mb-0">Ventas</p>
                                     </div>
                                     <div class="col-4">
-                                        <p class="h5 mb-1"><?= number_format($total_unidades) ?></p>
+                                        <p class="h5 mb-1"><?= cantidad($total_unidades) ?></p>
                                         <p class="text-muted small mb-0">Unidades</p>
                                     </div>
                                     <div class="col-4">
-                                        <p class="h5 mb-1">$<?= number_format($promedio_ventas, 0) ?></p>
+                                        <p class="h5 mb-1">$<?= cantidad($promedio_ventas) ?></p>
                                         <p class="text-muted small mb-0">Promedio</p>
                                     </div>
                                 </div>
@@ -200,8 +194,8 @@ require "js_pagina/js_pagina.php";
                                                 <i class="bi bi-currency-dollar text-success fs-4"></i>
                                             </div>
                                             <div>
-                                                <p class="text-muted small mb-0">Compras del Mes</p>
-                                                <h3 class="mb-0">$<?= number_format($stats['total_ingresos'], 0) ?></h3>
+                                                <p class="text-muted small mb-0">Valor de Compras del Mes</p>
+                                                <h3 class="mb-0">$<?= cantidad($stats['total_ingresos']) ?></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -217,12 +211,55 @@ require "js_pagina/js_pagina.php";
                                                 <i class="bi bi-box text-info fs-4"></i>
                                             </div>
                                             <div>
-                                                <p class="text-muted small mb-0">Total Productos</p>
-                                                <h3 class="mb-0"><?= number_format($stats['total_productos']) ?></h3>
+                                                <p class="text-muted small mb-0">Total Productos Comprados</p>
+                                                <h3 class="mb-0"><?= cantidad($cantidad_compras) ?></h3>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g4 mb-4">
+            <div class="col-12 col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-lg bg-success-subtle rounded-3 p-2 me-3">
+                                <i class="bi bi-arrow-up-right-circle text-success fs-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted small mb-1">Producto Más Vendido <?=$meses[date('m')]." - ".date('Y',strtotime('-12 months'))?></p>
+                                <?php
+                                $id_prod_max = array_search(max($ventas_anio_pasado), $ventas_anio_pasado);
+                                $prod_max = select("productos", "*", ["pro_id" => $id_prod_max]);
+                                $prod_max = $prod_max["datos"][0];
+                                ?>
+                                <h5 class="mb-0"><?= $prod_max["pro_nombre"] ?> - <?= cantidad($ventas_anio_pasado[$id_prod_max]) ?> unidades</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-lg bg-danger-subtle rounded-3 p-2 me-3">
+                                <i class="bi bi-arrow-down-left-circle text-danger fs-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted small mb-1">Producto Menos Vendido <?=$meses[date('m')]." - ".date('Y',strtotime('-12 months'))?></p>
+                                <?php
+                                $id_prod_min = array_search(min($ventas_anio_pasado), $ventas_anio_pasado);
+                                $prod_min = select("productos", "*", ["pro_id" => $id_prod_min]);
+                                $prod_min = $prod_min["datos"][0];
+                                ?>
+                                <h5 class="mb-0"><?= $prod_min["pro_nombre"] ?> - <?= cantidad($ventas_anio_pasado[$id_prod_min]) ?> unidades</h5>
                             </div>
                         </div>
                     </div>
@@ -243,8 +280,8 @@ require "js_pagina/js_pagina.php";
                                         <i class="bi bi-graph-up-arrow text-primary fs-4"></i>
                                     </div>
                                     <div>
-                                        <p class="text-muted small mb-0">Promedio por Venta</p>
-                                        <h3 class="mb-0">$<?= number_format($promedio_ventas, 0) ?></h3>
+                                        <p class="text-muted small mb-0">Valor Promedio de Venta</p>
+                                        <h3 class="mb-0">$<?= cantidad($stats["total_salidas"] / $cantidad_ventas) ?></h3>
                                     </div>
                                 </div>
                             </div>
@@ -260,8 +297,8 @@ require "js_pagina/js_pagina.php";
                                         <i class="bi bi-receipt text-warning fs-4"></i>
                                     </div>
                                     <div>
-                                        <p class="text-muted small mb-0">Total Unidades Utilizadas en Movimientos</p>
-                                        <h3 class="mb-0"><?= number_format($total_unidades) ?></h3>
+                                        <p class="text-muted small mb-0">Total Productos Vendidos</p>
+                                        <h3 class="mb-0"><?= cantidad($cantidad_ventas) ?></h3>
                                     </div>
                                 </div>
                             </div>
@@ -277,9 +314,9 @@ require "js_pagina/js_pagina.php";
                                         <i class="bi bi-cash-stack text-success fs-4"></i>
                                     </div>
                                     <div>
-                                        <p class="text-muted small mb-0">Saldo Promedio de Venta</p>
+                                        <p class="text-muted small mb-0">Promedio de Margen de utilidad</p>
                                         <h3 class="mb-0">
-                                            $<?= number_format($total_ventas / max($total_unidades, 1), 0) ?></h3>
+                                            $<?= cantidad($stats["total_salidas"] / $cantidad_ventas - $stats["total_ingresos"] / $cantidad_compras) ?></h3>
                                     </div>
                                 </div>
                             </div>

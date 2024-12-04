@@ -5,7 +5,7 @@ function _p($array){
     echo '</pre>';
 }
 function cantidad($cantidad){
-    return number_format($cantidad, 0, ',', '.');
+    return number_format($cantidad, 0, '.', ',');
 }
 function fecha($fecha){
     return date("d/m/Y", strtotime($fecha));

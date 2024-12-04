@@ -1,3 +1,16 @@
+<?
+$aux = '[';
+$aux2 = '[';
+foreach ($meses as $mes => $valor) {
+    $aux .= "'$mes',";
+    $aux2 .= $valor . ',';
+}
+$aux = substr($aux, 0, -1);
+$aux .= ']';
+
+$aux2 = substr($aux2, 0, -1);
+$aux2 .= ']';
+?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Verifica si el contenedor existe
@@ -20,7 +33,7 @@
                 text: null
             },
             xAxis: {
-                categories: <?= json_encode($meses) ?>,
+                categories:<?=$aux?> ,
                 labels: {
                     style: {
                         color: '#8791a3',
@@ -59,7 +72,7 @@
                     fontSize: '12px'
                 },
                 formatter: function () {
-                    return '<b>' + this.x + '</b><br/>Ventas: $' +
+                    return '<b>' + this.key + '</b><br/>Ventas: $' +
                         Highcharts.numberFormat(this.y, 0);
                 }
             },
@@ -87,7 +100,7 @@
             },
             series: [{
                 name: 'Ventas',
-                data: <?= json_encode(array_map('floatval', $ventas)) ?>
+                data: <?=$aux2?>
             }],
             credits: {
                 enabled: false

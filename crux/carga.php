@@ -7,7 +7,20 @@ require "init.php";
 require_once "init_js.php";
 require 'navegacion.php';
 require "config.php";
-
+$meses = array(
+    1 => "Enero",
+    2 => "Febrero",
+    3 => "Marzo",
+    4 => "Abril",
+    5 => "Mayo",
+    6 => "Junio",
+    7 => "Julio",
+    8 => "Agosto",
+    9 => "Septiembre",
+    10 => "Octubre",
+    11 => "Noviembre",
+    12 => "Diciembre"
+);
 
 //script para traer las configuraciónes guardadas del usuario
 if(isset($_SESSION["usuario"])){
