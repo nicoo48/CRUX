@@ -236,7 +236,8 @@ CREATE TABLE IF NOT EXISTS `productos` (
 INSERT INTO `productos` (`pro_id`, `pro_tnd_id`, `pro_per_id`, `pro_unidad`, `pro_codigo`, `pro_nombre`, `pro_descripcion`, `pro_precio`, `pro_codigo_barra`, `pro_imagen`, `pro_estado`) VALUES
 	(1, 11, 1, '1', 'PRO1', 'producto1 ', NULL, 15000, NULL, NULL, 1),
 	(2, 11, 1, '1', 'PRO2', 'producto2 ', NULL, 8000, NULL, NULL, 1),
-	(3, 11, 1, '1', 'PRO3', 'producto3', NULL, 75000, NULL, NULL, 1);
+	(3, 11, 1, '1', 'PRO3', 'producto3', NULL, 75000, NULL, NULL, 1),
+	(4, 11, 1, '1', 'PRO4', 'producto4', NULL, 70000, NULL, NULL, 1);
 
 -- Volcando estructura para vista crux.stock
 -- Creando tabla temporal para superar errores de dependencia de VIEW
