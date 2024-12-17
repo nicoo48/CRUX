@@ -11,7 +11,7 @@ $lista_productos = [];
 unset($filtros);
 $filtros["mov_tnd_id"] = $_SESSION["tienda"]["tnd_id"] ?? 1;
 $filtros["mov_per_id"] = $_SESSION["usuario"]["per_id"];
-$mov = select("movimientos", "*", $filtros);
+$mov = select("movimientos", "*", $filtros,0,"mov_id DESC");
 foreach ($mov["datos"] as $movi) {
     if ($movi["mov_tipo"] == "ING") {
         $lista_compras[$movi["mov_id"]] = $movi;

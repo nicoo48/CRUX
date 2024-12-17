@@ -22,7 +22,7 @@ if($registros > 0){
             <table class="datatables-products table">
             <thead>
                 <tr>
-                    <th width="1"></th>
+                    <th width="150"></th>
                     <th width="1">#</th>
                     <th>Nombre Unidad</th>
                     <th>Código Unidad</th>
@@ -37,6 +37,13 @@ if($registros > 0){
                         <td>
                             <?
                             boton("","pencil","info","editarUnidad($u[uni_id])");
+                            boton(
+                                "",
+                                "trash",
+                                "danger",
+                                "abrir_modal($u[uni_id])",
+                                "Eliminar la Unidad"
+                            );
                             ?>
                         </td>
                         <td><?= $contador;?></td>
@@ -56,7 +63,7 @@ if($registros > 0){
         <div class="card-header">
             <?
             boton(
-                "Crear Producto",
+                "Crear Unidad de Medida",
                 "plus-circle",
                 "info",
                 "crearUnidad()"
@@ -71,6 +78,8 @@ if($registros > 0){
         "x"
     );
 }
+modal("ModEliminar", "Eliminar Unidad", "¿Estás seguro de que deseas eliminar esta Unidad?<p style='color:red'>Esta Acción es Permanente</p>", "shop", "xl", "eliminarUnidad()");
+
 ?>
 <script>
     function crearUnidad(){
@@ -78,5 +87,9 @@ if($registros > 0){
     }
     function editarUnidad(id){
         AJAXPOST(urlBase + "pages/tienda/unidades/editar.php", "id="+id, document.getElementById("pagina_central"));
+    }
+    function eliminarUnidad() {
+        var id = document.getElementById("valor_modal").value;
+        AJAXPOST(urlBase + "pages/tienda/Unidades/eliminar.php", "id=" + id, document.getElementById("pagina_central"));
     }
 </script>

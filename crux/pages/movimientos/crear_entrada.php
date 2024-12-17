@@ -9,8 +9,15 @@ $precios = [];
 while ($row = mysqli_fetch_assoc($result_precios)) {
     $precios[$row['pro_id']] = floatval($row['pro_precio']);
 }
+?>
+<script>
+// Crear el mapa de precios de productos
+const productoPreciosMap = <?= json_encode($precios) ?>;
+</script>
+<?php
 require "entradas/entradas_js.php";
 ?>
+
 <input type="hidden" id="oculto" name="oculto" class="campos">
 <input type="hidden" id="precio" name="precio" class="campos">
 <div class="container" id="formulario_completo_salidas">
@@ -151,4 +158,25 @@ modal(
     "l",
     "guardar()"
 );
+
+// Debug para verificar los datos (opcional)
+echo "<!-- Debug Info: \n";
+echo "Precios cargados: " . print_r($precios, true) . "\n";
+echo "-->";
 ?>
+
+<script>
+// Verificar que el mapa de precios se haya cargado correctamente
+console.log('Mapa de precios cargado:', productoPreciosMap);
+
+// Asegurarse de que el selector tenga el evento change y funcione correctamente
+document.addEventListener('DOMContentLoaded', function() {
+    const productoSelect = document.getElementById('producto');
+    if (productoSelect) {
+        productoSelect.addEventListener('change', function() {
+            console.log('Producto seleccionado:', this.value);
+            cargarPrecioProducto();
+        });
+    }
+});
+</script>

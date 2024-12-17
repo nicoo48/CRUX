@@ -42,22 +42,28 @@ foreach($movimientos_12_meses["datos"] as $m12){
     }
     $promedio_ventas = $total_ventas / count($meses);
 }
-//con el fin de analizar que productos se pueden vender mejor este mes analizamos datos del año pasado
+// Obtener el año anterior
+$anio_actual = date('Y');
+$anio_anterior = $anio_actual - 1;
+
+// Construir las fechas para todo el año anterior
+$fecha_inicio = "$anio_anterior-01-01"; // 1 de enero del año anterior
+$fecha_fin = "$anio_anterior-12-31"; // 31 de diciembre del año anterior
+
 unset($filtros);
-$fecha_inicio = date('Y-m-d', strtotime('-12 months'));
-$fecha_inicio = date('Y-m-01', strtotime($fecha_inicio)); // Primer día del mes
-$fecha_inicio .= " 00:00:00"; // Hora inicial
-
-$fecha_fin = date('Y-m-d', strtotime('-12 months')); // Fecha actual
-$fecha_fin = date('Y-m-t', strtotime($fecha_fin)); // Último día del mes
-$fecha_fin .= " 23:59:59"; // Hora final
-
-$filtros["where"] = "mov_fecha BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+$filtros["where"] = "mov_fecha BETWEEN '$fecha_inicio' AND '$fecha_fin' AND mov_tipo = 'SAL'";
 $mov_mes_anio_pasado = select("movimientos", "*", $filtros);
+
+// Inicializar el array antes del bucle
+$ventas_anio_pasado = [];
+
 foreach ($mov_mes_anio_pasado["datos"] as $mmap) {
     $movimientos_detalle = select("movimientos_detalle", "*", ["mdet_mov_id" => $mmap["mov_id"]]);
     foreach ($movimientos_detalle["datos"] as $mdet) {
         if ($mdet["mdet_clase"] == "VNT") {
+            if (!isset($ventas_anio_pasado[$mdet["mdet_pro_id"]])) {
+                $ventas_anio_pasado[$mdet["mdet_pro_id"]] = 0;
+            }
             $ventas_anio_pasado[$mdet["mdet_pro_id"]] += $mdet["mdet_cantidad"];
         }
     }

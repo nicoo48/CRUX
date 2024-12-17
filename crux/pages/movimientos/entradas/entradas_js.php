@@ -45,7 +45,7 @@ function agregar_linea() {
     const cantidad = document.getElementById('cantidad').value;
     const precio = document.getElementById('precio').value;
     const comentario = document.getElementById('comentario').value.trim();
-    const total = cantidad * precio;
+    const total = cantidad * parseFloat(precio);
 
     const oculto = document.getElementById('oculto');
     oculto.value = oculto.value + productoValor + "," + claseValor + "," + cantidad + "," + precio + "," + comentario + ";";
@@ -77,6 +77,7 @@ function agregar_linea() {
         tr.className = 'new-row visible';
     }, 50);
 
+    // Limpiar formulario
     document.getElementById('producto').selectedIndex = 0;
     document.getElementById('clase').selectedIndex = 0;
     document.getElementById('cantidad').value = '';
@@ -144,11 +145,14 @@ function guardar() {
     AJAXPOST(urlBase + "pages/movimientos/entradas/guardar_entrada.php?datos=" + oculto, "", document.getElementById("pagina_central"));
 }
 
-// Asegurarse de que el selector tenga el evento change
+// Inicialización cuando el documento está listo
 document.addEventListener('DOMContentLoaded', function() {
     const productoSelect = document.getElementById('producto');
     if (productoSelect) {
         productoSelect.addEventListener('change', cargarPrecioProducto);
     }
+
+    // Debug para verificar que el mapa de precios está disponible
+    console.log('Mapa de precios disponible:', productoPreciosMap);
 });
 </script>

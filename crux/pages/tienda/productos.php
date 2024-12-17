@@ -22,7 +22,7 @@ if($registros > 0){
             <table class="datatables-products table">
             <thead>
                 <tr>
-                    <th width="1">#</th>
+                    <th width="140">#</th>
                     <th>Producto</th>
                     <th>SKU</th>
                     <th>Código Barra</th>
@@ -42,12 +42,19 @@ if($registros > 0){
                         <td>
                             <?
                             boton("","pencil","info","ver_ficha($p[pro_id])");
+                            boton(
+                                "",
+                                "trash",
+                                "danger",
+                                "abrir_modal($p[pro_id])",
+                                "Eliminar la Producto"
+                            );
                             ?>
                         </td>
                         <td><?= $p["pro_nombre"]?></td>
                         <td><?= $p["pro_codigo"]?></td>
                         <td><?= $p["pro_codigo_barra"]?></td>
-                        <td><?= $p["pro_precio"]?></td>
+                        <td>$<?= $p["pro_precio"]?></td>
                         <td><?= $unidad["datos"][0]["uni_nombre"]?></td>
                         <td><?= $p["pro_descripcion"]?></td>
                         <td><?= _label_estado("producto", $p["pro_estado"],2);?></td>
@@ -81,6 +88,8 @@ if($registros > 0){
         "x"
     );
 }
+modal("ModEliminar", "Eliminar Producto", "¿Estás seguro de que deseas eliminar este Producto?<p style='color:red'>Esta Acción es Permanente</p>", "shop", "xl", "eliminarProducto()");
+
 ?>
 <script>
     function crearProducto(){
@@ -88,5 +97,9 @@ if($registros > 0){
     }
     function ver_ficha(id){
         AJAXPOST(urlBase + "pages/tienda/productos/ficha.php", "id="+id, document.getElementById("pagina_central"));
+    }
+    function eliminarProducto() {
+        var id = document.getElementById("valor_modal").value;
+        AJAXPOST(urlBase + "pages/tienda/productos/eliminar_producto.php", "id=" + id, document.getElementById("pagina_central"));
     }
 </script>

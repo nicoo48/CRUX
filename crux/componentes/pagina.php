@@ -13,7 +13,8 @@ require "js_pagina/js_pagina.php";
 
         <div class="card shadow-lg mb-4 position-relative overflow-hidden">
             <!-- Background Gradient -->
-            <div class="position-absolute w-100 h-100" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);opacity: 0.95;z-index: 1;">
+            <div class="position-absolute w-100 h-100"
+                style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);opacity: 0.95;z-index: 1;">
             </div>
 
             <!-- Content -->
@@ -126,8 +127,7 @@ require "js_pagina/js_pagina.php";
                                         <div class="list-group-item border-0 px-0">
                                             <div class="d-flex justify-content-between align-items-center mb-2">
                                                 <span class="text-muted">Venta Actual</span>
-                                                <span
-                                                    class="h5 mb-0">$<?= cantidad($stats['total_salidas']) ?></span>
+                                                <span class="h5 mb-0">$<?= cantidad($stats['total_salidas']) ?></span>
                                             </div>
                                             <div class="progress" style="height: 8px;">
                                                 <div class="progress-bar bg-<?= $colorClase ?>"
@@ -232,13 +232,29 @@ require "js_pagina/js_pagina.php";
                                 <i class="bi bi-arrow-up-right-circle text-success fs-5"></i>
                             </div>
                             <div>
-                                <p class="text-muted small mb-1">Producto Más Vendido <?=$meses[date('m')]." - ".date('Y',strtotime('-12 months'))?></p>
+                                <p class="text-muted small mb-1">Producto Más Vendido
+                                    <?= date('Y', strtotime('-1 year')) ?></p>
                                 <?php
-                                $id_prod_max = array_search(max($ventas_anio_pasado), $ventas_anio_pasado);
-                                $prod_max = select("productos", "*", ["pro_id" => $id_prod_max]);
-                                $prod_max = $prod_max["datos"][0];
+                                if (!empty($ventas_anio_pasado)) {
+                                    $id_prod_max = array_search(max($ventas_anio_pasado), $ventas_anio_pasado);
+                                    $prod_max = select("productos", "*", ["pro_id" => $id_prod_max]);
+                                    if (!empty($prod_max["datos"])) {
+                                        $prod_max = $prod_max["datos"][0];
+                                        ?>
+                                        <h5 class="mb-0"><?= htmlspecialchars($prod_max["pro_nombre"]) ?> -
+                                            <?= cantidad($ventas_anio_pasado[$id_prod_max]) ?> unidades</h5>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <h5 class="mb-0">No hay datos disponibles</h5>
+                                        <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <h5 class="mb-0">No hay ventas registradas</h5>
+                                    <?php
+                                }
                                 ?>
-                                <h5 class="mb-0"><?= $prod_max["pro_nombre"] ?> - <?= cantidad($ventas_anio_pasado[$id_prod_max]) ?> unidades</h5>
                             </div>
                         </div>
                     </div>
@@ -253,13 +269,29 @@ require "js_pagina/js_pagina.php";
                                 <i class="bi bi-arrow-down-left-circle text-danger fs-5"></i>
                             </div>
                             <div>
-                                <p class="text-muted small mb-1">Producto Menos Vendido <?=$meses[date('m')]." - ".date('Y',strtotime('-12 months'))?></p>
+                                <p class="text-muted small mb-1">Producto Menos Vendido
+                                    <?= date('Y', strtotime('-1 year')) ?></p>
                                 <?php
-                                $id_prod_min = array_search(min($ventas_anio_pasado), $ventas_anio_pasado);
-                                $prod_min = select("productos", "*", ["pro_id" => $id_prod_min]);
-                                $prod_min = $prod_min["datos"][0];
+                                if (!empty($ventas_anio_pasado)) {
+                                    $id_prod_min = array_search(min($ventas_anio_pasado), $ventas_anio_pasado);
+                                    $prod_min = select("productos", "*", ["pro_id" => $id_prod_min]);
+                                    if (!empty($prod_min["datos"])) {
+                                        $prod_min = $prod_min["datos"][0];
+                                        ?>
+                                        <h5 class="mb-0"><?= htmlspecialchars($prod_min["pro_nombre"]) ?> -
+                                            <?= cantidad($ventas_anio_pasado[$id_prod_min]) ?> unidades</h5>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <h5 class="mb-0">No hay datos disponibles</h5>
+                                        <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <h5 class="mb-0">No hay ventas registradas</h5>
+                                    <?php
+                                }
                                 ?>
-                                <h5 class="mb-0"><?= $prod_min["pro_nombre"] ?> - <?= cantidad($ventas_anio_pasado[$id_prod_min]) ?> unidades</h5>
                             </div>
                         </div>
                     </div>
@@ -281,7 +313,8 @@ require "js_pagina/js_pagina.php";
                                     </div>
                                     <div>
                                         <p class="text-muted small mb-0">Valor Promedio de Venta</p>
-                                        <h3 class="mb-0">$<?= cantidad($stats["total_salidas"] / $cantidad_ventas) ?></h3>
+                                        <h3 class="mb-0">$<?= cantidad($stats["total_salidas"] / $cantidad_ventas) ?>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
@@ -316,7 +349,8 @@ require "js_pagina/js_pagina.php";
                                     <div>
                                         <p class="text-muted small mb-0">Promedio de Margen de utilidad</p>
                                         <h3 class="mb-0">
-                                            $<?= cantidad($stats["total_salidas"] / $cantidad_ventas - $stats["total_ingresos"] / $cantidad_compras) ?></h3>
+                                            $<?= cantidad($stats["total_salidas"] / $cantidad_ventas - $stats["total_ingresos"] / $cantidad_compras) ?>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
