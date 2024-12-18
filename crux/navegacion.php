@@ -35,6 +35,11 @@ $_navegacion = array(
                 "url"=>"informe_ventasMes.php",
                 "icono"=>"cash-stack"
             ),
+            "Prediccion ventas" => array(
+                "url"=>"prediccion_productos.php",
+                "icono"=>"cash-stack"
+            ),
+
             "Listado Ventas" => array(
                 "url"=>"listado_ventas.php",
                 "icono"=>"clipboard-data"
